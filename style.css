@@ -18,19 +18,20 @@
         0 12px 40px rgba(15, 23, 42, 0.08);
 
     --radius: 16px;
-
 }
 
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
 
 * {
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
 
@@ -46,9 +47,7 @@ body {
     color: var(--text);
 
     line-height: 1.5;
-
 }
-
 
 button,
 input,
@@ -56,16 +55,14 @@ textarea {
     font: inherit;
 }
 
-
 button {
     cursor: pointer;
 }
 
 
-/* ================================================= */
-/* HEADER */
-/* ================================================= */
-
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 .topbar {
 
@@ -93,9 +90,7 @@ button {
     align-items: center;
 
     justify-content: space-between;
-
 }
-
 
 .brand {
 
@@ -104,9 +99,7 @@ button {
     align-items: center;
 
     gap: 12px;
-
 }
-
 
 .brand-mark {
 
@@ -138,9 +131,7 @@ button {
     box-shadow:
         0 8px 20px
         rgba(37, 99, 235, 0.25);
-
 }
-
 
 .brand-name {
 
@@ -151,23 +142,18 @@ button {
     font-weight: 800;
 
     letter-spacing: -0.5px;
-
 }
-
 
 .brand-name span {
     color: var(--primary);
 }
-
 
 .brand-tagline {
 
     font-size: 10px;
 
     color: var(--muted);
-
 }
-
 
 .top-actions {
 
@@ -176,32 +162,27 @@ button {
     align-items: center;
 
     gap: 10px;
-
 }
-
 
 .icon-button,
 .small-tool {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     background: var(--surface);
 
     color: var(--text);
 
     border-radius: 10px;
-
 }
-
 
 .icon-button {
 
     width: 40px;
 
     height: 40px;
-
 }
-
 
 .secondary-btn,
 .primary-btn {
@@ -215,18 +196,14 @@ button {
     font-weight: 700;
 
     transition: 0.2s;
-
 }
-
 
 .secondary-btn {
 
     background: #eef2ff;
 
     color: #3730a3;
-
 }
-
 
 .primary-btn {
 
@@ -242,9 +219,7 @@ button {
     box-shadow:
         0 7px 18px
         rgba(37, 99, 235, 0.22);
-
 }
-
 
 .primary-btn:hover {
 
@@ -253,23 +228,19 @@ button {
     box-shadow:
         0 10px 24px
         rgba(37, 99, 235, 0.3);
-
 }
-
 
 .primary-btn.large {
 
     width: 100%;
 
     padding: 15px;
-
 }
 
 
-/* ================================================= */
-/* HERO */
-/* ================================================= */
-
+/* =====================================================
+   HERO
+   ===================================================== */
 
 .hero {
 
@@ -285,18 +256,14 @@ button {
             rgba(37, 99, 235, 0.16),
             transparent 45%
         );
-
 }
-
 
 .hero-content {
 
     max-width: 850px;
 
     margin: auto;
-
 }
-
 
 .eyebrow {
 
@@ -319,9 +286,7 @@ button {
     font-weight: 700;
 
     margin-bottom: 18px;
-
 }
-
 
 .pulse {
 
@@ -336,9 +301,7 @@ button {
     box-shadow:
         0 0 0 4px
         rgba(34, 197, 94, 0.12);
-
 }
-
 
 .hero h1 {
 
@@ -352,9 +315,7 @@ button {
     letter-spacing: -2.5px;
 
     margin: 0;
-
 }
-
 
 .hero h1 span {
 
@@ -370,9 +331,7 @@ button {
     -webkit-background-clip: text;
 
     color: transparent;
-
 }
-
 
 .hero p {
 
@@ -384,9 +343,7 @@ button {
     color: var(--muted);
 
     font-size: 17px;
-
 }
-
 
 .hero-stats {
 
@@ -395,41 +352,33 @@ button {
     justify-content: center;
 
     gap: 42px;
-
 }
-
 
 .hero-stats div {
 
     display: flex;
 
     flex-direction: column;
-
 }
-
 
 .hero-stats strong {
 
     font-family: "Manrope";
 
     font-size: 19px;
-
 }
-
 
 .hero-stats span {
 
     color: var(--muted);
 
     font-size: 12px;
-
 }
 
 
-/* ================================================= */
-/* BUILDER */
-/* ================================================= */
-
+/* =====================================================
+   BUILDER
+   ===================================================== */
 
 .builder {
 
@@ -448,14 +397,12 @@ button {
     gap: 28px;
 
     align-items: start;
-
 }
 
 
-/* ================================================= */
-/* EDITOR */
-/* ================================================= */
-
+/* =====================================================
+   EDITOR
+   ===================================================== */
 
 .editor-panel {
 
@@ -469,9 +416,7 @@ button {
     box-shadow: var(--shadow);
 
     overflow: hidden;
-
 }
-
 
 .panel-heading {
 
@@ -485,9 +430,7 @@ button {
 
     border-bottom:
         1px solid var(--border);
-
 }
-
 
 .panel-kicker {
 
@@ -498,9 +441,7 @@ button {
     font-weight: 800;
 
     letter-spacing: 1.5px;
-
 }
-
 
 .panel-heading h2,
 .preview-toolbar h2 {
@@ -511,9 +452,7 @@ button {
         3px 0 0;
 
     font-size: 22px;
-
 }
-
 
 .progress-circle {
 
@@ -538,9 +477,7 @@ button {
     font-weight: 800;
 
     position: relative;
-
 }
-
 
 .progress-circle::after {
 
@@ -555,16 +492,12 @@ button {
     border-radius: 50%;
 
     z-index: 0;
-
 }
-
 
 .progress-circle {
 
     color: var(--text);
-
 }
-
 
 .progress-circle::before {
 
@@ -573,14 +506,12 @@ button {
     position: absolute;
 
     z-index: 2;
-
 }
 
 
-/* ================================================= */
-/* FORM SECTIONS */
-/* ================================================= */
-
+/* =====================================================
+   FORM SECTIONS
+   ===================================================== */
 
 .form-section {
 
@@ -588,9 +519,7 @@ button {
 
     border-bottom:
         1px solid var(--border);
-
 }
-
 
 .section-title {
 
@@ -601,9 +530,7 @@ button {
     align-items: flex-start;
 
     margin-bottom: 20px;
-
 }
-
 
 .section-icon {
 
@@ -622,9 +549,7 @@ button {
     background: #eff6ff;
 
     font-size: 17px;
-
 }
-
 
 .section-title h3 {
 
@@ -633,9 +558,7 @@ button {
     font-family: "Manrope";
 
     font-size: 15px;
-
 }
-
 
 .section-title p {
 
@@ -644,9 +567,7 @@ button {
     color: var(--muted);
 
     font-size: 12px;
-
 }
-
 
 .form-grid {
 
@@ -655,16 +576,11 @@ button {
     grid-template-columns: 1fr 1fr;
 
     gap: 15px;
-
 }
-
 
 .field.full {
-
     grid-column: 1 / -1;
-
 }
-
 
 .field label {
 
@@ -677,9 +593,7 @@ button {
     font-weight: 700;
 
     color: #334155;
-
 }
-
 
 .field input,
 .field textarea {
@@ -703,9 +617,7 @@ button {
         border-color .2s,
         box-shadow .2s,
         background .2s;
-
 }
-
 
 .field input:focus,
 .field textarea:focus {
@@ -718,18 +630,14 @@ button {
     box-shadow:
         0 0 0 4px
         rgba(37, 99, 235, .08);
-
 }
-
 
 .field textarea {
 
     resize: vertical;
 
     min-height: 100px;
-
 }
-
 
 .field small {
 
@@ -740,9 +648,7 @@ button {
     color: var(--muted);
 
     font-size: 11px;
-
 }
-
 
 .counter {
 
@@ -753,14 +659,12 @@ button {
     font-size: 10px;
 
     margin-top: 5px;
-
 }
 
 
-/* ================================================= */
-/* REPEAT CARDS */
-/* ================================================= */
-
+/* =====================================================
+   REPEAT CARDS
+   ===================================================== */
 
 .repeat-card {
 
@@ -774,9 +678,7 @@ button {
     background: #fbfdff;
 
     margin-bottom: 14px;
-
 }
-
 
 .repeat-header {
 
@@ -787,16 +689,12 @@ button {
     align-items: center;
 
     margin-bottom: 15px;
-
 }
-
 
 .repeat-header strong {
 
     font-size: 13px;
-
 }
-
 
 .remove-btn {
 
@@ -809,9 +707,7 @@ button {
     font-size: 11px;
 
     font-weight: 700;
-
 }
-
 
 .add-btn {
 
@@ -830,14 +726,12 @@ button {
     background: #eff6ff;
 
     font-weight: 700;
-
 }
 
 
-/* ================================================= */
-/* TEMPLATE SELECTOR */
-/* ================================================= */
-
+/* =====================================================
+   TEMPLATE SELECTOR
+   ===================================================== */
 
 .template-grid {
 
@@ -847,9 +741,7 @@ button {
         repeat(3, 1fr);
 
     gap: 10px;
-
 }
-
 
 .template-card {
 
@@ -865,16 +757,12 @@ button {
     text-align: left;
 
     transition: .2s;
-
 }
-
 
 .template-card:hover {
 
     transform: translateY(-2px);
-
 }
-
 
 .template-card.active {
 
@@ -883,38 +771,32 @@ button {
     box-shadow:
         0 0 0 3px
         rgba(37, 99, 235, .09);
-
 }
-
 
 .template-card strong,
 .template-card small {
 
     display: block;
-
 }
-
 
 .template-card strong {
 
     margin-top: 7px;
 
     font-size: 12px;
-
 }
-
 
 .template-card small {
 
     color: var(--muted);
 
     font-size: 10px;
-
 }
 
 
-/* mini templates */
-
+/* =====================================================
+   MINI TEMPLATES
+   ===================================================== */
 
 .mini-resume {
 
@@ -926,9 +808,7 @@ button {
     background: white;
 
     padding: 9px;
-
 }
-
 
 .mini-resume span {
 
@@ -941,9 +821,7 @@ button {
     background: #1e293b;
 
     margin-bottom: 8px;
-
 }
-
 
 .mini-resume i {
 
@@ -954,37 +832,27 @@ button {
     background: #cbd5e1;
 
     margin-top: 5px;
-
 }
-
 
 .modern-mini span {
-
     background: #2563eb;
-
 }
-
 
 .minimal-mini {
-
     border: 0;
-
 }
 
 
-/* ================================================= */
-/* PREVIEW */
-/* ================================================= */
-
+/* =====================================================
+   PREVIEW
+   ===================================================== */
 
 .preview-panel {
 
     position: sticky;
 
     top: 96px;
-
 }
-
 
 .preview-toolbar {
 
@@ -995,9 +863,7 @@ button {
     align-items: center;
 
     margin-bottom: 15px;
-
 }
-
 
 .preview-tools {
 
@@ -1006,18 +872,14 @@ button {
     align-items: center;
 
     gap: 7px;
-
 }
-
 
 .small-tool {
 
     width: 32px;
 
     height: 32px;
-
 }
-
 
 #zoomValue {
 
@@ -1028,9 +890,12 @@ button {
     min-width: 35px;
 
     text-align: center;
-
 }
 
+
+/* =====================================================
+   RESUME STAGE
+   ===================================================== */
 
 .resume-stage {
 
@@ -1055,36 +920,73 @@ button {
 
     align-items: flex-start;
 
+    flex-direction: column;
 }
 
 
-/* ================================================= */
-/* RESUME PAPER */
-/* ================================================= */
-
+/* =====================================================
+   RESUME MAIN CONTAINER
+   ===================================================== */
 
 .resume {
 
     width: 794px;
 
+    min-height: 0;
+
+    height: auto;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #172033;
+
+    box-shadow: none;
+
+    transform-origin: top center;
+
+    transition: transform .2s;
+}
+
+
+/* =====================================================
+   ACTUAL A4 PAGE
+   ===================================================== */
+
+.resume-page {
+
+    width: 794px;
+
+    height: 1123px;
+
     min-height: 1123px;
 
-    background: white;
+    box-sizing: border-box;
+
+    background: #ffffff;
 
     color: #172033;
 
     padding: 55px;
 
-    transform-origin: top center;
+    margin: 0 auto 25px;
 
     box-shadow:
         0 20px 60px
-        rgba(15, 23, 42, .18);
+        rgba(15, 23, 42, 0.18);
 
-    transition: transform .2s;
+    overflow: hidden;
 
+    position: relative;
+
+    flex-shrink: 0;
 }
 
+
+/* =====================================================
+   RESUME CONTENT
+   ===================================================== */
 
 .resume-header {
 
@@ -1098,9 +1000,7 @@ button {
 
     border-bottom:
         2px solid #172033;
-
 }
-
 
 .resume-identity h1 {
 
@@ -1113,9 +1013,7 @@ button {
     line-height: 1.05;
 
     letter-spacing: -1px;
-
 }
-
 
 .resume-identity h2 {
 
@@ -1126,9 +1024,7 @@ button {
     font-size: 15px;
 
     font-weight: 700;
-
 }
-
 
 .resume-contact {
 
@@ -1143,19 +1039,17 @@ button {
     max-width: 210px;
 
     word-break: break-word;
-
 }
 
 
-/* resume sections */
-
+/* =====================================================
+   RESUME SECTIONS
+   ===================================================== */
 
 .resume-section {
 
     margin-top: 24px;
-
 }
-
 
 .resume-section h3 {
 
@@ -1168,9 +1062,7 @@ button {
     letter-spacing: 1.8px;
 
     color: #2563eb;
-
 }
-
 
 .resume-section p {
 
@@ -1181,23 +1073,16 @@ button {
     line-height: 1.65;
 
     color: #475569;
-
 }
-
 
 .resume-item {
 
     margin-bottom: 19px;
-
 }
-
 
 .resume-item:last-child {
-
     margin-bottom: 0;
-
 }
-
 
 .resume-item-header {
 
@@ -1206,9 +1091,7 @@ button {
     justify-content: space-between;
 
     gap: 15px;
-
 }
-
 
 .resume-item-title {
 
@@ -1217,9 +1100,7 @@ button {
     font-size: 13px;
 
     color: #172033;
-
 }
-
 
 .resume-item-company {
 
@@ -1228,9 +1109,7 @@ button {
     color: #2563eb;
 
     margin-top: 2px;
-
 }
-
 
 .resume-item-date {
 
@@ -1239,9 +1118,7 @@ button {
     color: #64748b;
 
     white-space: nowrap;
-
 }
-
 
 .resume-item-description {
 
@@ -1249,8 +1126,10 @@ button {
 
     white-space: pre-line;
 
-}
+    font-size: 11px;
 
+    line-height: 1.6;
+}
 
 .skills-container {
 
@@ -1259,9 +1138,7 @@ button {
     flex-wrap: wrap;
 
     gap: 7px;
-
 }
-
 
 .skill {
 
@@ -1278,9 +1155,7 @@ button {
     font-size: 9px;
 
     font-weight: 700;
-
 }
-
 
 .skill-placeholder,
 .empty-state {
@@ -1288,23 +1163,23 @@ button {
     color: #94a3b8;
 
     font-size: 10px;
-
 }
 
 
-/* ================================================= */
-/* TEMPLATE — MODERN */
-/* ================================================= */
-
+/* =====================================================
+   MODERN TEMPLATE
+   ===================================================== */
 
 .resume.modern {
-
     padding: 0;
-
 }
 
+.resume-page.modern {
+    padding: 0;
+}
 
-.resume.modern .resume-header {
+.resume.modern .resume-header,
+.resume-page.modern .resume-header {
 
     background:
         linear-gradient(
@@ -1318,86 +1193,78 @@ button {
     padding: 45px 50px;
 
     border: 0;
-
 }
 
-
-.resume.modern .resume-identity h2 {
+.resume.modern .resume-identity h2,
+.resume-page.modern .resume-identity h2 {
 
     color: #bfdbfe;
-
 }
 
-
-.resume.modern .resume-contact {
+.resume.modern .resume-contact,
+.resume-page.modern .resume-contact {
 
     color: #dbeafe;
-
 }
 
-
-.resume.modern .resume-section {
+.resume.modern .resume-section,
+.resume-page.modern .resume-section {
 
     margin-left: 50px;
 
     margin-right: 50px;
-
 }
 
 
-/* ================================================= */
-/* TEMPLATE — MINIMAL */
-/* ================================================= */
-
+/* =====================================================
+   MINIMAL TEMPLATE
+   ===================================================== */
 
 .resume.minimal {
+    padding: 0;
+}
 
+.resume-page.minimal {
     padding: 65px;
-
 }
 
+.resume.minimal .resume-header,
+.resume-page.minimal .resume-header {
 
-.resume.minimal .resume-header {
-
-    border-bottom: 1px solid #cbd5e1;
-
+    border-bottom:
+        1px solid #cbd5e1;
 }
 
-
-.resume.minimal .resume-identity h1 {
+.resume.minimal .resume-identity h1,
+.resume-page.minimal .resume-identity h1 {
 
     font-weight: 600;
-
 }
 
-
-.resume.minimal .resume-identity h2 {
+.resume.minimal .resume-identity h2,
+.resume-page.minimal .resume-identity h2 {
 
     color: #64748b;
 
     font-weight: 500;
-
 }
 
 
-/* ================================================= */
-/* MOBILE DOWNLOAD */
-/* ================================================= */
-
+/* =====================================================
+   MOBILE DOWNLOAD
+   ===================================================== */
 
 .mobile-download {
 
     padding: 20px;
 
     display: none;
-
 }
 
 
-/* ================================================= */
-/* FOOTER */
-/* ================================================= */
-
+/* =====================================================
+   FOOTER
+   ===================================================== */
 
 footer {
 
@@ -1413,41 +1280,33 @@ footer {
     justify-content: space-between;
 
     font-size: 12px;
-
 }
-
 
 .footer-brand {
 
     display: flex;
 
     flex-direction: column;
-
 }
-
 
 .footer-brand strong {
 
     color: white;
 
     font-size: 15px;
-
 }
-
 
 .footer-brand span {
 
     margin-top: 3px;
 
     color: #94a3b8;
-
 }
 
 
-/* ================================================= */
-/* TOAST */
-/* ================================================= */
-
+/* =====================================================
+   TOAST
+   ===================================================== */
 
 .toast {
 
@@ -1475,9 +1334,7 @@ footer {
     transition: .25s;
 
     z-index: 999;
-
 }
-
 
 .toast.show {
 
@@ -1485,14 +1342,12 @@ footer {
         translateY(0);
 
     opacity: 1;
-
 }
 
 
-/* ================================================= */
-/* DARK MODE */
-/* ================================================= */
-
+/* =====================================================
+   DARK MODE
+   ===================================================== */
 
 body.dark {
 
@@ -1507,17 +1362,13 @@ body.dark {
     --muted: #94a3b8;
 
     --border: #243244;
-
 }
-
 
 body.dark .topbar {
 
     background:
         rgba(15, 23, 42, .94);
-
 }
-
 
 body.dark .hero {
 
@@ -1527,9 +1378,7 @@ body.dark .hero {
             rgba(37, 99, 235, .18),
             transparent 45%
         );
-
 }
-
 
 body.dark .field input,
 body.dark .field textarea {
@@ -1537,30 +1386,24 @@ body.dark .field textarea {
     background: #0f172a;
 
     color: white;
-
 }
-
 
 body.dark .field input:focus,
 body.dark .field textarea:focus {
 
     background: #111827;
-
 }
-
 
 body.dark .repeat-card,
 body.dark .template-card {
 
     background: #0f172a;
-
 }
 
 
-/* ================================================= */
-/* RESPONSIVE */
-/* ================================================= */
-
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
 
 @media (max-width: 1150px) {
 
@@ -1568,18 +1411,14 @@ body.dark .template-card {
 
         grid-template-columns:
             1fr;
-
     }
-
 
     .preview-panel {
 
         position: relative;
 
         top: auto;
-
     }
-
 }
 
 
@@ -1592,30 +1431,19 @@ body.dark .template-card {
         padding: 14px 20px;
 
         gap: 15px;
-
     }
-
 
     .brand-tagline {
-
         display: none;
-
     }
-
 
     .top-actions .secondary-btn {
-
         display: none;
-
     }
-
 
     .top-actions {
-
         gap: 5px;
-
     }
-
 
     .primary-btn {
 
@@ -1623,420 +1451,294 @@ body.dark .template-card {
             10px 12px;
 
         font-size: 11px;
-
     }
-
 
     .hero {
 
         padding:
             50px 20px;
-
     }
-
 
     .hero h1 {
 
         font-size: 42px;
 
         letter-spacing: -1.5px;
-
     }
-
 
     .hero-stats {
 
         gap: 20px;
-
     }
-
 
     .builder {
 
         width: 100%;
-
     }
-
 
     .form-grid {
 
         grid-template-columns: 1fr;
-
     }
-
 
     .field.full {
 
         grid-column: auto;
-
     }
-
 
     .resume-stage {
 
-        padding: 15px;
+        padding: 20px;
 
         justify-content: flex-start;
 
-    }
+        align-items: flex-start;
 
+        overflow-x: auto;
+    }
 
     .resume {
 
-        transform:
-            scale(.72);
-
-        transform-origin:
-            top left;
-
-        margin-right:
-            -220px;
-
-        margin-bottom:
-            -300px;
-
+        transform-origin: top left;
     }
 
+    .resume-page {
+
+        margin-left: 0;
+
+        margin-right: 0;
+
+        margin-bottom: 25px;
+    }
 
     .preview-tools {
-
         display: none;
-
     }
-
 
     .mobile-download {
-
         display: block;
-
     }
-
 
     footer {
 
         flex-direction: column;
 
         gap: 12px;
-
     }
-
 }
 
 
-@media print {
-
-    body {
-
-        background: white;
-
-    }
-
-
-    body * {
-
-        visibility: hidden;
-
-    }
-
-
-    #resume,
-    #resume * {
-
-        visibility: visible;
-
-    }
-
-
-    #resume {
-
-        position: absolute;
-
-        left: 0;
-
-        top: 0;
-
-        width: 210mm;
-
-        min-height: 297mm;
-
-        box-shadow: none;
-
-        transform: none !important;
-
-        margin: 0;
-
-    }
-
-
-    @page {
-
-        size: A4;
-
-        margin: 0;
-
-    }
-
-}
-
-/* =========================================
-   JOBCV-SI - A4 SINGLE PAGE PDF
-   ========================================= */
-
-@page {
-    size: A4 portrait;
-    margin: 0;
-}
-
-@media print {
-
-    /* Page */
-    html,
-    body {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #fff !important;
-    }
-
-    body {
-        overflow: hidden !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    /* Hide editor interface */
-    .sidebar,
-    .topbar,
-    .toolbar,
-    .builder-sidebar,
-    .editor-panel,
-    .controls,
-    .template-grid,
-    button,
-    #toast {
-        display: none !important;
-    }
-
-   /* =====================================================
-   JOBCV-SI — A4 SINGLE PAGE PDF
+/* =====================================================
+   PRINT — PROFESSIONAL A4 MULTI PAGE
    ===================================================== */
 
 @page {
+
     size: A4 portrait;
+
     margin: 0;
 }
 
-@media print {
 
-    /* -----------------------------------------
-       PAGE
-       ----------------------------------------- */
+@media print {
 
     html,
     body {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #ffffff !important;
-    }
 
-    body {
-        overflow: hidden !important;
+        width: 100% !important;
+
+        height: auto !important;
+
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        background: #ffffff !important;
+
+        overflow: visible !important;
+
         -webkit-print-color-adjust: exact !important;
+
         print-color-adjust: exact !important;
     }
 
 
-    /* -----------------------------------------
-       HIDE WEBSITE / BUILDER UI
-       ----------------------------------------- */
-
-    .sidebar,
-    .topbar,
-    .toolbar,
-    .builder-sidebar,
-    .editor-panel,
-    .controls,
-    .template-grid,
-    .resume-stage > .stage-toolbar,
-    button,
-    #toast {
-        display: none !important;
-    }
-
-
-    /* -----------------------------------------
-       RESUME STAGE
-       ----------------------------------------- */
-
-    .resume-stage {
-        width: 210mm !important;
-        height: 297mm !important;
-        min-height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        display: block !important;
-
-        overflow: hidden !important;
-    }
-
-
-    /* =========================================================
-   JOBCV-SI — PROFESSIONAL A4 ONE-PAGE PDF
-   ========================================================= */
-
-@page {
-    size: A4 portrait;
-    margin: 0;
-}
-
-@media print {
-
-    /* ===============================
-       A4 PAGE
-       =============================== */
-
-    html,
-    body {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #ffffff !important;
-    }
-
-    body {
-        overflow: hidden !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-
-    /* ===============================
-       HIDE WEBSITE UI
-       =============================== */
+    /* Hide website interface */
 
     .topbar,
     .hero,
     .editor-panel,
     .preview-toolbar,
     footer,
-    .toast {
+    .toast,
+    .mobile-download,
+    button {
+
         display: none !important;
     }
 
 
-    /* ===============================
-       BUILDER
-       =============================== */
+    /* Reset builder */
 
     .builder {
+
         display: block !important;
-        width: 210mm !important;
-        height: 297mm !important;
+
+        width: 100% !important;
+
+        max-width: none !important;
+
+        height: auto !important;
+
+        min-height: 0 !important;
+
         margin: 0 !important;
+
         padding: 0 !important;
     }
 
-
-    /* ===============================
-       PREVIEW PANEL
-       =============================== */
 
     .preview-panel {
+
         display: block !important;
-        width: 210mm !important;
-        height: 297mm !important;
+
+        position: static !important;
+
+        width: 100% !important;
+
+        max-width: none !important;
+
+        height: auto !important;
+
+        min-height: 0 !important;
+
         margin: 0 !important;
+
         padding: 0 !important;
     }
 
 
-    /* ===============================
-       RESUME STAGE
-       =============================== */
-
     .resume-stage {
+
         display: block !important;
 
-        width: 210mm !important;
-        height: 297mm !important;
+        width: 100% !important;
+
+        height: auto !important;
+
+        min-height: 0 !important;
 
         margin: 0 !important;
+
         padding: 0 !important;
 
-        overflow: hidden !important;
+        overflow: visible !important;
 
         background: #ffffff !important;
     }
 
 
-    /* ===============================
-       ACTUAL RESUME
-       =============================== */
+    /* Resume container */
 
     #resume {
-        display: block !important;
 
-        width: 210mm !important;
-        height: 297mm !important;
+        width: 100% !important;
 
-        min-width: 210mm !important;
-        max-width: 210mm !important;
+        height: auto !important;
 
-        min-height: 297mm !important;
-        max-height: 297mm !important;
+        min-height: 0 !important;
 
         margin: 0 !important;
 
-        box-sizing: border-box !important;
+        padding: 0 !important;
 
         transform: none !important;
 
-        overflow: hidden !important;
+        background: transparent !important;
+
+        box-shadow: none !important;
+    }
+
+
+    /* Every generated page = one A4 page */
+
+    .resume-page {
+
+        width: 210mm !important;
+
+        height: 297mm !important;
+
+        min-height: 297mm !important;
+
+        margin: 0 !important;
+
+        padding: 15mm !important;
 
         background: #ffffff !important;
 
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
+        box-shadow: none !important;
+
+        overflow: hidden !important;
+
+        position: relative !important;
+
+        page-break-after: always !important;
+
+        break-after: page !important;
+    }
+
+
+    .resume-page:last-child {
+
+        page-break-after: auto !important;
+
+        break-after: auto !important;
+    }
+
+
+    /* Keep resume elements together */
+
+    .resume-item {
+
+        break-inside: avoid !important;
+
         page-break-inside: avoid !important;
     }
 
 
-    /* ===============================
-       PREVENT PAGE BREAKS
-       =============================== */
+    .resume-section h3 {
 
-    #resume,
-    #resume .resume-header,
-    #resume .resume-section,
-    #resume .resume-item {
-        page-break-before: avoid !important;
+        break-after: avoid !important;
+
         page-break-after: avoid !important;
-        page-break-inside: avoid !important;
     }
 
 
-    /* ===============================
-       BOX SIZING
-       =============================== */
+    .resume-header {
 
-    #resume *,
-    #resume *::before,
-    #resume *::after {
-        box-sizing: border-box !important;
+        break-after: avoid !important;
+
+        page-break-after: avoid !important;
     }
 
 
-    /* ===============================
-       REMOVE PRINT TRANSFORMS
-       =============================== */
+    /* No shadows in PDF */
 
-    #resume {
-        zoom: 1 !important;
+    .resume-page,
+    .resume-page * {
+
+        box-shadow: none !important;
+    }
+
+
+    /* Links */
+
+    .resume-page a {
+
+        color: inherit !important;
+
+        text-decoration: none !important;
     }
 }
