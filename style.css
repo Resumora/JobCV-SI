@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Complete CSS with All Templates & Print Fix
+   Resumora - Complete CSS with Jobbers Hero & All Templates
    ========================================================= */
 
 * {
@@ -26,14 +26,18 @@ body {
     line-height: 1.5;
 }
 
-/* TOPBAR */
+/* =========================================================
+   JOBBERS.IO INSPIRED TOPBAR & HERO SECTION
+   ========================================================= */
+
 .topbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border-card);
-    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eef2f6;
+    padding: 14px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,6 +74,27 @@ body {
     color: var(--text-secondary);
 }
 
+.nav-center-pill {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 11.5px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #10b981;
+}
+
 .top-actions {
     display: flex;
     align-items: center;
@@ -103,7 +128,106 @@ body {
 }
 .primary-btn:hover { background: var(--primary-dark); }
 
-/* APP LAYOUT */
+/* JOBBERS STYLE HERO */
+.jobbers-hero {
+    text-align: center;
+    padding: 55px 24px 35px 24px;
+    background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 0.9) 65%, #f8fafc 100%);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* 1. Pill Badge */
+.hero-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 16px;
+    border-radius: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 22px;
+    font-size: 12.5px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+}
+
+.badge-highlight {
+    background: #ecfdf5;
+    color: #059669;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11.5px;
+}
+
+.badge-text {
+    color: #475569;
+    font-weight: 500;
+}
+
+/* 2. Bold Multi-Color Headline */
+.hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+    max-width: 860px;
+    margin: 0 auto 16px auto;
+}
+
+.hero-title .highlight-green {
+    color: #059669;
+}
+
+.hero-title .highlight-purple {
+    color: #6366f1;
+}
+
+/* Jobbers orange scratch/strikethrough effect */
+.hero-strikethrough {
+    position: relative;
+    display: inline-block;
+    color: #64748b;
+}
+
+.hero-strikethrough::after {
+    content: '';
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    top: 50%;
+    height: 4px;
+    background: #f97316;
+    border-radius: 3px;
+    transform: rotate(-1.5deg);
+}
+
+/* 3. Subtitle */
+.hero-subtitle {
+    font-size: 15px;
+    color: #64748b;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .nav-center-pill { display: none; }
+    .hero-title { font-size: 26px; }
+    .jobbers-hero { padding: 35px 16px 25px 16px; }
+}
+
+/* =========================================================
+   APP WORKSPACE LAYOUT
+   ========================================================= */
+
 .app-container {
     display: grid;
     grid-template-columns: minmax(380px, 480px) 1fr;
@@ -374,6 +498,7 @@ input:focus, textarea:focus, select:focus {
 /* =========================================================
    BASE RESUME STRUCTURE
    ========================================================= */
+
 .resume {
     width: 794px;
     min-height: 1120px;
@@ -510,7 +635,6 @@ input:focus, textarea:focus, select:focus {
 
 .cert-entry strong, .project-entry strong, .language-entry strong { font-size: 10.5px; color: #111827; }
 .cert-entry span, .project-entry span, .language-entry span { display: block; color: #6b7280; font-size: 9.5px; }
-
 
 /* =========================================================
    DIFFERENT RESUME TEMPLATES STYLING
@@ -722,10 +846,10 @@ input:focus, textarea:focus, select:focus {
     position: relative;
 }
 
-
 /* =========================================================
    SEO SECTION & FOOTER
    ========================================================= */
+
 .seo-guide-section {
     background: #ffffff;
     border-top: 1px solid var(--border-card);
@@ -785,9 +909,10 @@ input:focus, textarea:focus, select:focus {
 /* =========================================================
    MULTI-PAGE PRINT & BREAK FIX
    ========================================================= */
+
 @media print {
     body { background: #ffffff !important; }
-    .topbar, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer { display: none !important; }
+    .topbar, .jobbers-hero, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer { display: none !important; }
     .app-container, .resume-wrapper { display: block !important; padding: 0 !important; margin: 0 !important; background: transparent !important; }
     .resume { width: 100% !important; box-shadow: none !important; padding: 12mm 14mm !important; }
     
