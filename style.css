@@ -155,44 +155,66 @@ body {
 .primary-btn:hover { background: var(--primary-dark); }
 
 /* =========================================================
-   LIVE MOVING VIDEO BACKGROUND HERO
+   LIVE MOVING WATER WAVES (100% WORKING & ZERO LAG)
    ========================================================= */
 .jobbers-hero {
     position: relative;
     text-align: center;
-    padding: 55px 24px 45px 24px;
-    background-color: #f8fafc;
+    padding: 60px 24px 50px 24px;
+    background: linear-gradient(180deg, #f0f7ff 0%, #f8fafc 100%);
     border-bottom: 1px solid #e2e8f0;
     overflow: hidden;
 }
 
-/* Background video tag */
-.hero-video-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.35;
-    filter: blur(1px);
-}
-
-/* Gradient overlay so text remains fully legible */
-.hero-bg-overlay {
+/* Water Waves Container */
+.water-waves-bg {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.45) 0%, rgba(248, 250, 252, 0.9) 80%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     pointer-events: none;
     z-index: 1;
+}
+
+.wave {
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 42%;
+    pointer-events: none;
+}
+
+/* Layer 1 - Deep soft water ripple */
+.wave1 {
+    top: -120%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.03) 70%, transparent 100%);
+    animation: water-flow 18s linear infinite;
+}
+
+/* Layer 2 - Fast flowing ripple */
+.wave2 {
+    top: -130%;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, rgba(37, 99, 235, 0.02) 60%, transparent 100%);
+    animation: water-flow 12s linear infinite reverse;
+}
+
+/* Layer 3 - Gentle crest */
+.wave3 {
+    top: -140%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+    animation: water-flow 24s linear infinite;
+}
+
+@keyframes water-flow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-inner {
@@ -200,72 +222,6 @@ body {
     z-index: 2;
     max-width: 900px;
     margin: 0 auto;
-}
-
-.hero-pill-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    padding: 5px 14px;
-    border-radius: 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 18px;
-    font-size: 12px;
-}
-
-.badge-highlight {
-    background: #ecfdf5;
-    color: #059669;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-size: 11px;
-}
-
-.badge-text {
-    color: #475569;
-    font-weight: 500;
-}
-
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: 36px;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.3;
-    letter-spacing: -0.6px;
-    margin-bottom: 14px;
-}
-
-.hero-title .highlight-green { color: #059669; }
-.hero-title .highlight-purple { color: #6366f1; }
-
-.hero-strikethrough {
-    position: relative;
-    display: inline-block;
-    color: #64748b;
-}
-
-.hero-strikethrough::after {
-    content: '';
-    position: absolute;
-    left: -4%;
-    right: -4%;
-    top: 50%;
-    height: 3.5px;
-    background: #f97316;
-    border-radius: 3px;
-    transform: rotate(-1.5deg);
-}
-
-.hero-subtitle {
-    font-size: 15px;
-    color: #64748b;
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 1.6;
 }
 
 /* =========================================================
