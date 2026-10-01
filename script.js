@@ -777,11 +777,11 @@ if (downloadBtn) {
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
         const opt = {
-            margin: [10, 8, 10, 8],
+            margin: [12, 10, 12, 10], // Top, Right, Bottom, Left margin
             filename: fileName,
             image: { type: "jpeg", quality: 1.0 },
             html2canvas: {
-                scale: 3,
+                scale: 2.5,
                 useCORS: true,
                 letterRendering: true,
                 scrollY: 0,
@@ -793,8 +793,8 @@ if (downloadBtn) {
                 orientation: "portrait"
             },
             pagebreak: { 
-                mode: ["css", "legacy"], 
-                avoid: [".resume-section", ".resume-entry", "h3"] 
+                mode: ["avoid-all", "css", "legacy"],
+                before: ".page-break"
             }
         };
 
