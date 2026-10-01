@@ -15,14 +15,14 @@ const escapeHTML = (value = "") => {
 
 // Default Realistic Pre-filled Demo Data
 const defaultData = {
-    fullName: "Rohit Sharma",
+    fullName: "john Doe",
     jobTitle: "Senior Network & Systems Engineer",
-    email: "rohit.sharma@example.com",
-    phone: "+91 98765 43210",
+    email: "example@example.com",
+    phone: "+91 **** 43210",
     location: "Chandigarh, India",
-    website: "https://rohitsharma.dev",
-    linkedin: "https://linkedin.com/in/rohitsharma",
-    github: "https://github.com/rohitsharma",
+    website: "https://johndoe.dev",
+    linkedin: "https://linkedin.com/in/e.g",
+    github: "https://github.co/e.g",
     summary: "Results-driven Network and Systems Engineer with 4+ years of experience designing, configuring, and optimizing enterprise IT infrastructure. Proven track record in BGP/OSPF routing, cloud network migration, and reducing downtime by 35%.",
     photo: "",
     experience: [
@@ -68,7 +68,7 @@ const defaultData = {
     projects: [
         {
             name: "Automated Network Backup & Compliance Bot",
-            link: "https://github.com/rohitsharma/net-backup-tool",
+            link: "https://github.com/rohsharma/net-backup-tool",
             description: "Developed a Python tool utilizing Netmiko and Paramiko to backup running configurations from 40+ Cisco switches nightly to a secure AWS S3 bucket."
         }
     ],
