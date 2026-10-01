@@ -1,5 +1,5 @@
 /* =========================================================
-   JobCV-SI - Multi-Template Professional Resume Engine
+   Resumora - Multi-Template Professional Resume Engine
    ========================================================= */
 
 const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -721,7 +721,7 @@ $("#clearBtn").addEventListener("click", () => {
 // PDF Export (Single-Page Fit)
 $("#downloadBtn").addEventListener("click", () => {
     const resume = $("#resume");
-    const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "JobCV-Resume") + ".pdf";
+    const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora-Resume") + ".pdf";
 
     const opt = {
         margin: [5, 5, 5, 5],
