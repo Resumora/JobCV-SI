@@ -767,17 +767,20 @@ if (themeToggle) {
     });
 }
 
-// Download PDF Button (Crisp Fonts & Top Margin Fix)
+// Download PDF Button (100% Page Break & Top Margin Fix)
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
         const resume = $("#resume");
         if (!resume) return;
 
+        // Render hone se pehle styling compact karein aur page-break padding lagayein
+        resume.classList.add("pdf-rendering");
+
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
         const opt = {
-            margin: [12, 10, 12, 10], // Top, Right, Bottom, Left margin
+            margin: [8, 8, 8, 8],
             filename: fileName,
             image: { type: "jpeg", quality: 1.0 },
             html2canvas: {
@@ -793,14 +796,19 @@ if (downloadBtn) {
                 orientation: "portrait"
             },
             pagebreak: { 
-                mode: ["avoid-all", "css", "legacy"],
-                before: ".page-break"
+                mode: ["css", "legacy"], 
+                avoid: [".resume-section", ".resume-entry", "h3"] 
             }
         };
 
         if (typeof html2pdf !== "undefined") {
-            html2pdf().set(opt).from(resume).save();
+            html2pdf().set(opt).from(resume).save().then(() => {
+                resume.classList.remove("pdf-rendering");
+            }).catch(() => {
+                resume.classList.remove("pdf-rendering");
+            });
         } else {
+            resume.classList.remove("pdf-rendering");
             window.print();
         }
     });
