@@ -402,9 +402,9 @@ function updateBasicPreview() {
     }
 
     let linksHTML = "";
-    if (resumeData.website) linksHTML += `<a href="${escapeHTML(resumeData.website)}" target="_blank"><i class="fa-solid fa-globe"></i> Website</a>`;
-    if (resumeData.linkedin) linksHTML += `<a href="${escapeHTML(resumeData.linkedin)}" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>`;
-    if (resumeData.github) linksHTML += `<a href="${escapeHTML(resumeData.github)}" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>`;
+    if (resumeData.website) linksHTML += `<span><i class="fa-solid fa-globe"></i> Website</span>`;
+    if (resumeData.linkedin) linksHTML += `<span><i class="fa-brands fa-linkedin"></i> LinkedIn</span>`;
+    if (resumeData.github) linksHTML += `<span><i class="fa-brands fa-github"></i> GitHub</span>`;
 
     const pLinks = $("#previewLinks");
     const sLinks = $("#sidebarLinks");
