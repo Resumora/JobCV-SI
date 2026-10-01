@@ -1,890 +1,737 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>JobCV-SI – Free Resume Builder & CV Maker</title>
+    <meta name="description"
+          content="JobCV-SI is a free professional resume builder. Create modern, ATS-friendly resumes online and download them as PDF.">
 
-    <meta
-        name="description"
-        content="Create a professional resume and CV online with JobCV-SI. Build, customize and download your resume as a PDF for free."
-    >
-
-    <meta
-        name="keywords"
-        content="free resume builder, free CV maker, online resume builder, CV maker, professional resume builder, resume PDF maker, JobCV-SI"
-    >
+    <meta name="keywords"
+          content="resume builder, CV builder, free resume maker, ATS resume, professional CV, JobCV-SI">
 
     <meta name="author" content="JobCV-SI">
 
     <meta name="robots" content="index, follow">
 
-    <link
-        rel="canonical"
-        href="https://atulsharma812-beep.github.io/JobCV-SI/"
-    >
+    <title>JobCV-SI | Free Professional Resume Builder</title>
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
 
-    <meta
-        property="og:title"
-        content="JobCV-SI – Free Resume Builder & CV Maker"
-    >
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <meta
-        property="og:description"
-        content="Create, customize and download a professional resume as a PDF for free with JobCV-SI."
-    >
-
-    <meta
-        property="og:url"
-        content="https://atulsharma812-beep.github.io/JobCV-SI/"
-    >
-
-    <meta
-        property="og:site_name"
-        content="JobCV-SI"
-    >
-
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary">
-
-    <meta
-        name="twitter:title"
-        content="JobCV-SI – Free Resume Builder & CV Maker"
-    >
-
-    <meta
-        name="twitter:description"
-        content="Build a professional resume online and download it as a PDF for free."
-    >
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
+    <!-- PDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<!-- =========================
+     TOP NAVIGATION
+========================= -->
 
-    <header class="topbar">
+<header class="topbar">
 
-        <div class="brand">
-            <div class="brand-mark">J</div>
+    <div class="brand">
+        <div class="brand-logo">J</div>
+
+        <div>
+            <h1>JobCV-SI</h1>
+            <span>Resume Builder</span>
+        </div>
+    </div>
+
+    <div class="top-actions">
+
+        <button class="icon-btn"
+                id="themeToggle"
+                title="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <button class="secondary-btn"
+                id="clearBtn">
+            <i class="fa-solid fa-rotate-left"></i>
+            Reset
+        </button>
+
+        <button class="primary-btn"
+                id="downloadBtn">
+            <i class="fa-solid fa-file-pdf"></i>
+            Download PDF
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN APPLICATION
+========================= -->
+
+<main class="app-container">
+
+
+    <!-- =====================
+         LEFT EDITOR
+    ====================== -->
+
+    <aside class="editor-panel">
+
+        <div class="editor-heading">
 
             <div>
-                <div class="brand-name">JobCV<span>-SI</span></div>
-                <div class="brand-tagline">Build your next opportunity</div>
+                <h2>Build Your Resume</h2>
+                <p>Fill in your information below.</p>
             </div>
-        </div>
 
-        <div class="top-actions">
-
-            <button class="icon-button" id="themeToggle" title="Toggle theme">
-                ☾
-            </button>
-
-            <button class="secondary-btn" id="loadSample">
-                Load Sample
-            </button>
-
-            <button class="primary-btn" id="downloadTop">
-                <span>↓</span> Download PDF
-            </button>
-
-        </div>
-
-    </header>
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-    <span class="pulse"></span>
-    Free Professional Resume Builder
-</div>
-
-            <h1>
-                Build a resume that
-                <span>gets noticed.</span>
-            </h1>
-
-            <p>
-    Create a professional resume and CV online in minutes.
-    Choose a resume template, customize your information,
-    and download your polished resume as a PDF for free.
-</p>
-
-            <div class="hero-stats">
-
-                <div>
-                    <strong>100%</strong>
-                    <span>Free to start</span>
-                </div>
-
-                <div>
-                    <strong>3+</strong>
-                    <span>Professional templates</span>
-                </div>
-
-                <div>
-                    <strong>PDF</strong>
-                    <span>Ready to download</span>
-                </div>
-
+            <div class="save-status" id="saveStatus">
+                <i class="fa-solid fa-cloud"></i>
+                Saved
             </div>
 
         </div>
 
-    </section>
 
+        <!-- =====================
+             TEMPLATE
+        ====================== -->
 
-    <!-- ================= BUILDER ================= -->
+        <section class="editor-card">
 
-    <main class="builder">
-
-        <!-- ========== LEFT EDITOR ========== -->
-
-        <aside class="editor-panel">
-
-            <div class="panel-heading">
-
-                <div>
-                    <span class="panel-kicker">STEP 1</span>
-                    <h2>Your information</h2>
-                </div>
-
-                <div class="progress-circle" id="progressCircle">
-                    0%
-                </div>
-
+            <div class="card-title">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Design</h3>
             </div>
 
+            <label>Resume Template</label>
 
-            <!-- PERSONAL DETAILS -->
+            <select id="templateSelect">
 
-            <section class="form-section">
+                <option value="modern">
+                    Modern
+                </option>
 
-                <div class="section-title">
-                    <span class="section-icon">👤</span>
+                <option value="professional">
+                    Professional
+                </option>
 
-                    <div>
-                        <h3>Personal details</h3>
-                        <p>Tell employers who you are.</p>
-                    </div>
-                </div>
+                <option value="minimal">
+                    Minimal
+                </option>
 
+            </select>
 
-                <div class="form-grid">
 
-                    <div class="field full">
-                        <label for="fullName">Full name</label>
-                        <input
-                            id="fullName"
-                            type="text"
-                            placeholder="e.g. Atul Kumar"
-                        >
-                    </div>
+            <label>Theme Color</label>
 
+            <div class="color-options">
 
-                    <div class="field full">
-                        <label for="jobTitle">Professional title</label>
-                        <input
-                            id="jobTitle"
-                            type="text"
-                            placeholder="e.g. Network Engineer"
-                        >
-                    </div>
+                <button class="color-choice active"
+                        data-color="#2563eb"
+                        style="--color:#2563eb"></button>
 
+                <button class="color-choice"
+                        data-color="#111827"
+                        style="--color:#111827"></button>
 
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            placeholder="you@example.com"
-                        >
-                    </div>
+                <button class="color-choice"
+                        data-color="#0f766e"
+                        style="--color:#0f766e"></button>
 
+                <button class="color-choice"
+                        data-color="#7c3aed"
+                        style="--color:#7c3aed"></button>
 
-                    <div class="field">
-                        <label for="phone">Phone</label>
-                        <input
-                            id="phone"
-                            type="tel"
-                            placeholder="+91 98765 43210"
-                        >
-                    </div>
-
-
-                    <div class="field">
-                        <label for="location">Location</label>
-                        <input
-                            id="location"
-                            type="text"
-                            placeholder="City, Country"
-                        >
-                    </div>
-
-
-                    <div class="field">
-                        <label for="website">Website / LinkedIn</label>
-                        <input
-                            id="website"
-                            type="text"
-                            placeholder="linkedin.com/in/yourname"
-                        >
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- SUMMARY -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">✦</span>
-
-                    <div>
-                        <h3>Professional summary</h3>
-                        <p>A strong introduction for your resume.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="field">
-
-                    <textarea
-                        id="summary"
-                        rows="5"
-                        maxlength="600"
-                        placeholder="Write 3–5 lines about your experience, strengths and career goals..."
-                    ></textarea>
-
-                    <div class="counter">
-                        <span id="summaryCount">0</span>/600
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- EXPERIENCE -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">💼</span>
-
-                    <div>
-                        <h3>Work experience</h3>
-                        <p>Show employers what you have accomplished.</p>
-                    </div>
-
-                </div>
-
-
-                <div id="experienceList">
-
-                    <div class="repeat-card experience-item">
-
-                        <div class="repeat-header">
-                            <strong>Experience 1</strong>
-
-                            <button
-                                type="button"
-                                class="remove-btn"
-                                data-remove="experience"
-                            >
-                                Remove
-                            </button>
-                        </div>
-
-
-                        <div class="form-grid">
-
-                            <div class="field full">
-                                <label>Job title</label>
-                                <input
-                                    class="exp-title"
-                                    type="text"
-                                    placeholder="e.g. Network Engineer"
-                                >
-                            </div>
-
-
-                            <div class="field">
-                                <label>Company</label>
-                                <input
-                                    class="exp-company"
-                                    type="text"
-                                    placeholder="Company name"
-                                >
-                            </div>
-
-
-                            <div class="field">
-                                <label>Location</label>
-                                <input
-                                    class="exp-location"
-                                    type="text"
-                                    placeholder="City, Country"
-                                >
-                            </div>
-
-
-                            <div class="field">
-                                <label>Start date</label>
-                                <input
-                                    class="exp-start"
-                                    type="text"
-                                    placeholder="Jan 2021"
-                                >
-                            </div>
-
-
-                            <div class="field">
-                                <label>End date</label>
-                                <input
-                                    class="exp-end"
-                                    type="text"
-                                    placeholder="Present"
-                                >
-                            </div>
-
-
-                            <div class="field full">
-
-                                <label>
-                                    Achievements & responsibilities
-                                </label>
-
-                                <textarea
-                                    class="exp-description"
-                                    rows="5"
-                                    placeholder="Describe your key responsibilities and achievements..."
-                                ></textarea>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="add-btn"
-                    id="addExperience"
-                >
-                    + Add another experience
-                </button>
-
-            </section>
-
-
-            <!-- EDUCATION -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">🎓</span>
-
-                    <div>
-                        <h3>Education</h3>
-                        <p>Add your academic background.</p>
-                    </div>
-
-                </div>
-
-
-                <div id="educationList">
-
-                    <div class="repeat-card education-item">
-
-                        <div class="repeat-header">
-
-                            <strong>Education 1</strong>
-
-                            <button
-                                type="button"
-                                class="remove-btn"
-                                data-remove="education"
-                            >
-                                Remove
-                            </button>
-
-                        </div>
-
-
-                        <div class="form-grid">
-
-                            <div class="field full">
-
-                                <label>Degree / qualification</label>
-
-                                <input
-                                    class="edu-degree"
-                                    type="text"
-                                    placeholder="Bachelor's Degree in Information Technology"
-                                >
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>Institution</label>
-
-                                <input
-                                    class="edu-school"
-                                    type="text"
-                                    placeholder="University / College"
-                                >
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>Location</label>
-
-                                <input
-                                    class="edu-location"
-                                    type="text"
-                                    placeholder="City, Country"
-                                >
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>Start year</label>
-
-                                <input
-                                    class="edu-start"
-                                    type="text"
-                                    placeholder="2018"
-                                >
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>End year</label>
-
-                                <input
-                                    class="edu-end"
-                                    type="text"
-                                    placeholder="2021"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="add-btn"
-                    id="addEducation"
-                >
-                    + Add education
-                </button>
-
-            </section>
-
-
-            <!-- SKILLS -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">⚡</span>
-
-                    <div>
-                        <h3>Skills</h3>
-                        <p>Add skills relevant to your target job.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label for="skills">
-                        Skills
-                    </label>
-
-                    <input
-                        id="skills"
-                        type="text"
-                        placeholder="Networking, Routing, Switching, Python, Troubleshooting"
-                    >
-
-                    <small>
-                        Separate skills with commas.
-                    </small>
-
-                </div>
-
-            </section>
-
-
-            <!-- CERTIFICATIONS -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">🏆</span>
-
-                    <div>
-                        <h3>Certifications</h3>
-                        <p>Highlight relevant certifications.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="field">
-
-                    <textarea
-                        id="certifications"
-                        rows="4"
-                        placeholder="Certification name — Organization&#10;Certification name — Organization"
-                    ></textarea>
-
-                </div>
-
-            </section>
-
-
-            <!-- TEMPLATE -->
-
-            <section class="form-section">
-
-                <div class="section-title">
-
-                    <span class="section-icon">🎨</span>
-
-                    <div>
-                        <h3>Resume style</h3>
-                        <p>Choose your visual style.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="template-grid">
-
-                    <button
-                        type="button"
-                        class="template-card active"
-                        data-template="classic"
-                    >
-                        <div class="mini-resume classic-mini">
-                            <span></span>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
-
-                        <strong>Classic</strong>
-                        <small>Professional</small>
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="template-card"
-                        data-template="modern"
-                    >
-                        <div class="mini-resume modern-mini">
-                            <span></span>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
-
-                        <strong>Modern</strong>
-                        <small>Clean & bold</small>
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="template-card"
-                        data-template="minimal"
-                    >
-                        <div class="mini-resume minimal-mini">
-                            <span></span>
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
-
-                        <strong>Minimal</strong>
-                        <small>Simple & elegant</small>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <div class="mobile-download">
-                <button
-                    class="primary-btn large"
-                    id="downloadMobile"
-                >
-                    ↓ Download Resume as PDF
-                </button>
-            </div>
-
-        </aside>
-
-
-        <!-- ========== RIGHT PREVIEW ========== -->
-
-        <section class="preview-panel">
-
-            <div class="preview-toolbar">
-
-                <div>
-                    <span class="panel-kicker">LIVE PREVIEW</span>
-                    <h2>Your resume</h2>
-                </div>
-
-
-                <div class="preview-tools">
-
-                    <button
-                        class="small-tool"
-                        id="zoomOut"
-                        title="Zoom out"
-                    >
-                        −
-                    </button>
-
-                    <span id="zoomValue">85%</span>
-
-                    <button
-                        class="small-tool"
-                        id="zoomIn"
-                        title="Zoom in"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="resume-stage">
-
-                <article
-                    id="resume"
-                    class="resume classic"
-                >
-
-                    <!-- RESUME HEADER -->
-
-                    <header class="resume-header">
-
-                        <div class="resume-identity">
-
-                            <h1 id="previewName">
-                                Your Name
-                            </h1>
-
-                            <h2 id="previewTitle">
-                                Professional Title
-                            </h2>
-
-                        </div>
-
-
-                        <div class="resume-contact">
-
-                            <div id="previewEmail">
-                                email@example.com
-                            </div>
-
-                            <div id="previewPhone">
-                                +91 00000 00000
-                            </div>
-
-                            <div id="previewLocation">
-                                City, Country
-                            </div>
-
-                            <div id="previewWebsite">
-                                linkedin.com/in/yourname
-                            </div>
-
-                        </div>
-
-                    </header>
-
-
-                    <!-- SUMMARY -->
-
-                    <section
-                        class="resume-section"
-                        id="summarySection"
-                    >
-
-                        <h3>PROFILE</h3>
-
-                        <p id="previewSummary">
-                            Your professional summary will appear here.
-                        </p>
-
-                    </section>
-
-
-                    <!-- EXPERIENCE -->
-
-                    <section
-                        class="resume-section"
-                        id="experienceSection"
-                    >
-
-                        <h3>EXPERIENCE</h3>
-
-                        <div id="previewExperience">
-
-                            <div class="empty-state">
-                                Your work experience will appear here.
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- EDUCATION -->
-
-                    <section
-                        class="resume-section"
-                        id="educationSection"
-                    >
-
-                        <h3>EDUCATION</h3>
-
-                        <div id="previewEducation">
-
-                            <div class="empty-state">
-                                Your education will appear here.
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- SKILLS -->
-
-                    <section
-                        class="resume-section"
-                        id="skillsSection"
-                    >
-
-                        <h3>SKILLS</h3>
-
-                        <div
-                            id="previewSkills"
-                            class="skills-container"
-                        >
-                            <span class="skill-placeholder">
-                                Your skills will appear here.
-                            </span>
-                        </div>
-
-                    </section>
-
-
-                    <!-- CERTIFICATIONS -->
-
-                    <section
-                        class="resume-section"
-                        id="certificationSection"
-                    >
-
-                        <h3>CERTIFICATIONS</h3>
-
-                        <div id="previewCertifications">
-
-                            <div class="empty-state">
-                                Your certifications will appear here.
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                </article>
+                <button class="color-choice"
+                        data-color="#b45309"
+                        style="--color:#b45309"></button>
 
             </div>
 
         </section>
 
-    </main>
+
+        <!-- =====================
+             PERSONAL INFORMATION
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="card-title">
+                <i class="fa-solid fa-user"></i>
+                <h3>Personal Information</h3>
+            </div>
 
 
-    <!-- ================= FOOTER ================= -->
+            <div class="photo-upload">
 
-    <footer>
+                <div class="photo-preview"
+                     id="photoPreview">
 
-        <div class="footer-brand">
-            <strong>JobCV-SI</strong>
-            <span>Build your next opportunity.</span>
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <label class="upload-btn">
+
+                        <i class="fa-solid fa-camera"></i>
+                        Upload Photo
+
+                        <input type="file"
+                               id="photoInput"
+                               accept="image/*"
+                               hidden>
+
+                    </label>
+
+                    <small>
+                        JPG or PNG recommended
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="field full">
+                    <label>Full Name</label>
+
+                    <input type="text"
+                           id="fullName"
+                           placeholder="e.g. John Smith">
+                </div>
+
+
+                <div class="field full">
+                    <label>Professional Title</label>
+
+                    <input type="text"
+                           id="jobTitle"
+                           placeholder="e.g. Network Engineer">
+                </div>
+
+
+                <div class="field">
+                    <label>Email</label>
+
+                    <input type="email"
+                           id="email"
+                           placeholder="john@example.com">
+                </div>
+
+
+                <div class="field">
+                    <label>Phone</label>
+
+                    <input type="tel"
+                           id="phone"
+                           placeholder="+91 98765 43210">
+                </div>
+
+
+                <div class="field">
+                    <label>Location</label>
+
+                    <input type="text"
+                           id="location"
+                           placeholder="City, Country">
+                </div>
+
+
+                <div class="field">
+                    <label>Website</label>
+
+                    <input type="url"
+                           id="website"
+                           placeholder="https://example.com">
+                </div>
+
+
+                <div class="field">
+                    <label>LinkedIn</label>
+
+                    <input type="url"
+                           id="linkedin"
+                           placeholder="LinkedIn URL">
+                </div>
+
+
+                <div class="field">
+                    <label>GitHub</label>
+
+                    <input type="url"
+                           id="github"
+                           placeholder="GitHub URL">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================
+             SUMMARY
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="card-title">
+                <i class="fa-solid fa-align-left"></i>
+                <h3>Professional Summary</h3>
+            </div>
+
+            <textarea
+                id="summary"
+                rows="5"
+                placeholder="Write a short professional summary about yourself..."></textarea>
+
+            <div class="field-hint">
+                <span>Keep it concise and focused on your experience.</span>
+                <span id="summaryCount">0 / 600</span>
+            </div>
+
+        </section>
+
+
+        <!-- =====================
+             EXPERIENCE
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Work Experience</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addExperience">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="experienceList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             EDUCATION
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addEducation">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="educationList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             SKILLS
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>Skills</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addSkill">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="skillsList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             CERTIFICATIONS
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>Certifications</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addCertification">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="certificationsList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             PROJECTS
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Projects</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addProject">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="projectsList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             LANGUAGES
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="section-header">
+
+                <div class="card-title">
+                    <i class="fa-solid fa-language"></i>
+                    <h3>Languages</h3>
+                </div>
+
+                <button class="add-btn"
+                        id="addLanguage">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                </button>
+
+            </div>
+
+            <div id="languagesList"></div>
+
+        </section>
+
+
+        <!-- =====================
+             ACHIEVEMENTS
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="card-title">
+                <i class="fa-solid fa-trophy"></i>
+                <h3>Achievements</h3>
+            </div>
+
+            <textarea
+                id="achievements"
+                rows="4"
+                placeholder="Awards, achievements, accomplishments..."></textarea>
+
+        </section>
+
+
+        <!-- =====================
+             INTERESTS
+        ====================== -->
+
+        <section class="editor-card">
+
+            <div class="card-title">
+                <i class="fa-solid fa-heart"></i>
+                <h3>Interests</h3>
+            </div>
+
+            <input
+                type="text"
+                id="interests"
+                placeholder="e.g. Technology, Travelling, Photography">
+
+        </section>
+
+
+    </aside>
+
+
+    <!-- =====================
+         RIGHT PREVIEW
+    ====================== -->
+
+    <section class="preview-area">
+
+        <div class="preview-toolbar">
+
+            <div>
+                <strong>Live Preview</strong>
+                <span>Changes appear automatically</span>
+            </div>
+
+            <button class="print-btn"
+                    id="printBtn">
+
+                <i class="fa-solid fa-print"></i>
+                Print
+
+            </button>
+
         </div>
 
-        <div>
-            © 2026 JobCV-SI
+
+        <div class="resume-wrapper">
+
+            <article id="resume"
+                     class="resume modern-template">
+
+
+                <!-- Resume Header -->
+
+                <div class="resume-header">
+
+                    <div class="resume-identity">
+
+                        <h1 id="previewName">
+                            Your Name
+                        </h1>
+
+                        <h2 id="previewTitle">
+                            Professional Title
+                        </h2>
+
+                        <div class="contact-line"
+                             id="previewContact">
+
+                            <span>
+                                <i class="fa-solid fa-envelope"></i>
+                                email@example.com
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-phone"></i>
+                                +91 00000 00000
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-location-dot"></i>
+                                City, Country
+                            </span>
+
+                        </div>
+
+                        <div class="links-line"
+                             id="previewLinks"></div>
+
+                    </div>
+
+
+                    <div class="resume-photo"
+                         id="resumePhoto">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <section class="resume-section"
+                         id="summarySection">
+
+                    <h3>PROFILE</h3>
+
+                    <p id="previewSummary">
+                        Your professional summary will appear here.
+                    </p>
+
+                </section>
+
+
+                <!-- Experience -->
+
+                <section class="resume-section"
+                         id="experienceSection">
+
+                    <h3>EXPERIENCE</h3>
+
+                    <div id="previewExperience">
+
+                        <p class="empty-preview">
+                            Add your work experience.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Education -->
+
+                <section class="resume-section"
+                         id="educationSection">
+
+                    <h3>EDUCATION</h3>
+
+                    <div id="previewEducation">
+
+                        <p class="empty-preview">
+                            Add your education.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Skills -->
+
+                <section class="resume-section"
+                         id="skillsSection">
+
+                    <h3>SKILLS</h3>
+
+                    <div class="skill-tags"
+                         id="previewSkills"></div>
+
+                </section>
+
+
+                <!-- Certifications -->
+
+                <section class="resume-section"
+                         id="certificationSection">
+
+                    <h3>CERTIFICATIONS</h3>
+
+                    <div id="previewCertifications"></div>
+
+                </section>
+
+
+                <!-- Projects -->
+
+                <section class="resume-section"
+                         id="projectsSection">
+
+                    <h3>PROJECTS</h3>
+
+                    <div id="previewProjects"></div>
+
+                </section>
+
+
+                <!-- Languages -->
+
+                <section class="resume-section"
+                         id="languagesSection">
+
+                    <h3>LANGUAGES</h3>
+
+                    <div id="previewLanguages"></div>
+
+                </section>
+
+
+                <!-- Achievements -->
+
+                <section class="resume-section"
+                         id="achievementSection">
+
+                    <h3>ACHIEVEMENTS</h3>
+
+                    <p id="previewAchievements"></p>
+
+                </section>
+
+
+                <!-- Interests -->
+
+                <section class="resume-section"
+                         id="interestsSection">
+
+                    <h3>INTERESTS</h3>
+
+                    <p id="previewInterests"></p>
+
+                </section>
+
+            </article>
+
         </div>
 
-    </footer>
+    </section>
+
+</main>
 
 
-    <div
-        class="toast"
-        id="toast"
-    >
-        Saved
-    </div>
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+    <strong>JobCV-SI</strong>
+
+    <span>
+        Create professional resumes easily.
+    </span>
+
+    <span>
+        © <span id="year"></span> JobCV-SI
+    </span>
+
+</footer>
 
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
