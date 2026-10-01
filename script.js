@@ -698,13 +698,13 @@ $("#clearBtn").addEventListener("click", () => {
     }
 });
 
-// Export PDF (A4 Ratio Optimized)
+// Export PDF (Fixed 1-Page Alignment)
 $("#downloadBtn").addEventListener("click", () => {
     const resume = $("#resume");
     const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "JobCV-Resume") + ".pdf";
 
     const opt = {
-        margin: 0,
+        margin: [5, 5, 5, 5],
         filename: fileName,
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: {
@@ -718,7 +718,7 @@ $("#downloadBtn").addEventListener("click", () => {
             format: "a4",
             orientation: "portrait"
         },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+        pagebreak: { mode: 'avoid-all' }
     };
 
     html2pdf().set(opt).from(resume).save();
