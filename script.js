@@ -1,9 +1,8 @@
 /* =========================================================
-   Resumora - Original Resume Engine with Fixed PDF Export
+   Resumora - Resume Engine with Instant Template Switcher
    ========================================================= */
 
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const escapeHTML = (value = "") => {
     return String(value)
@@ -374,7 +373,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW UPDATE (NON-CLICKABLE SOCIAL LINKS & AUTO-HIDE)
+   PREVIEW UPDATE
    ========================================================= */
 
 function updateBasicPreview() {
@@ -402,7 +401,6 @@ function updateBasicPreview() {
         sContact.style.display = contactHTML ? "flex" : "none";
     }
 
-    // Non-clickable <span> elements with icons
     let linksHTML = "";
     if (resumeData.website) linksHTML += `<span><i class="fa-solid fa-globe"></i> Website</span>`;
     if (resumeData.linkedin) linksHTML += `<span><i class="fa-brands fa-linkedin"></i> LinkedIn</span>`;
@@ -620,6 +618,8 @@ function showPhoto() {
 function applyTemplate() {
     const resume = $("#resume");
     if (!resume) return;
+
+    // Purani saari template classes remove karein
     resume.classList.remove(
         "modern-template",
         "professional-template",
@@ -629,7 +629,10 @@ function applyTemplate() {
         "tech-template",
         "elegant-template"
     );
-    resume.classList.add(`${resumeData.template || "modern"}-template`);
+
+    // Selected template class lagayein
+    const activeTemplate = resumeData.template || "modern";
+    resume.classList.add(`${activeTemplate}-template`);
 }
 
 function applyColor() {
@@ -732,7 +735,7 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS & CRISP PDF EXPORT
+   BUTTON ACTIONS
    ========================================================= */
 
 // Reset Button
@@ -766,7 +769,6 @@ if (downloadBtn) {
 
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
-        // Top spacing inject for multi-page break fix
         const sections = resume.querySelectorAll(".resume-section");
         sections.forEach(sec => sec.style.paddingTop = "10px");
         if (sections.length > 0) sections[0].style.paddingTop = "0px";
@@ -880,16 +882,18 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Template & Color Chooser
+// TEMPLATE SWITCHER LISTENER (Instant Reactivity)
 const templateSelect = $("#templateSelect");
 if (templateSelect) {
     templateSelect.addEventListener("change", (e) => {
         resumeData.template = e.target.value;
         applyTemplate();
+        updatePreview(); // Instant re-render
         saveData();
     });
 }
 
+// COLOR PICKER LISTENER
 $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {         resumeData.color = btn.dataset.color;         $$
 (".color-choice").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
