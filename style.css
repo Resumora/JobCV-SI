@@ -1186,3 +1186,27 @@ body.dark .resume .resume-entry-description {
 .pdf-rendering .resume-header {
     padding-bottom: 8px !important;
 }
+
+/* Page break margin fix for multi-page export */
+.resume-section {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+/* Jab bhi koi section naye page par break ho, uske upar automatic margin enforce karein */
+@media print {
+    .resume-section {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        padding-top: 14mm !important; /* Naye page par top se proper space dega */
+    }
+    .resume-section:first-of-type {
+        padding-top: 0 !important; /* Pehle section ko upar se gap nahi dega */
+    }
+}
+
+/* PDF generator mode classes */
+.html2pdf__page-break {
+    height: 18mm !important; /* Naye page par aate hi 18mm ka solid space banayega */
+    display: block;
+}
