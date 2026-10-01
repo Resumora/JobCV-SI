@@ -123,18 +123,21 @@
             </div>
 
             <div class="photo-upload">
-                <div class="photo-preview" id="photoPreview">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div>
-                    <label class="upload-btn">
-                        <i class="fa-solid fa-camera"></i>
-                        Upload Photo
-                        <input type="file" id="photoInput" accept="image/*" hidden>
-                    </label>
-                    <small>Optional for ATS resumes</small>
-                </div>
-            </div>
+    <div class="photo-preview" id="photoPreview">
+        <i class="fa-solid fa-user"></i>
+    </div>
+    <div class="photo-actions">
+        <label class="upload-btn">
+            <i class="fa-solid fa-camera"></i>
+            Upload Photo
+            <input type="file" id="photoInput" accept="image/*" hidden>
+        </label>
+        <button type="button" class="remove-photo-btn" id="removePhotoBtn" style="display: none;">
+            <i class="fa-solid fa-trash"></i> Remove Photo
+        </button>
+        <small>Optional for ATS resumes</small>
+    </div>
+</div>
 
             <div class="form-grid">
                 <div class="field full">
