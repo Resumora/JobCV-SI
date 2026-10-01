@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
-    <meta name="keywords" content="ATS resume builder, free resume maker, professional CV builder, instant resume download, no watermark resume">
-    <meta name="author" content="Resumora">
     <title>Resumora | Free Professional ATS Resume Builder & Templates</title>
 
     <link rel="stylesheet" href="style.css">
@@ -13,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -23,7 +21,7 @@
 </head>
 <body>
 
-<!-- JOBBERS STYLE MODERN NAVBAR -->
+<!-- TOPBAR -->
 <header class="topbar">
     <div class="brand">
         <div class="brand-logo">R</div>
@@ -33,12 +31,11 @@
         </div>
     </div>
 
-    <!-- Center Badge -->
+    <!-- Blinking Dot Badge in Navbar -->
     <div class="nav-center-pill">
-        <span class="live-dot"></span> ATS-Compliant Layouts (2026)
+        <span class="blinking-dot"></span> ATS-Compliant Layouts (2026)
     </div>
 
-    <!-- Actions -->
     <div class="top-actions">
         <button class="secondary-btn" id="clearBtn">
             <i class="fa-solid fa-rotate-left"></i> Reset
@@ -49,27 +46,70 @@
     </div>
 </header>
 
-<!-- JOBBERS STYLE HERO SECTION -->
+<!-- JOBBERS-STYLE HERO STRIP WITH BACKGROUND IMAGE -->
 <section class="jobbers-hero">
-    <!-- Top Pill Badge -->
-    <div class="hero-pill-badge">
-        <span class="badge-dot"></span>
-        <span class="badge-highlight">100% Free</span>
-        <span class="badge-text">No sign-up & zero watermarks</span>
+    <div class="hero-bg-overlay"></div>
+
+    <div class="hero-inner">
+        <!-- Blinking Dot Badge in Hero -->
+        <div class="hero-pill-badge">
+            <span class="blinking-dot"></span>
+            <span class="badge-highlight">100% Free</span>
+            <span class="badge-text">No sign-up & zero watermarks</span>
+        </div>
+
+        <h2 class="hero-title">
+            Build the right <span class="highlight-green">ATS resume</span> for <span class="highlight-purple">every job</span>,
+            <span class="hero-strikethrough">without paying a single rupee</span>
+        </h2>
+
+        <p class="hero-subtitle">
+            The instant resume builder to beat hiring algorithms, pass recruiter screening, 
+            and land your dream interviews — completely free, forever.
+        </p>
     </div>
-
-    <!-- Main Bold Headline with Strikethrough Effect -->
-    <h2 class="hero-title">
-        Build the right <span class="highlight-green">ATS resume</span> for <span class="highlight-purple">every job</span>,
-        <span class="hero-strikethrough">without paying a single rupee</span>
-    </h2>
-
-    <!-- Subtitle -->
-    <p class="hero-subtitle">
-        The instant resume builder to beat hiring algorithms, pass recruiter screening, 
-        and land your dream interviews — completely free, forever.
-    </p>
 </section>
+
+<!-- MAIN APP CONTAINER (SIDE BY SIDE: LEFT EDITOR, RIGHT PREVIEW) -->
+<main class="app-container">
+
+    <!-- LEFT EDITOR PANEL -->
+    <aside class="editor-panel">
+        <div class="editor-heading">
+            <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
+            <div class="save-status" id="saveStatus">
+                <i class="fa-solid fa-check"></i> Auto-saved
+            </div>
+        </div>
+
+        <!-- Template & Color Selection -->
+        <section class="editor-card">
+            <div class="card-title">
+                <i class="fa-solid fa-layer-group"></i>
+                <h4>Template & Style</h4>
+            </div>
+
+            <label for="templateSelect">Resume Layout</label>
+            <select id="templateSelect">
+                <option value="modern">Modern Professional</option>
+                <option value="professional">Corporate Classic</option>
+                <option value="minimal">Minimal ATS Clean</option>
+                <option value="sidebar">Sidebar Dual-Column</option>
+                <option value="executive">Executive Serif</option>
+                <option value="tech">Tech & Developer</option>
+                <option value="elegant">Elegant Centered</option>
+            </select>
+
+            <label style="margin-top: 14px;">Accent Color</label>
+            <div class="color-options">
+                <button type="button" class="color-choice active" data-color="#2563eb" style="--color:#2563eb"></button>
+                <button type="button" class="color-choice" data-color="#0f766e" style="--color:#0f766e"></button>
+                <button type="button" class="color-choice" data-color="#18181b" style="--color:#18181b"></button>
+                <button type="button" class="color-choice" data-color="#7c3aed" style="--color:#7c3aed"></button>
+                <button type="button" class="color-choice" data-color="#b45309" style="--color:#b45309"></button>
+                <button type="button" class="color-choice" data-color="#e11d48" style="--color:#e11d48"></button>
+            </div>
+        </section>
 
         <!-- Personal Info -->
         <section class="editor-card">
@@ -234,7 +274,7 @@
         </section>
     </aside>
 
-    <!-- RIGHT PREVIEW CANVAS -->
+    <!-- RIGHT PREVIEW CANVAS (A4 DISPLAY) -->
     <section class="preview-area">
         <div class="preview-toolbar">
             <div class="preview-info">
@@ -333,7 +373,7 @@
 
 </main>
 
-<!-- SEO GUIDE & VALUE SECTION FOR ADSENSE -->
+<!-- SEO GUIDE SECTION -->
 <section class="seo-guide-section">
     <div class="seo-guide-container">
         <h2>How to Build an ATS-Friendly Resume in 2026</h2>
