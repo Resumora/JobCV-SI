@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Robust Resume Engine (Auto-Hide & Pre-filled)
+   Resumora - Robust Resume Engine (Auto-Hide, Photo Remove & Pre-filled)
    ========================================================= */
 
 const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -588,6 +588,7 @@ function showPhoto() {
     const preview = $("#photoPreview");
     const headerPhoto = $("#headerResumePhoto");
     const sidebarPhoto = $("#resumePhoto");
+    const removeBtn = $("#removePhotoBtn");
 
     if (resumeData.photo) {
         const imgTag = `<img src="${resumeData.photo}" alt="Profile">`;
@@ -600,9 +601,9 @@ function showPhoto() {
             sidebarPhoto.innerHTML = imgTag;
             sidebarPhoto.style.display = "flex";
         }
+        if (removeBtn) removeBtn.style.display = "inline-flex";
     } else {
         if (preview) preview.innerHTML = `<i class="fa-solid fa-user"></i>`;
-        // Agar photo nahi hai toh preview/PDF me placeholder box hide ho jayega
         if (headerPhoto) {
             headerPhoto.innerHTML = "";
             headerPhoto.style.display = "none";
@@ -611,6 +612,7 @@ function showPhoto() {
             sidebarPhoto.innerHTML = "";
             sidebarPhoto.style.display = "none";
         }
+        if (removeBtn) removeBtn.style.display = "none";
     }
 }
 
@@ -648,7 +650,7 @@ function updatePreview() {
 }
 
 /* =========================================================
-   INPUT EVENT LISTENERS
+   INPUT LISTENERS
    ========================================================= */
 
 function collectBasicData() {
@@ -690,7 +692,7 @@ function handleInputEvent(event) {
 document.addEventListener("input", handleInputEvent);
 document.addEventListener("change", handleInputEvent);
 
-// Summary Character Counter
+// Summary Character Count
 const summaryField = $("#summary");
 if (summaryField) {
     summaryField.addEventListener("input", (e) => {
@@ -713,6 +715,18 @@ if (photoInput) {
             saveData();
         };
         reader.readAsDataURL(file);
+    });
+}
+
+// Remove Photo Listener
+const removePhotoBtn = $("#removePhotoBtn");
+if (removePhotoBtn) {
+    removePhotoBtn.addEventListener("click", () => {
+        resumeData.photo = "";
+        const photoInputEl = $("#photoInput");
+        if (photoInputEl) photoInputEl.value = "";
+        showPhoto();
+        saveData();
     });
 }
 
