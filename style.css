@@ -552,10 +552,23 @@ textarea {
 }
 
 .contact-line span,
-.links-line a {
+.links-line a,
+.links-line span {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+}
+
+.links-line {
+    margin-top: 5px;
+}
+
+.links-line a,
+.links-line span {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: default;
 }
 
 .links-line {
