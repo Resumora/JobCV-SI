@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Robust Resume Engine (Auto-Hide, Photo Remove & Pre-filled)
+   Resumora - Robust Resume Engine
    ========================================================= */
 
 const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -13,16 +13,16 @@ const escapeHTML = (value = "") => {
         .replaceAll("'", "&#039;");
 };
 
-// Default Realistic Pre-filled Demo Data
+// Default Sample Data
 const defaultData = {
-    fullName: "john Doe",
+    fullName: "Rohit Sharma",
     jobTitle: "Senior Network & Systems Engineer",
-    email: "example@example.com",
+    email: "rohit.sharma@example.com",
     phone: "+91 **** 43210",
     location: "Chandigarh, India",
-    website: "https://johndoe.dev",
-    linkedin: "https://linkedin.com/in/e.g",
-    github: "https://github.co/e.g",
+    website: "https://rohitsharma.dev",
+    linkedin: "https://linkedin.com/in/rohitsharma",
+    github: "https://github.com/rohitsharma",
     summary: "Results-driven Network and Systems Engineer with 4+ years of experience designing, configuring, and optimizing enterprise IT infrastructure. Proven track record in BGP/OSPF routing, cloud network migration, and reducing downtime by 35%.",
     photo: "",
     experience: [
@@ -68,7 +68,7 @@ const defaultData = {
     projects: [
         {
             name: "Automated Network Backup & Compliance Bot",
-            link: "https://github.com/rohsharma/net-backup-tool",
+            link: "https://github.com/rohitsharma/net-backup-tool",
             description: "Developed a Python tool utilizing Netmiko and Paramiko to backup running configurations from 40+ Cisco switches nightly to a secure AWS S3 bucket."
         }
     ],
@@ -116,7 +116,7 @@ function renderExperienceEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.experience.length) {
-        container.innerHTML = `<p class="empty-preview">No work experience added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No work experience added yet.</p>`;
         return;
     }
 
@@ -166,7 +166,7 @@ function renderEducationEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.education.length) {
-        container.innerHTML = `<p class="empty-preview">No education added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No education added yet.</p>`;
         return;
     }
 
@@ -216,7 +216,7 @@ function renderSkillsEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.skills.length) {
-        container.innerHTML = `<p class="empty-preview">No skills added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No skills added yet.</p>`;
         return;
     }
 
@@ -254,7 +254,7 @@ function renderCertificationEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.certifications.length) {
-        container.innerHTML = `<p class="empty-preview">No certifications added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No certifications added yet.</p>`;
         return;
     }
 
@@ -292,7 +292,7 @@ function renderProjectEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.projects.length) {
-        container.innerHTML = `<p class="empty-preview">No projects added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No projects added yet.</p>`;
         return;
     }
 
@@ -330,7 +330,7 @@ function renderLanguageEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.languages.length) {
-        container.innerHTML = `<p class="empty-preview">No languages added yet.</p>`;
+        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No languages added yet.</p>`;
         return;
     }
 
@@ -373,7 +373,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW RENDERING (STRICT AUTO-HIDE WHEN EMPTY)
+   PREVIEW RENDERING (AUTO-HIDE IF EMPTY)
    ========================================================= */
 
 function updateBasicPreview() {
@@ -425,7 +425,6 @@ function updateBasicPreview() {
     if (pAch) pAch.textContent = resumeData.achievements || "";
     if (pInt) pInt.textContent = resumeData.interests || "";
 
-    // Strictly hide sections if empty
     toggleSection("#summarySection", Boolean(resumeData.summary && resumeData.summary.trim()));
     toggleSection("#achievementSection", Boolean(resumeData.achievements && resumeData.achievements.trim()));
     toggleSection("#interestsSection", Boolean(resumeData.interests && resumeData.interests.trim()));
@@ -650,7 +649,7 @@ function updatePreview() {
 }
 
 /* =========================================================
-   INPUT LISTENERS
+   INPUT EVENT LISTENERS
    ========================================================= */
 
 function collectBasicData() {
@@ -731,10 +730,10 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS: RESET, PRINT, DOWNLOAD, DARK THEME
+   BUTTON ACTIONS
    ========================================================= */
 
-// Reset Button (Reloads sample data)
+// Reset Button
 const clearBtn = $("#clearBtn");
 if (clearBtn) {
     clearBtn.addEventListener("click", () => {
@@ -760,14 +759,11 @@ if (printBtn) {
 const themeToggle = $("#themeToggle");
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        const isDark = document.body.classList.contains("dark");
-        localStorage.setItem("jobcv-theme", isDark ? "dark" : "light");
-        themeToggle.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i>` : `<i class="fa-solid fa-moon"></i>`;
+        document.body.classList.toggle("light-mode");
     });
 }
 
-// DOWNLOAD PDF BUTTON (Fixes Top-Edge Sticking on Page 2)
+// Download PDF Button
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
@@ -776,13 +772,12 @@ if (downloadBtn) {
 
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
-        // Step A: Sections par page-split gap class lagayein
         const sections = resume.querySelectorAll(".resume-section");
-        sections.forEach(sec => sec.style.paddingTop = "12px");
+        sections.forEach(sec => sec.style.paddingTop = "10px");
         if (sections.length > 0) sections[0].style.paddingTop = "0px";
 
         const opt = {
-            margin: [10, 8, 12, 8], // Top, Right, Bottom, Left margin (mm)
+            margin: [10, 8, 10, 8],
             filename: fileName,
             image: { type: "jpeg", quality: 0.98 },
             html2canvas: {
@@ -805,7 +800,6 @@ if (downloadBtn) {
 
         if (typeof html2pdf !== "undefined") {
             html2pdf().set(opt).from(resume).save().then(() => {
-                // Export ke baad reset styling
                 sections.forEach(sec => sec.style.paddingTop = "");
             }).catch(() => {
                 sections.forEach(sec => sec.style.paddingTop = "");
@@ -816,7 +810,7 @@ if (downloadBtn) {
     });
 }
 
-// Dynamic Item Addition
+// Dynamic Item Additions
 const addExp = $("#addExperience");
 if (addExp) addExp.addEventListener("click", () => {
     resumeData.experience.push(createExperience());
@@ -859,7 +853,7 @@ if (addLang) addLang.addEventListener("click", () => {
     updatePreview();
 });
 
-// Dynamic Item Removal
+// Dynamic Item Removals
 document.addEventListener("click", (event) => {
     const btn = event.target.closest("button");
     if (!btn) return;
@@ -910,7 +904,7 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
 });
 
 /* =========================================================
-   STORAGE & INITIAL LOAD
+   LOCAL STORAGE & INITIAL LOAD
    ========================================================= */
 
 function saveData() {
@@ -918,7 +912,7 @@ function saveData() {
         localStorage.setItem("jobcv-data", JSON.stringify(resumeData));
         const status = $("#saveStatus");
         if (status) {
-            status.innerHTML = `<i class="fa-solid fa-check"></i> Saved`;
+            status.innerHTML = `<i class="fa-solid fa-check"></i> Auto-saved`;
             status.style.opacity = "1";
         }
     } catch (err) {
@@ -963,15 +957,6 @@ function initialize() {
     loadFormData();
     renderEditors();
     updatePreview();
-
-    const savedTheme = localStorage.getItem("jobcv-theme");
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-        if (themeToggle) themeToggle.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-    }
-
-    const yearEl = $("#year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
 initialize();
