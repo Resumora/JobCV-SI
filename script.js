@@ -373,7 +373,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW UPDATE
+   PREVIEW UPDATE (NON-CLICKABLE SOCIAL & AUTO-HIDE)
    ========================================================= */
 
 function updateBasicPreview() {
@@ -619,7 +619,6 @@ function applyTemplate() {
     const resume = $("#resume");
     if (!resume) return;
 
-    // Purani saari template classes remove karein
     resume.classList.remove(
         "modern-template",
         "professional-template",
@@ -630,7 +629,6 @@ function applyTemplate() {
         "elegant-template"
     );
 
-    // Selected template class lagayein
     const activeTemplate = resumeData.template || "modern";
     resume.classList.add(`${activeTemplate}-template`);
 }
@@ -735,7 +733,7 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS
+   BUTTON ACTIONS & CRISP PDF
    ========================================================= */
 
 // Reset Button
@@ -882,13 +880,13 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// TEMPLATE SWITCHER LISTENER (Instant Reactivity)
+// TEMPLATE SWITCHER LISTENER
 const templateSelect = $("#templateSelect");
 if (templateSelect) {
     templateSelect.addEventListener("change", (e) => {
         resumeData.template = e.target.value;
         applyTemplate();
-        updatePreview(); // Instant re-render
+        updatePreview();
         saveData();
     });
 }
