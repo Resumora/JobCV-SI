@@ -1166,3 +1166,23 @@ body.dark .resume .resume-entry-description {
         margin-top: 14px !important;
     }
 }
+   /* Page break spacing fix */
+.resume-section {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+/* Jab PDF render ho raha ho tab spacing control */
+.pdf-rendering {
+    width: 794px !important;
+    padding: 22px 30px !important;
+}
+
+.pdf-rendering .resume-section {
+    margin-top: 8px !important;
+    padding-top: 10px !important; /* Agar page-break ke baad section naye page pe jaye to upar 10px space rahega */
+}
+
+.pdf-rendering .resume-header {
+    padding-bottom: 8px !important;
+}
