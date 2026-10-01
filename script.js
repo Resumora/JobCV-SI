@@ -1,8 +1,9 @@
 /* =========================================================
-   Resumora - Robust Resume Engine
+   Resumora - Original Resume Engine with Fixed PDF Export
    ========================================================= */
 
-const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const escapeHTML = (value = "") => {
     return String(value)
@@ -13,16 +14,16 @@ const escapeHTML = (value = "") => {
         .replaceAll("'", "&#039;");
 };
 
-// Default Sample Data
+// Default Realistic Pre-filled Demo Data
 const defaultData = {
-    fullName: "Rohit Sharma",
+    fullName: "John Doe",
     jobTitle: "Senior Network & Systems Engineer",
-    email: "rohit.sharma@example.com",
+    email: "example@example.com",
     phone: "+91 **** 43210",
     location: "Chandigarh, India",
-    website: "https://rohitsharma.dev",
-    linkedin: "https://linkedin.com/in/rohitsharma",
-    github: "https://github.com/rohitsharma",
+    website: "https://johndoe.dev",
+    linkedin: "https://linkedin.com/in/e.g",
+    github: "https://github.com/e.g",
     summary: "Results-driven Network and Systems Engineer with 4+ years of experience designing, configuring, and optimizing enterprise IT infrastructure. Proven track record in BGP/OSPF routing, cloud network migration, and reducing downtime by 35%.",
     photo: "",
     experience: [
@@ -68,7 +69,7 @@ const defaultData = {
     projects: [
         {
             name: "Automated Network Backup & Compliance Bot",
-            link: "https://github.com/rohitsharma/net-backup-tool",
+            link: "https://github.com/rohsharma/net-backup-tool",
             description: "Developed a Python tool utilizing Netmiko and Paramiko to backup running configurations from 40+ Cisco switches nightly to a secure AWS S3 bucket."
         }
     ],
@@ -116,7 +117,7 @@ function renderExperienceEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.experience.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No work experience added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No work experience added yet.</p>`;
         return;
     }
 
@@ -137,23 +138,23 @@ function renderExperienceEditor() {
                 </div>
                 <div>
                     <label>Company</label>
-                    <input data-experience="${index}" data-field="company" value="${escapeHTML(item.company)}" placeholder="e.g. Cisco Systems">
+                    <input data-experience="${index}" data-field="company" value="${escapeHTML(item.company)}" placeholder="e.g. Infosys">
                 </div>
                 <div>
                     <label>Location</label>
-                    <input data-experience="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Remote / Delhi">
+                    <input data-experience="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Mohali, India">
                 </div>
                 <div>
                     <label>Start Date</label>
-                    <input data-experience="${index}" data-field="start" value="${escapeHTML(item.start)}" placeholder="e.g. Jan 2022">
+                    <input data-experience="${index}" data-field="start" value="${escapeHTML(item.start)}" placeholder="e.g. June 2023">
                 </div>
                 <div>
                     <label>End Date</label>
                     <input data-experience="${index}" data-field="end" value="${escapeHTML(item.end)}" placeholder="e.g. Present">
                 </div>
                 <div class="dynamic-full">
-                    <label>Responsibilities & Achievements</label>
-                    <textarea data-experience="${index}" data-field="description" placeholder="Bullet points...">${escapeHTML(item.description)}</textarea>
+                    <label>Responsibilities & Bullet Points</label>
+                    <textarea data-experience="${index}" data-field="description" placeholder="• Bullet points...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -166,7 +167,7 @@ function renderEducationEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.education.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No education added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No education added yet.</p>`;
         return;
     }
 
@@ -176,7 +177,7 @@ function renderEducationEditor() {
         div.innerHTML = `
             <div class="dynamic-item-header">
                 <strong>Education ${index + 1}</strong>
-                <button type="button" class="remove-btn" data-remove-education="${index}" title="Delete">
+                <button type="button" class="remove-btn" data-remove-education="${index}">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -186,8 +187,8 @@ function renderEducationEditor() {
                     <input data-education="${index}" data-field="degree" value="${escapeHTML(item.degree)}" placeholder="e.g. B.Tech Computer Science">
                 </div>
                 <div>
-                    <label>Institution</label>
-                    <input data-education="${index}" data-field="school" value="${escapeHTML(item.school)}" placeholder="e.g. PTU University">
+                    <label>University / School</label>
+                    <input data-education="${index}" data-field="school" value="${escapeHTML(item.school)}" placeholder="e.g. Punjab Technical University">
                 </div>
                 <div>
                     <label>Location</label>
@@ -195,15 +196,15 @@ function renderEducationEditor() {
                 </div>
                 <div>
                     <label>Start Year</label>
-                    <input data-education="${index}" data-field="start" value="${escapeHTML(item.start)}" placeholder="e.g. 2018">
+                    <input data-education="${index}" data-field="start" value="${escapeHTML(item.start)}" placeholder="e.g. 2017">
                 </div>
                 <div>
                     <label>End Year</label>
-                    <input data-education="${index}" data-field="end" value="${escapeHTML(item.end)}" placeholder="e.g. 2022">
+                    <input data-education="${index}" data-field="end" value="${escapeHTML(item.end)}" placeholder="e.g. 2021">
                 </div>
                 <div class="dynamic-full">
                     <label>Details</label>
-                    <textarea data-education="${index}" data-field="description" placeholder="CGPA, major projects...">${escapeHTML(item.description)}</textarea>
+                    <textarea data-education="${index}" data-field="description" placeholder="CGPA, major subjects...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -216,7 +217,7 @@ function renderSkillsEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.skills.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No skills added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No skills added yet.</p>`;
         return;
     }
 
@@ -227,7 +228,7 @@ function renderSkillsEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Skill Name</label>
-                    <input data-skill="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Routing & Switching">
+                    <input data-skill="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Linux Administration">
                 </div>
                 <div>
                     <label>Level</label>
@@ -254,7 +255,7 @@ function renderCertificationEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.certifications.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No certifications added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No certifications added yet.</p>`;
         return;
     }
 
@@ -274,12 +275,12 @@ function renderCertificationEditor() {
                     <input data-certification="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Cisco CCNA">
                 </div>
                 <div>
-                    <label>Issuer</label>
-                    <input data-certification="${index}" data-field="issuer" value="${escapeHTML(item.issuer)}" placeholder="e.g. Cisco">
+                    <label>Issuer Organization</label>
+                    <input data-certification="${index}" data-field="issuer" value="${escapeHTML(item.issuer)}" placeholder="e.g. Cisco Systems">
                 </div>
                 <div>
                     <label>Year</label>
-                    <input data-certification="${index}" data-field="year" value="${escapeHTML(item.year)}" placeholder="e.g. 2026">
+                    <input data-certification="${index}" data-field="year" value="${escapeHTML(item.year)}" placeholder="e.g. 2022">
                 </div>
             </div>
         `;
@@ -292,7 +293,7 @@ function renderProjectEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.projects.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No projects added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No projects added yet.</p>`;
         return;
     }
 
@@ -309,15 +310,15 @@ function renderProjectEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Project Title</label>
-                    <input data-project="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Network Migration">
+                    <input data-project="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Automated Network Backup">
                 </div>
                 <div>
                     <label>Link / Repo</label>
-                    <input data-project="${index}" data-field="link" value="${escapeHTML(item.link)}" placeholder="https://...">
+                    <input data-project="${index}" data-field="link" value="${escapeHTML(item.link)}" placeholder="https://github.com/...">
                 </div>
                 <div class="dynamic-full">
                     <label>Description</label>
-                    <textarea data-project="${index}" data-field="description" placeholder="Project details...">${escapeHTML(item.description)}</textarea>
+                    <textarea data-project="${index}" data-field="description" placeholder="Project achievements...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -330,7 +331,7 @@ function renderLanguageEditor() {
     if (!container) return;
     container.innerHTML = "";
     if (!resumeData.languages.length) {
-        container.innerHTML = `<p style="color:#71717a; font-size:12px; font-style:italic;">No languages added yet.</p>`;
+        container.innerHTML = `<p style="color:#64748b; font-size:12px; font-style:italic;">No languages added yet.</p>`;
         return;
     }
 
@@ -373,7 +374,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW RENDERING (AUTO-HIDE IF EMPTY)
+   PREVIEW UPDATE (NON-CLICKABLE SOCIAL LINKS & AUTO-HIDE)
    ========================================================= */
 
 function updateBasicPreview() {
@@ -401,6 +402,7 @@ function updateBasicPreview() {
         sContact.style.display = contactHTML ? "flex" : "none";
     }
 
+    // Non-clickable <span> elements with icons
     let linksHTML = "";
     if (resumeData.website) linksHTML += `<span><i class="fa-solid fa-globe"></i> Website</span>`;
     if (resumeData.linkedin) linksHTML += `<span><i class="fa-brands fa-linkedin"></i> LinkedIn</span>`;
@@ -649,7 +651,7 @@ function updatePreview() {
 }
 
 /* =========================================================
-   INPUT EVENT LISTENERS
+   INPUT LISTENERS
    ========================================================= */
 
 function collectBasicData() {
@@ -730,7 +732,7 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS
+   BUTTON ACTIONS & CRISP PDF EXPORT
    ========================================================= */
 
 // Reset Button
@@ -755,15 +757,7 @@ if (printBtn) {
     });
 }
 
-// Dark Mode Toggle
-const themeToggle = $("#themeToggle");
-if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-    });
-}
-
-// Download PDF Button
+// DOWNLOAD PDF BUTTON (Crisp Scale + Multi-Page Margin Fix)
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
@@ -772,6 +766,7 @@ if (downloadBtn) {
 
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
+        // Top spacing inject for multi-page break fix
         const sections = resume.querySelectorAll(".resume-section");
         sections.forEach(sec => sec.style.paddingTop = "10px");
         if (sections.length > 0) sections[0].style.paddingTop = "0px";
@@ -810,7 +805,7 @@ if (downloadBtn) {
     });
 }
 
-// Dynamic Item Additions
+// Dynamic Add Items
 const addExp = $("#addExperience");
 if (addExp) addExp.addEventListener("click", () => {
     resumeData.experience.push(createExperience());
@@ -853,7 +848,7 @@ if (addLang) addLang.addEventListener("click", () => {
     updatePreview();
 });
 
-// Dynamic Item Removals
+// Dynamic Remove Listeners
 document.addEventListener("click", (event) => {
     const btn = event.target.closest("button");
     if (!btn) return;
@@ -885,7 +880,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Template & Color Selectors
+// Template & Color Chooser
 const templateSelect = $("#templateSelect");
 if (templateSelect) {
     templateSelect.addEventListener("change", (e) => {
@@ -904,7 +899,7 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
 });
 
 /* =========================================================
-   LOCAL STORAGE & INITIAL LOAD
+   LOCAL STORAGE & INITIALIZATION
    ========================================================= */
 
 function saveData() {
