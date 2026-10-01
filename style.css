@@ -1,157 +1,82 @@
-
 /* =========================================================
-   JobCV-SI
-   Professional Resume Builder
+   JobCV-SI - Professional Resume Builder
    ========================================================= */
 
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
+/* --- RESET & VARIABLES --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 :root {
-
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
-
     --background: #f4f7fb;
     --surface: #ffffff;
     --surface-soft: #f8fafc;
-
     --text: #111827;
     --muted: #6b7280;
-
     --border: #e5e7eb;
-
     --danger: #dc2626;
-
-    --shadow:
-        0 10px 30px rgba(15, 23, 42, 0.08);
-
     --radius: 12px;
-
 }
-
 
 body {
-
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--background);
-
     color: var(--text);
-
     min-height: 100vh;
-
 }
 
-
-/* =========================================================
-   TOPBAR
-   ========================================================= */
-
+/* --- TOPBAR --- */
 .topbar {
-
-    height: 72px;
-
+    height: 70px;
     background: var(--surface);
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom: 1px solid var(--border);
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    padding:
-        0 28px;
-
+    padding: 0 28px;
     position: sticky;
-
     top: 0;
-
     z-index: 100;
-
 }
-
 
 .brand {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
 }
-
 
 .brand-logo {
-
-    width: 42px;
-
-    height: 42px;
-
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     background: var(--primary);
-
-    color: white;
-
-    font-size: 21px;
-
+    color: #ffffff;
+    font-size: 20px;
     font-weight: 800;
-
 }
-
 
 .brand h1 {
-
-    font-size: 19px;
-
+    font-size: 18px;
     line-height: 1.1;
-
 }
-
 
 .brand span {
-
     color: var(--muted);
-
     font-size: 12px;
-
 }
-
 
 .top-actions {
-
     display: flex;
-
-    gap: 9px;
-
+    gap: 10px;
     align-items: center;
-
 }
-
 
 .icon-btn,
 .secondary-btn,
@@ -159,1237 +84,708 @@ body {
 .print-btn,
 .add-btn,
 .upload-btn {
-
     border: none;
-
     cursor: pointer;
-
-    transition: 0.2s ease;
-
+    transition: all 0.2s ease;
     font-weight: 600;
-
+    font-family: inherit;
 }
-
 
 .icon-btn {
-
     width: 40px;
-
     height: 40px;
-
     border-radius: 9px;
-
     background: var(--surface-soft);
-
     color: var(--text);
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 .icon-btn:hover {
-
     background: var(--border);
-
 }
-
 
 .secondary-btn {
-
     background: var(--surface-soft);
-
     color: var(--text);
-
-    padding: 10px 15px;
-
+    padding: 9px 15px;
     border-radius: 8px;
-
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
-
 
 .secondary-btn:hover {
-
     background: var(--border);
-
 }
-
 
 .primary-btn {
-
     background: var(--primary);
-
-    color: white;
-
-    padding: 11px 17px;
-
+    color: #ffffff;
+    padding: 10px 18px;
     border-radius: 8px;
-
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
-
 
 .primary-btn:hover {
-
     background: var(--primary-dark);
-
     transform: translateY(-1px);
-
 }
 
-
-/* =========================================================
-   MAIN LAYOUT
-   ========================================================= */
-
+/* --- MAIN LAYOUT --- */
 .app-container {
-
     display: grid;
-
-    grid-template-columns:
-        minmax(380px, 520px)
-        minmax(600px, 1fr);
-
+    grid-template-columns: minmax(380px, 480px) minmax(620px, 1fr);
     gap: 24px;
-
-    max-width: 1700px;
-
+    max-width: 1680px;
     margin: auto;
-
     padding: 24px;
-
 }
-
 
 .editor-panel {
-
     min-width: 0;
-
 }
-
 
 .editor-heading {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
     margin-bottom: 18px;
-
 }
-
 
 .editor-heading h2 {
-
-    font-size: 24px;
-
+    font-size: 22px;
     margin-bottom: 4px;
-
 }
-
 
 .editor-heading p {
-
     color: var(--muted);
-
     font-size: 13px;
-
 }
-
 
 .save-status {
-
     color: #15803d;
-
     font-size: 12px;
-
     background: #f0fdf4;
-
-    padding: 7px 10px;
-
+    padding: 6px 12px;
     border-radius: 20px;
-
+    font-weight: 600;
+    transition: opacity 0.3s;
 }
 
-
-/* =========================================================
-   EDITOR CARDS
-   ========================================================= */
-
+/* --- EDITOR CARDS --- */
 .editor-card {
-
     background: var(--surface);
-
     border: 1px solid var(--border);
-
     border-radius: var(--radius);
-
     padding: 18px;
-
     margin-bottom: 15px;
-
-    box-shadow: 0 3px 12px rgba(0,0,0,0.03);
-
+    box-shadow: 0 3px 12px rgba(0,0,0,0.02);
 }
-
 
 .card-title {
-
     display: flex;
-
     align-items: center;
-
     gap: 9px;
-
     margin-bottom: 15px;
-
 }
-
 
 .card-title i {
-
     color: var(--primary);
-
 }
-
 
 .card-title h3 {
-
     font-size: 15px;
-
 }
-
 
 .section-header {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
 }
-
 
 .section-header .card-title {
-
     margin-bottom: 15px;
-
 }
 
-
-/* =========================================================
-   FORMS
-   ========================================================= */
-
+/* --- FORMS --- */
 label {
-
     display: block;
-
     font-size: 12px;
-
-    font-weight: 700;
-
+    font-weight: 600;
     margin-bottom: 6px;
-
+    color: var(--text);
 }
-
 
 input,
 textarea,
 select {
-
     width: 100%;
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     background: var(--surface);
-
     color: var(--text);
-
     border-radius: 8px;
-
-    padding: 11px 12px;
-
+    padding: 10px 12px;
     font-family: inherit;
-
     font-size: 13px;
-
     outline: none;
-
-    transition: 0.2s;
-
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
-
 
 input:focus,
 textarea:focus,
 select:focus {
-
     border-color: var(--primary);
-
-    box-shadow:
-        0 0 0 3px rgba(37,99,235,0.10);
-
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
 }
-
 
 textarea {
-
     resize: vertical;
-
     line-height: 1.6;
-
 }
-
 
 .form-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 13px;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
-
 
 .field.full {
-
     grid-column: 1 / -1;
-
 }
-
 
 .field-hint {
-
     display: flex;
-
     justify-content: space-between;
-
     margin-top: 6px;
-
     color: var(--muted);
-
     font-size: 11px;
-
 }
 
-
-/* =========================================================
-   PHOTO
-   ========================================================= */
-
+/* --- PHOTO UPLOAD --- */
 .photo-upload {
-
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
     margin-bottom: 18px;
-
 }
-
 
 .photo-preview {
-
-    width: 76px;
-
-    height: 76px;
-
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-
     background: var(--surface-soft);
-
     border: 2px dashed var(--border);
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     overflow: hidden;
-
     color: var(--muted);
-
+    font-size: 24px;
 }
-
 
 .photo-preview img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
 }
-
 
 .upload-btn {
-
     display: inline-flex;
-
     gap: 7px;
-
     align-items: center;
-
     background: var(--surface-soft);
-
     border: 1px solid var(--border);
-
-    padding: 9px 12px;
-
+    padding: 8px 12px;
     border-radius: 7px;
-
-    cursor: pointer;
-
+    font-size: 12px;
 }
 
+.upload-btn:hover {
+    background: var(--border);
+}
 
 .photo-upload small {
-
     display: block;
-
     color: var(--muted);
-
     margin-top: 5px;
-
-    font-size: 10px;
-
+    font-size: 11px;
 }
 
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
+/* --- BUTTONS --- */
 .add-btn {
-
     background: transparent;
-
     border: 1px solid var(--primary);
-
     color: var(--primary);
-
-    padding: 6px 10px;
-
+    padding: 6px 12px;
     border-radius: 7px;
-
     font-size: 12px;
-
 }
-
 
 .add-btn:hover {
-
     background: var(--primary);
-
-    color: white;
-
+    color: #ffffff;
 }
-
 
 .remove-btn {
-
     border: none;
-
-    background: #fef2f2;
-
+    background: #fee2e2;
     color: var(--danger);
-
-    width: 31px;
-
-    height: 31px;
-
+    width: 32px;
+    height: 32px;
     border-radius: 7px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-
+    transition: 0.2s;
 }
 
+.remove-btn:hover {
+    background: var(--danger);
+    color: #ffffff;
+}
 
-/* =========================================================
-   DYNAMIC EDITOR ITEMS
-   ========================================================= */
-
+/* --- DYNAMIC ITEMS --- */
 .dynamic-item {
-
     border: 1px solid var(--border);
-
     border-radius: 9px;
-
-    padding: 13px;
-
-    margin-bottom: 10px;
-
+    padding: 14px;
+    margin-bottom: 12px;
     background: var(--surface-soft);
-
 }
-
 
 .dynamic-item-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    margin-bottom: 11px;
-
+    margin-bottom: 12px;
 }
-
 
 .dynamic-item-header strong {
-
-    font-size: 12px;
-
+    font-size: 13px;
 }
-
 
 .dynamic-grid {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-
 }
-
 
 .dynamic-full {
-
     grid-column: 1 / -1;
-
 }
-
 
 .dynamic-item textarea {
-
-    min-height: 90px;
-
+    min-height: 80px;
 }
 
-
-/* =========================================================
-   COLORS
-   ========================================================= */
-
+/* --- COLOR PALETTE --- */
 .color-options {
-
     display: flex;
-
-    gap: 9px;
-
+    gap: 10px;
+    margin-top: 4px;
 }
-
 
 .color-choice {
-
-    width: 28px;
-
-    height: 28px;
-
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-
-    border: 3px solid white;
-
+    border: 3px solid #ffffff;
     outline: 1px solid var(--border);
-
     background: var(--color);
-
     cursor: pointer;
-
+    transition: transform 0.2s;
 }
 
+.color-choice:hover {
+    transform: scale(1.1);
+}
 
 .color-choice.active {
-
-    outline:
-        2px solid var(--color);
-
+    outline: 2px solid var(--color);
+    transform: scale(1.1);
 }
 
-
-/* =========================================================
-   PREVIEW AREA
-   ========================================================= */
-
+/* --- PREVIEW AREA & TOOLBAR --- */
 .preview-area {
-
     min-width: 0;
-
 }
-
 
 .preview-toolbar {
-
     background: var(--surface);
-
     border: 1px solid var(--border);
-
     border-radius: 10px;
-
-    padding: 12px 16px;
-
+    padding: 12px 18px;
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     margin-bottom: 15px;
-
 }
-
 
 .preview-toolbar strong {
-
     display: block;
-
     font-size: 14px;
-
 }
-
 
 .preview-toolbar span {
-
     font-size: 11px;
-
     color: var(--muted);
-
 }
-
 
 .print-btn {
-
     background: var(--surface-soft);
-
     color: var(--text);
-
     border: 1px solid var(--border);
-
-    padding: 8px 12px;
-
+    padding: 8px 14px;
     border-radius: 7px;
-
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
+.print-btn:hover {
+    background: var(--border);
+}
 
-/* =========================================================
-   RESUME PAPER
-   ========================================================= */
-
+/* --- RESUME SHEET (A4 PRECISE) --- */
 .resume-wrapper {
-
-    background:
-        #dfe4ea;
-
-    padding: 35px;
-
+    background: #dbe0e8;
+    padding: 30px;
     min-height: 900px;
-
-    overflow: auto;
-
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
 }
-
 
 .resume {
-
-    width: 794px;
-
-    min-height: 1123px;
-
-    margin: auto;
-
-    background: white;
-
-    padding: 50px;
-
+    width: 794px; /* Exact A4 96DPI width */
+    min-height: 1123px; /* Exact A4 96DPI height */
+    background: #ffffff;
+    padding: 48px;
     color: #1f2937;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.15);
-
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    box-sizing: border-box;
 }
-
 
 .resume-header {
-
     display: flex;
-
     justify-content: space-between;
-
-    gap: 25px;
-
-    padding-bottom: 25px;
-
-    border-bottom:
-        3px solid var(--primary);
-
+    gap: 24px;
+    padding-bottom: 22px;
+    border-bottom: 3px solid var(--primary);
 }
-
 
 .resume-identity {
-
     flex: 1;
-
 }
-
 
 .resume h1 {
-
-    font-size: 34px;
-
+    font-size: 32px;
     line-height: 1.15;
-
     color: #111827;
-
-    margin-bottom: 7px;
-
+    margin-bottom: 6px;
+    word-break: break-word;
 }
-
 
 .resume h2 {
-
-    font-size: 17px;
-
-    font-weight: 500;
-
+    font-size: 16px;
+    font-weight: 600;
     color: var(--primary);
-
-    margin-bottom: 13px;
-
+    margin-bottom: 12px;
+    word-break: break-word;
 }
-
 
 .contact-line,
 .links-line {
-
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 12px;
-
-    font-size: 10px;
-
+    font-size: 11px;
     color: #4b5563;
-
 }
 
-
-.contact-line span {
-
+.contact-line span,
+.links-line a {
     display: inline-flex;
-
     align-items: center;
-
-    gap: 4px;
-
+    gap: 5px;
 }
-
 
 .links-line {
-
-    margin-top: 7px;
-
+    margin-top: 6px;
 }
-
 
 .links-line a {
-
     color: var(--primary);
-
     text-decoration: none;
-
+    font-weight: 500;
 }
-
 
 .resume-photo {
-
-    width: 105px;
-
-    height: 105px;
-
-    flex: 0 0 105px;
-
+    width: 100px;
+    height: 100px;
+    flex: 0 0 100px;
     border-radius: 8px;
-
     background: #f3f4f6;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     color: #9ca3af;
-
     overflow: hidden;
-
 }
-
 
 .resume-photo img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
 }
 
-
-/* =========================================================
-   RESUME SECTIONS
-   ========================================================= */
-
+/* --- RESUME CONTENT SECTIONS --- */
 .resume-section {
-
-    margin-top: 23px;
-
+    margin-top: 22px;
 }
-
 
 .resume-section h3 {
-
     font-size: 12px;
-
     color: var(--primary);
-
-    letter-spacing: 1.4px;
-
-    border-bottom:
-        1px solid #e5e7eb;
-
-    padding-bottom: 6px;
-
-    margin-bottom: 11px;
-
+    letter-spacing: 1.2px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
-
 
 .resume-section p {
-
-    font-size: 11px;
-
-    line-height: 1.65;
-
+    font-size: 12px;
+    line-height: 1.6;
     white-space: pre-line;
-
+    color: #374151;
 }
-
 
 .empty-preview {
-
     color: #9ca3af;
-
     font-style: italic;
-
+    font-size: 11px;
 }
-
 
 .resume-entry {
-
-    margin-bottom: 15px;
-
+    margin-bottom: 14px;
 }
-
 
 .resume-entry-header {
-
     display: flex;
-
     justify-content: space-between;
-
-    gap: 20px;
-
+    gap: 15px;
 }
-
 
 .resume-entry h4 {
-
     font-size: 13px;
-
     color: #111827;
-
 }
-
 
 .resume-entry .company {
-
     color: var(--primary);
-
-    font-size: 11px;
-
-    margin-top: 2px;
-
+    font-size: 12px;
+    margin-top: 1px;
+    font-weight: 500;
 }
-
 
 .resume-entry .date {
-
     color: #6b7280;
-
-    font-size: 10px;
-
+    font-size: 11px;
     white-space: nowrap;
-
 }
-
 
 .resume-entry-description {
-
-    margin-top: 6px;
-
+    margin-top: 5px;
     white-space: pre-line;
-
+    font-size: 11.5px;
 }
-
 
 .skill-tags {
-
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 6px;
-
 }
-
 
 .skill-tag {
-
-    border:
-        1px solid #dbeafe;
-
+    border: 1px solid #dbeafe;
     background: #eff6ff;
-
     color: var(--primary);
-
-    padding: 5px 8px;
-
-    border-radius: 5px;
-
-    font-size: 10px;
-
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
 }
-
 
 .cert-entry,
 .project-entry,
 .language-entry {
-
     margin-bottom: 10px;
-
 }
-
 
 .cert-entry strong,
 .project-entry strong,
 .language-entry strong {
-
-    font-size: 11px;
-
+    font-size: 12px;
+    color: #111827;
 }
-
 
 .cert-entry span,
 .project-entry span,
 .language-entry span {
-
     display: block;
-
     color: #6b7280;
-
-    font-size: 10px;
-
+    font-size: 11px;
     margin-top: 2px;
-
 }
 
-
-/* =========================================================
-   TEMPLATE VARIATIONS
-   ========================================================= */
-
+/* --- TEMPLATE PRESETS --- */
 .resume.professional-template {
-
-    border-top:
-        10px solid var(--primary);
-
+    border-top: 10px solid var(--primary);
 }
-
 
 .resume.professional-template .resume-header {
-
     border-bottom: 1px solid #d1d5db;
-
 }
-
 
 .resume.minimal-template {
-
-    padding: 55px;
-
+    padding: 50px;
 }
-
 
 .resume.minimal-template .resume-header {
-
-    border-bottom: 1px solid #d1d5db;
-
+    border-bottom: 1px solid #e5e7eb;
 }
-
 
 .resume.minimal-template .resume-section h3 {
-
-    color: #374151;
-
+    color: #1f2937;
+    border-bottom: 1px solid #1f2937;
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
+/* --- FOOTER --- */
 .site-footer {
-
-    padding: 25px;
-
+    padding: 24px;
     display: flex;
-
     justify-content: center;
-
-    gap: 20px;
-
+    gap: 16px;
     flex-wrap: wrap;
-
     color: var(--muted);
-
     font-size: 12px;
-
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
 }
 
-
-/* =========================================================
-   DARK MODE
-   ========================================================= */
-
+/* --- DARK MODE --- */
 body.dark {
-
     --background: #0f172a;
-
-    --surface: #111827;
-
-    --surface-soft: #1f2937;
-
-    --text: #f9fafb;
-
-    --muted: #9ca3af;
-
-    --border: #374151;
-
+    --surface: #1e293b;
+    --surface-soft: #334155;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #475569;
 }
-
 
 body.dark .resume {
-
-    background: white;
-
+    background: #ffffff;
     color: #1f2937;
-
 }
-
 
 body.dark .resume h1,
-body.dark .resume h4 {
-
+body.dark .resume h4,
+body.dark .resume strong {
     color: #111827;
-
 }
 
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 1250px) {
-
-    .app-container {
-
-        grid-template-columns:
-            430px
-            minmax(500px, 1fr);
-
-    }
-
+body.dark .resume p,
+body.dark .resume .contact-line,
+body.dark .resume .resume-entry-description {
+    color: #374151;
 }
 
-
-@media (max-width: 1050px) {
-
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1100px) {
     .app-container {
-
         grid-template-columns: 1fr;
-
     }
-
     .preview-area {
-
         order: -1;
-
     }
-
 }
 
-
-@media (max-width: 850px) {
-
+@media (max-width: 650px) {
     .topbar {
-
-        padding: 0 15px;
-
+        padding: 0 14px;
     }
-
-    .secondary-btn {
-
-        display: none;
-
-    }
-
-    .app-container {
-
-        padding: 12px;
-
-    }
-
-    .resume-wrapper {
-
-        padding: 15px;
-
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .topbar {
-
-        height: auto;
-
-        min-height: 65px;
-
-    }
-
     .brand span {
-
         display: none;
-
     }
-
-    .top-actions {
-
-        gap: 5px;
-
+    .secondary-btn {
+        display: none;
     }
-
-    .primary-btn {
-
-        padding: 9px;
-
-        font-size: 0;
-
-    }
-
-    .primary-btn i {
-
-        font-size: 15px;
-
-    }
-
     .form-grid,
     .dynamic-grid {
-
         grid-template-columns: 1fr;
-
     }
-
     .field.full,
     .dynamic-full {
-
         grid-column: auto;
-
     }
-
     .resume-wrapper {
-
-        overflow-x: auto;
-
+        padding: 10px;
     }
-
 }
 
-
-/* =========================================================
-   PRINT
-   ========================================================= */
+/* --- PRINT & EXPORT ACCURACY --- */
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
 
 @media print {
-
-    body {
-
-        background: white;
-
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        background: #ffffff !important;
     }
 
     .topbar,
     .editor-panel,
     .preview-toolbar,
     .site-footer {
-
         display: none !important;
-
     }
 
     .app-container {
-
-        display: block;
-
-        padding: 0;
-
-        margin: 0;
-
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .resume-wrapper {
-
-        padding: 0;
-
-        background: white;
-
+        padding: 0 !important;
+        background: transparent !important;
+        overflow: visible !important;
     }
 
     .resume {
-
-        box-shadow: none;
-
-        margin: 0;
-
+        width: 100% !important;
+        min-height: 297mm !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 18mm !important;
+        page-break-after: avoid;
+        page-break-inside: avoid;
     }
 
+    .resume-entry,
+    .resume-section {
+        page-break-inside: avoid;
+    }
 }
-
-
-
-
