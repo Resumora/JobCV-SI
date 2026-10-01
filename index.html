@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login.">
-    <title>Resumora | Free Professional ATS Resume Builder</title>
+    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
+    <meta name="keywords" content="ATS resume builder, free resume maker, professional CV builder, instant resume download, no watermark resume">
+    <meta name="author" content="Resumora">
+    <title>Resumora | Free Professional ATS Resume Builder & Templates</title>
 
     <link rel="stylesheet" href="style.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -21,24 +23,17 @@
 </head>
 <body>
 
-<!-- TOP NAVBAR (Jobbers Style) -->
+<!-- TOP NAVBAR -->
 <header class="topbar">
     <div class="brand">
         <div class="brand-logo">R</div>
         <div class="brand-text">
-            <h1>Resumora<span class="dot">.</span></h1>
+            <h1>Resumora</h1>
             <span>Free ATS Resume Engine</span>
         </div>
     </div>
 
-    <div class="nav-status-pill">
-        <span class="live-dot"></span> 100% Free & No Sign-up
-    </div>
-
     <div class="top-actions">
-        <button class="icon-btn" id="themeToggle" title="Toggle Theme">
-            <i class="fa-solid fa-moon"></i>
-        </button>
         <button class="secondary-btn" id="clearBtn">
             <i class="fa-solid fa-rotate-left"></i> Reset
         </button>
@@ -48,22 +43,13 @@
     </div>
 </header>
 
-<!-- HERO STRIP -->
-<div class="hero-strip">
-    <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Recruiter Approved Formats</div>
-    <h2>Build a professional ATS resume in minutes.</h2>
-    <p>Live preview, auto-hiding empty fields, and clean A4 PDF export.</p>
-</div>
-
-<!-- MAIN WORKSPACE -->
+<!-- MAIN APP CONTAINER -->
 <main class="app-container">
 
     <!-- LEFT EDITOR PANEL -->
     <aside class="editor-panel">
         <div class="editor-heading">
-            <div>
-                <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
-            </div>
+            <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
             <div class="save-status" id="saveStatus">
                 <i class="fa-solid fa-check"></i> Auto-saved
             </div>
@@ -124,15 +110,15 @@
             <div class="form-grid">
                 <div class="field full">
                     <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="e.g. Rohit Sharma">
+                    <input type="text" id="fullName" placeholder="e.g. John Doe">
                 </div>
                 <div class="field full">
                     <label for="jobTitle">Job Title</label>
-                    <input type="text" id="jobTitle" placeholder="e.g. Senior Network Engineer">
+                    <input type="text" id="jobTitle" placeholder="e.g. Senior Network & Systems Engineer">
                 </div>
                 <div class="field">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="name@example.com">
+                    <input type="email" id="email" placeholder="example@example.com">
                 </div>
                 <div class="field">
                     <label for="phone">Phone Number</label>
@@ -144,15 +130,15 @@
                 </div>
                 <div class="field">
                     <label for="website">Portfolio / Website</label>
-                    <input type="url" id="website" placeholder="https://myportfolio.dev">
+                    <input type="url" id="website" placeholder="https://johndoe.dev">
                 </div>
                 <div class="field">
                     <label for="linkedin">LinkedIn</label>
-                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username">
+                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/e.g">
                 </div>
                 <div class="field full">
                     <label for="github">GitHub</label>
-                    <input type="url" id="github" placeholder="https://github.com/username">
+                    <input type="url" id="github" placeholder="https://github.com/e.g">
                 </div>
             </div>
         </section>
@@ -165,7 +151,7 @@
             </div>
             <textarea id="summary" rows="4" placeholder="Brief summary of your background, core strengths and achievements..."></textarea>
             <div class="field-hint">
-                <span>Highlight quantifiable impact.</span>
+                <span>Highlight quantifiable metrics.</span>
                 <span id="summaryCount">0 / 600</span>
             </div>
         </section>
@@ -199,7 +185,7 @@
             <div class="section-header">
                 <div class="card-title">
                     <i class="fa-solid fa-bolt"></i>
-                    <h4>Technical Skills</h4>
+                    <h4>Technical & Core Skills</h4>
                 </div>
                 <button type="button" class="add-btn" id="addSkill"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
@@ -248,7 +234,7 @@
                 <i class="fa-solid fa-trophy"></i>
                 <h4>Key Achievements</h4>
             </div>
-            <textarea id="achievements" rows="3" placeholder="Awards, promotions, milestones..."></textarea>
+            <textarea id="achievements" rows="3" placeholder="Awards, key achievements, promotions..."></textarea>
         </section>
 
         <!-- Interests -->
@@ -257,7 +243,7 @@
                 <i class="fa-regular fa-compass"></i>
                 <h4>Interests & Hobbies</h4>
             </div>
-            <input type="text" id="interests" placeholder="e.g. Open-source, Homelab, Chess, Hiking">
+            <input type="text" id="interests" placeholder="Open-Source Networking, Homelab Automation, Chess, Hiking">
         </section>
     </aside>
 
@@ -265,8 +251,7 @@
     <section class="preview-area">
         <div class="preview-toolbar">
             <div class="preview-info">
-                <span class="live-indicator"></span>
-                <strong>Live Document Preview</strong>
+                <strong>Live Document Canvas</strong>
                 <small>Standard A4 Portrait</small>
             </div>
             <button type="button" class="print-btn" id="printBtn">
@@ -300,8 +285,8 @@
                 <div class="resume-main-panel">
                     <div class="resume-header">
                         <div class="resume-identity">
-                            <h1 id="previewName">Rohit Sharma</h1>
-                            <h2 id="previewTitle">Senior Network Engineer</h2>
+                            <h1 id="previewName">John Doe</h1>
+                            <h2 id="previewTitle">Senior Network & Systems Engineer</h2>
                             <div class="contact-line" id="previewContact"></div>
                             <div class="links-line" id="previewLinks"></div>
                         </div>
@@ -360,6 +345,37 @@
     </section>
 
 </main>
+
+<!-- SEO GUIDE & VALUE SECTION FOR ADSENSE -->
+<section class="seo-guide-section">
+    <div class="seo-guide-container">
+        <h2>How to Build an ATS-Friendly Resume in 2026</h2>
+        <div class="seo-cards-grid">
+            <div class="seo-card">
+                <i class="fa-solid fa-file-shield"></i>
+                <h3>Clean Text Layout</h3>
+                <p>Applicant Tracking Systems (ATS) scan standard heading tags and simple text. Avoid heavy tables or multi-layered floating graphics that parse as garbled text.</p>
+            </div>
+            <div class="seo-card">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Keyword Optimization</h3>
+                <p>Mirror the exact technical competencies and role requirements mentioned in the job description to achieve a 90%+ ATS matching score.</p>
+            </div>
+            <div class="seo-card">
+                <i class="fa-solid fa-print"></i>
+                <h3>Direct A4 Single-Page Fit</h3>
+                <p>Recruiters spend an average of 6 seconds reviewing each application. Our smart layout engine keeps essential qualifications crisp and proportional on a single standard A4 page.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <p>&copy; 2026 Resumora. Free ATS Resume Engine. Built for job seekers, graduates, and professionals.</p>
+    </div>
+</footer>
 
 <script src="script.js"></script>
 </body>
