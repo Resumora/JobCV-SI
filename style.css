@@ -1,5 +1,5 @@
 /* =========================================================
-   JobCV-SI - Professional Resume Builder & Templates
+   Resumora - Professional Resume Builder & Templates
    ========================================================= */
 
 /* --- RESET & VARIABLES --- */
@@ -265,7 +265,7 @@ textarea {
     font-size: 11px;
 }
 
-/* --- PHOTO UPLOAD --- */
+/* --- PHOTO UPLOAD & ACTIONS --- */
 .photo-upload {
     display: flex;
     align-items: center;
@@ -293,6 +293,13 @@ textarea {
     object-fit: cover;
 }
 
+.photo-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
 .upload-btn {
     display: inline-flex;
     gap: 7px;
@@ -308,10 +315,30 @@ textarea {
     background: var(--border);
 }
 
+.remove-photo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fee2e2;
+    color: var(--danger);
+    border: 1px solid #fecaca;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.remove-photo-btn:hover {
+    background: var(--danger);
+    color: #ffffff;
+    border-color: var(--danger);
+}
+
 .photo-upload small {
     display: block;
     color: var(--muted);
-    margin-top: 5px;
     font-size: 11px;
 }
 
@@ -454,7 +481,7 @@ textarea {
 }
 
 /* =========================================================
-   RESUME CANVAS (BASE STYLES)
+   RESUME CANVAS (BASE & ATS FORMAT)
    ========================================================= */
 .resume-wrapper {
     background: #dbe0e8;
@@ -479,7 +506,7 @@ textarea {
 }
 
 .resume-sidebar-panel {
-    display: none; /* Only visible in sidebar template */
+    display: none;
 }
 
 .resume-main-panel {
@@ -671,7 +698,7 @@ textarea {
 }
 
 /* =========================================================
-   NEW & TRENDING RESUME TEMPLATES
+   TEMPLATES STYLING
    ========================================================= */
 
 /* 1. PROFESSIONAL TEMPLATE */
@@ -700,7 +727,7 @@ textarea {
     color: #111827;
 }
 
-/* 3. SIDEBAR TEMPLATE (DUAL-COLUMN) */
+/* 3. SIDEBAR TEMPLATE (DUAL COLUMN) */
 .resume.sidebar-template {
     display: flex;
     padding: 0 !important;
@@ -759,7 +786,7 @@ textarea {
     display: none !important;
 }
 
-/* 4. EXECUTIVE TEMPLATE (SERIF / LUXURY) */
+/* 4. EXECUTIVE TEMPLATE */
 .resume.executive-template {
     font-family: 'Merriweather', serif;
     padding: 40px;
@@ -767,7 +794,6 @@ textarea {
 .resume.executive-template h1 {
     font-size: 26px;
     font-weight: 700;
-    letter-spacing: 0.5px;
 }
 .resume.executive-template h2 {
     font-style: italic;
@@ -782,7 +808,7 @@ textarea {
     font-family: 'Inter', sans-serif;
 }
 
-/* 5. TECH & DEVELOPER CLEAN */
+/* 5. TECH TEMPLATE */
 .resume.tech-template {
     font-family: 'Inter', sans-serif;
     border-left: 6px solid var(--primary);
@@ -805,7 +831,7 @@ textarea {
     font-size: 9.5px;
 }
 
-/* 6. ELEGANT CENTERED TEMPLATE */
+/* 6. ELEGANT TEMPLATE */
 .resume.elegant-template .resume-header {
     flex-direction: column;
     text-align: center;
@@ -1013,7 +1039,7 @@ body.dark .resume .resume-entry-description {
     }
 }
 
-/* PRINT / PDF A4 EXPORT */
+/* PRINT & PDF A4 RULES */
 @page {
     size: A4 portrait;
     margin: 0;
