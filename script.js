@@ -767,7 +767,7 @@ if (themeToggle) {
     });
 }
 
-// Download PDF Button
+// Download PDF Button (Crisp Fonts & Top Margin Fix)
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
@@ -777,12 +777,13 @@ if (downloadBtn) {
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
         const opt = {
-            margin: [4, 4, 4, 4],
+            margin: [10, 8, 10, 8],
             filename: fileName,
-            image: { type: "jpeg", quality: 0.98 },
+            image: { type: "jpeg", quality: 1.0 },
             html2canvas: {
-                scale: 2,
+                scale: 3,
                 useCORS: true,
+                letterRendering: true,
                 scrollY: 0,
                 windowWidth: 794
             },
@@ -791,7 +792,10 @@ if (downloadBtn) {
                 format: "a4",
                 orientation: "portrait"
             },
-            pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+            pagebreak: { 
+                mode: ["css", "legacy"], 
+                avoid: [".resume-section", ".resume-entry", "h3"] 
+            }
         };
 
         if (typeof html2pdf !== "undefined") {
