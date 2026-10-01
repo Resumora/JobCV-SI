@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Original Clean Layout & Fixed Print Engine
+   Resumora - Complete CSS with All Templates & Print Fix
    ========================================================= */
 
 * {
@@ -371,15 +371,18 @@ input:focus, textarea:focus, select:focus {
     overflow-x: auto;
 }
 
-/* RESUME DOCUMENT */
+/* =========================================================
+   BASE RESUME STRUCTURE
+   ========================================================= */
 .resume {
     width: 794px;
     min-height: 1120px;
     background: #ffffff !important;
-    padding: 24px 34px !important;
+    padding: 28px 36px !important;
     color: #1f2937 !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     box-sizing: border-box;
+    font-size: 11px;
 }
 
 .resume-sidebar-panel { display: none; }
@@ -404,6 +407,7 @@ input:focus, textarea:focus, select:focus {
     font-size: 13px;
     color: var(--primary);
     margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .contact-line, .links-line {
@@ -461,6 +465,7 @@ input:focus, textarea:focus, select:focus {
     padding-bottom: 2px;
     margin-bottom: 5px;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 .resume-section p {
@@ -494,6 +499,7 @@ input:focus, textarea:focus, select:focus {
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 9.5px;
+    font-weight: 500;
 }
 
 .cert-entry, .project-entry, .language-entry {
@@ -505,7 +511,221 @@ input:focus, textarea:focus, select:focus {
 .cert-entry strong, .project-entry strong, .language-entry strong { font-size: 10.5px; color: #111827; }
 .cert-entry span, .project-entry span, .language-entry span { display: block; color: #6b7280; font-size: 9.5px; }
 
-/* SEO GUIDE SECTION */
+
+/* =========================================================
+   DIFFERENT RESUME TEMPLATES STYLING
+   ========================================================= */
+
+/* 1. MODERN (Default) */
+.resume.modern-template .resume-header {
+    border-bottom: 2px solid var(--primary);
+}
+
+/* 2. CORPORATE CLASSIC (Professional) */
+.resume.professional-template {
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.resume.professional-template .resume-header {
+    border-bottom: 1px solid #111827;
+    text-align: center;
+    flex-direction: column;
+    gap: 4px;
+}
+.resume.professional-template h1 {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+.resume.professional-template h2 {
+    color: #374151;
+    font-style: italic;
+}
+.resume.professional-template .contact-line,
+.resume.professional-template .links-line {
+    justify-content: center;
+}
+.resume.professional-template .resume-section h3 {
+    border-bottom: 1.5px solid #111827;
+    color: #111827;
+    font-family: Georgia, serif;
+}
+.resume.professional-template .skill-tag {
+    background: transparent;
+    border: 1px solid #94a3b8;
+    color: #1e293b;
+}
+
+/* 3. MINIMAL ATS CLEAN */
+.resume.minimal-template {
+    padding: 24px 30px !important;
+}
+.resume.minimal-template .resume-header {
+    border-bottom: none;
+    margin-bottom: 0px;
+    padding-bottom: 4px;
+}
+.resume.minimal-template h1 {
+    font-size: 22px;
+    font-weight: 800;
+}
+.resume.minimal-template h2 {
+    color: #4b5563;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.resume.minimal-template .resume-section {
+    margin-top: 6px;
+}
+.resume.minimal-template .resume-section h3 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 3px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #111827;
+}
+.resume.minimal-template .skill-tag {
+    background: #f3f4f6;
+    border: none;
+    color: #1f2937;
+}
+
+/* 4. SIDEBAR DUAL-COLUMN */
+.resume.sidebar-template {
+    display: flex !important;
+    padding: 0 !important;
+}
+.resume.sidebar-template .header-photo {
+    display: none !important;
+}
+.resume.sidebar-template .resume-sidebar-panel {
+    display: block !important;
+    width: 240px;
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 24px 18px;
+    box-sizing: border-box;
+}
+.resume.sidebar-template .resume-sidebar-panel .resume-photo {
+    margin: 0 auto 16px auto;
+    width: 85px;
+    height: 85px;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+.resume.sidebar-template .sidebar-block {
+    margin-bottom: 16px;
+}
+.resume.sidebar-template .sidebar-block h4 {
+    font-size: 11px;
+    color: #38bdf8;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.resume.sidebar-template .sidebar-block .contact-line,
+.resume.sidebar-template .sidebar-block .links-line {
+    flex-direction: column;
+    gap: 6px;
+    color: #cbd5e1;
+}
+.resume.sidebar-template .sidebar-block .links-line a,
+.resume.sidebar-template .sidebar-block .links-line span {
+    color: #93c5fd;
+}
+.resume.sidebar-template .resume-sidebar-panel .skill-tag {
+    background: rgba(255,255,255,0.1);
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.resume.sidebar-template .resume-main-panel {
+    flex: 1;
+    padding: 24px 28px;
+}
+.resume.sidebar-template .resume-main-panel .resume-header {
+    border-bottom: 1.5px solid #e2e8f0;
+}
+.resume.sidebar-template .resume-main-panel .contact-line,
+.resume.sidebar-template .resume-main-panel .links-line,
+.resume.sidebar-template #skillsSection,
+.resume.sidebar-template #languagesSection {
+    display: none !important;
+}
+
+/* 5. EXECUTIVE SERIF */
+.resume.executive-template {
+    font-family: 'Times New Roman', Times, serif;
+}
+.resume.executive-template .resume-header {
+    border-bottom: 3px double var(--primary);
+    text-align: left;
+}
+.resume.executive-template h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+.resume.executive-template .resume-section h3 {
+    border-bottom: 1px solid var(--primary);
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 1.5px;
+}
+
+/* 6. TECH & DEVELOPER */
+.resume.tech-template {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 10.5px;
+}
+.resume.tech-template h1 {
+    font-family: 'Consolas', monospace;
+    font-size: 22px;
+}
+.resume.tech-template h2 {
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+}
+.resume.tech-template h2::before {
+    content: "> ";
+    color: var(--primary);
+}
+.resume.tech-template .resume-section h3 {
+    font-family: 'Consolas', monospace;
+    background: #f1f5f9;
+    padding: 3px 6px;
+    border-bottom: none;
+    border-left: 3px solid var(--primary);
+}
+.resume.tech-template .skill-tag {
+    font-family: 'Consolas', monospace;
+    background: #0f172a;
+    color: #38bdf8;
+    border: none;
+    border-radius: 2px;
+}
+
+/* 7. ELEGANT CENTERED */
+.resume.elegant-template .resume-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 14px;
+}
+.resume.elegant-template .contact-line,
+.resume.elegant-template .links-line {
+    justify-content: center;
+}
+.resume.elegant-template .resume-section h3 {
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+}
+
+
+/* =========================================================
+   SEO SECTION & FOOTER
+   ========================================================= */
 .seo-guide-section {
     background: #ffffff;
     border-top: 1px solid var(--border-card);
@@ -562,7 +782,9 @@ input:focus, textarea:focus, select:focus {
     color: var(--text-secondary);
 }
 
-/* MULTI-PAGE PRINT & BREAK FIX */
+/* =========================================================
+   MULTI-PAGE PRINT & BREAK FIX
+   ========================================================= */
 @media print {
     body { background: #ffffff !important; }
     .topbar, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer { display: none !important; }
