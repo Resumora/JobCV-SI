@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Jobbers Header, Radar Blink & Dual Split Layout
+   Resumora - Jobbers Header, Radar Blink, Live Video & Dual Split
    ========================================================= */
 
 * {
@@ -155,7 +155,7 @@ body {
 .primary-btn:hover { background: var(--primary-dark); }
 
 /* =========================================================
-   JOBBERS HERO WITH BACKGROUND IMAGE & BLUR OVERLAY
+   LIVE MOVING VIDEO BACKGROUND HERO
    ========================================================= */
 .jobbers-hero {
     position: relative;
@@ -166,20 +166,33 @@ body {
     overflow: hidden;
 }
 
-/* High-res Clean Workspace Background Overlay */
+/* Background video tag */
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    filter: blur(1px);
+}
+
+/* Gradient overlay so text remains fully legible */
 .hero-bg-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        radial-gradient(circle at 50% -10%, rgba(37, 99, 235, 0.12) 0%, rgba(248, 250, 252, 0.94) 65%, #f8fafc 100%),
-        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1800&q=80');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.14; /* Soft background texture effect */
+    background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.45) 0%, rgba(248, 250, 252, 0.9) 80%);
     pointer-events: none;
+    z-index: 1;
 }
 
 .hero-inner {
@@ -256,11 +269,11 @@ body {
 }
 
 /* =========================================================
-   TWO-COLUMN SPLIT CONTAINER (FIXES FULL-WIDTH STRETCH)
+   TWO-COLUMN SPLIT CONTAINER
    ========================================================= */
 .app-container {
     display: grid !important;
-    grid-template-columns: 460px 1fr !important; /* Left 460px Editor, Right Live A4 Resume */
+    grid-template-columns: 460px 1fr !important;
     gap: 32px !important;
     max-width: 1720px;
     margin: 0 auto;
@@ -479,7 +492,7 @@ input:focus, textarea:focus, select:focus {
 }
 .dynamic-full { grid-column: span 2; }
 
-/* RIGHT PREVIEW AREA (STICKY VIEW) */
+/* RIGHT PREVIEW AREA */
 .preview-area {
     display: block;
     width: 100%;
