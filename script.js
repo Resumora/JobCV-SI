@@ -767,22 +767,24 @@ if (themeToggle) {
     });
 }
 
-// Download PDF Button (100% Page Break & Top Margin Fix)
+// DOWNLOAD PDF BUTTON (Fixes Top-Edge Sticking on Page 2)
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
         const resume = $("#resume");
         if (!resume) return;
 
-        // Render hone se pehle styling compact karein aur page-break padding lagayein
-        resume.classList.add("pdf-rendering");
-
         const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
 
+        // Step A: Sections par page-split gap class lagayein
+        const sections = resume.querySelectorAll(".resume-section");
+        sections.forEach(sec => sec.style.paddingTop = "12px");
+        if (sections.length > 0) sections[0].style.paddingTop = "0px";
+
         const opt = {
-            margin: [8, 8, 8, 8],
+            margin: [10, 8, 12, 8], // Top, Right, Bottom, Left margin (mm)
             filename: fileName,
-            image: { type: "jpeg", quality: 1.0 },
+            image: { type: "jpeg", quality: 0.98 },
             html2canvas: {
                 scale: 2.5,
                 useCORS: true,
@@ -803,12 +805,12 @@ if (downloadBtn) {
 
         if (typeof html2pdf !== "undefined") {
             html2pdf().set(opt).from(resume).save().then(() => {
-                resume.classList.remove("pdf-rendering");
+                // Export ke baad reset styling
+                sections.forEach(sec => sec.style.paddingTop = "");
             }).catch(() => {
-                resume.classList.remove("pdf-rendering");
+                sections.forEach(sec => sec.style.paddingTop = "");
             });
         } else {
-            resume.classList.remove("pdf-rendering");
             window.print();
         }
     });
