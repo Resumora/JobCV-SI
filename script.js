@@ -1,11 +1,9 @@
 /* =========================================================
-   JobCV-SI - Professional Resume Builder Engine
+   JobCV-SI - Multi-Template Professional Resume Engine
    ========================================================= */
 
-// DOM Selector Helpers
 const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
 
-// Safe HTML Encoder
 const escapeHTML = (value = "") => {
     return String(value)
         .replaceAll("&", "&amp;")
@@ -15,7 +13,7 @@ const escapeHTML = (value = "") => {
         .replaceAll("'", "&#039;");
 };
 
-// Application State
+// Initial State
 let resumeData = {
     fullName: "",
     jobTitle: "",
@@ -39,7 +37,7 @@ let resumeData = {
     color: "#2563eb"
 };
 
-// Item Creators
+// Creators
 const createExperience = () => ({ position: "", company: "", location: "", start: "", end: "", description: "" });
 const createEducation = () => ({ degree: "", school: "", location: "", start: "", end: "", description: "" });
 const createSkill = () => ({ name: "", level: "Intermediate" });
@@ -47,7 +45,6 @@ const createCertification = () => ({ name: "", issuer: "", year: "" });
 const createProject = () => ({ name: "", link: "", description: "" });
 const createLanguage = () => ({ name: "", level: "Professional" });
 
-// DOM Helpers
 const setValue = (id, value) => {
     const el = document.getElementById(id);
     if (el) el.value = value || "";
@@ -64,13 +61,12 @@ const toggleSection = (selector, visible) => {
 };
 
 /* =========================================================
-   EDITORS RENDERING (LEFT PANEL)
+   EDITORS RENDERING (FORM BUILDER)
    ========================================================= */
 
 function renderExperienceEditor() {
     const container = $("#experienceList");
     container.innerHTML = "";
-
     if (!resumeData.experience.length) {
         container.innerHTML = `<p class="empty-preview">No work experience added yet.</p>`;
         return;
@@ -89,15 +85,15 @@ function renderExperienceEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Job Title</label>
-                    <input data-experience="${index}" data-field="position" value="${escapeHTML(item.position)}" placeholder="e.g. Software Engineer">
+                    <input data-experience="${index}" data-field="position" value="${escapeHTML(item.position)}" placeholder="e.g. Network Engineer">
                 </div>
                 <div>
                     <label>Company</label>
-                    <input data-experience="${index}" data-field="company" value="${escapeHTML(item.company)}" placeholder="e.g. Google">
+                    <input data-experience="${index}" data-field="company" value="${escapeHTML(item.company)}" placeholder="e.g. Cisco Systems">
                 </div>
                 <div>
                     <label>Location</label>
-                    <input data-experience="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Remote / City">
+                    <input data-experience="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Remote / Delhi">
                 </div>
                 <div>
                     <label>Start Date</label>
@@ -108,8 +104,8 @@ function renderExperienceEditor() {
                     <input data-experience="${index}" data-field="end" value="${escapeHTML(item.end)}" placeholder="e.g. Present">
                 </div>
                 <div class="dynamic-full">
-                    <label>Responsibilities / Impact</label>
-                    <textarea data-experience="${index}" data-field="description" placeholder="Describe key accomplishments and tasks...">${escapeHTML(item.description)}</textarea>
+                    <label>Responsibilities & Achievements</label>
+                    <textarea data-experience="${index}" data-field="description" placeholder="Describe key accomplishments, tools used, and results...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -120,7 +116,6 @@ function renderExperienceEditor() {
 function renderEducationEditor() {
     const container = $("#educationList");
     container.innerHTML = "";
-
     if (!resumeData.education.length) {
         container.innerHTML = `<p class="empty-preview">No education added yet.</p>`;
         return;
@@ -143,11 +138,11 @@ function renderEducationEditor() {
                 </div>
                 <div>
                     <label>Institution</label>
-                    <input data-education="${index}" data-field="school" value="${escapeHTML(item.school)}" placeholder="e.g. Delhi University">
+                    <input data-education="${index}" data-field="school" value="${escapeHTML(item.school)}" placeholder="e.g. PTU University">
                 </div>
                 <div>
                     <label>Location</label>
-                    <input data-education="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Delhi, India">
+                    <input data-education="${index}" data-field="location" value="${escapeHTML(item.location)}" placeholder="e.g. Punjab, India">
                 </div>
                 <div>
                     <label>Start Year</label>
@@ -159,7 +154,7 @@ function renderEducationEditor() {
                 </div>
                 <div class="dynamic-full">
                     <label>Details</label>
-                    <textarea data-education="${index}" data-field="description" placeholder="Relevant coursework, honors, GPA...">${escapeHTML(item.description)}</textarea>
+                    <textarea data-education="${index}" data-field="description" placeholder="Relevant subjects, grade/CGPA, honors...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -170,7 +165,6 @@ function renderEducationEditor() {
 function renderSkillsEditor() {
     const container = $("#skillsList");
     container.innerHTML = "";
-
     if (!resumeData.skills.length) {
         container.innerHTML = `<p class="empty-preview">No skills added yet.</p>`;
         return;
@@ -183,7 +177,7 @@ function renderSkillsEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Skill Name</label>
-                    <input data-skill="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. JavaScript / Python">
+                    <input data-skill="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Routing & Switching">
                 </div>
                 <div>
                     <label>Level</label>
@@ -208,7 +202,6 @@ function renderSkillsEditor() {
 function renderCertificationEditor() {
     const container = $("#certificationsList");
     container.innerHTML = "";
-
     if (!resumeData.certifications.length) {
         container.innerHTML = `<p class="empty-preview">No certifications added yet.</p>`;
         return;
@@ -227,15 +220,15 @@ function renderCertificationEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Certification Name</label>
-                    <input data-certification="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. AWS Certified Developer">
+                    <input data-certification="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Cisco CCNA">
                 </div>
                 <div>
                     <label>Issuer</label>
-                    <input data-certification="${index}" data-field="issuer" value="${escapeHTML(item.issuer)}" placeholder="e.g. Amazon Web Services">
+                    <input data-certification="${index}" data-field="issuer" value="${escapeHTML(item.issuer)}" placeholder="e.g. Cisco">
                 </div>
                 <div>
                     <label>Year</label>
-                    <input data-certification="${index}" data-field="year" value="${escapeHTML(item.year)}" placeholder="e.g. 2025">
+                    <input data-certification="${index}" data-field="year" value="${escapeHTML(item.year)}" placeholder="e.g. 2026">
                 </div>
             </div>
         `;
@@ -246,7 +239,6 @@ function renderCertificationEditor() {
 function renderProjectEditor() {
     const container = $("#projectsList");
     container.innerHTML = "";
-
     if (!resumeData.projects.length) {
         container.innerHTML = `<p class="empty-preview">No projects added yet.</p>`;
         return;
@@ -265,15 +257,15 @@ function renderProjectEditor() {
             <div class="dynamic-grid">
                 <div>
                     <label>Project Title</label>
-                    <input data-project="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. E-Commerce Platform">
+                    <input data-project="${index}" data-field="name" value="${escapeHTML(item.name)}" placeholder="e.g. Corporate VPN Migration">
                 </div>
                 <div>
-                    <label>Project Link / Repo</label>
+                    <label>Link / Repo</label>
                     <input data-project="${index}" data-field="link" value="${escapeHTML(item.link)}" placeholder="https://github.com/...">
                 </div>
                 <div class="dynamic-full">
-                    <label>Project Overview</label>
-                    <textarea data-project="${index}" data-field="description" placeholder="Explain technologies used, problem solved, and impact...">${escapeHTML(item.description)}</textarea>
+                    <label>Description</label>
+                    <textarea data-project="${index}" data-field="description" placeholder="Project overview, technologies, impact...">${escapeHTML(item.description)}</textarea>
                 </div>
             </div>
         `;
@@ -284,7 +276,6 @@ function renderProjectEditor() {
 function renderLanguageEditor() {
     const container = $("#languagesList");
     container.innerHTML = "";
-
     if (!resumeData.languages.length) {
         container.innerHTML = `<p class="empty-preview">No languages added yet.</p>`;
         return;
@@ -329,7 +320,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW RENDERING (RIGHT CANVAS)
+   PREVIEW RENDERING
    ========================================================= */
 
 function updateBasicPreview() {
@@ -340,13 +331,17 @@ function updateBasicPreview() {
     if (resumeData.email) contactHTML += `<span><i class="fa-solid fa-envelope"></i> ${escapeHTML(resumeData.email)}</span>`;
     if (resumeData.phone) contactHTML += `<span><i class="fa-solid fa-phone"></i> ${escapeHTML(resumeData.phone)}</span>`;
     if (resumeData.location) contactHTML += `<span><i class="fa-solid fa-location-dot"></i> ${escapeHTML(resumeData.location)}</span>`;
+
     $("#previewContact").innerHTML = contactHTML;
+    $("#sidebarContact").innerHTML = contactHTML;
 
     let linksHTML = "";
     if (resumeData.website) linksHTML += `<a href="${escapeHTML(resumeData.website)}" target="_blank"><i class="fa-solid fa-globe"></i> Website</a>`;
     if (resumeData.linkedin) linksHTML += `<a href="${escapeHTML(resumeData.linkedin)}" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>`;
     if (resumeData.github) linksHTML += `<a href="${escapeHTML(resumeData.github)}" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>`;
+
     $("#previewLinks").innerHTML = linksHTML;
+    $("#sidebarLinks").innerHTML = linksHTML;
 
     $("#previewSummary").textContent = resumeData.summary || "Your professional summary will appear here.";
     $("#previewAchievements").textContent = resumeData.achievements;
@@ -409,16 +404,22 @@ function updateEducationPreview() {
 
 function updateSkillsPreview() {
     const container = $("#previewSkills");
+    const sidebarContainer = $("#sidebarSkills");
     const items = resumeData.skills.filter(item => item.name);
 
     if (!items.length) {
         toggleSection("#skillsSection", false);
+        toggleSection("#sidebarSkillsBlock", false);
         container.innerHTML = "";
+        sidebarContainer.innerHTML = "";
         return;
     }
 
     toggleSection("#skillsSection", true);
-    container.innerHTML = items.map(item => `<span class="skill-tag">${escapeHTML(item.name)}</span>`).join("");
+    toggleSection("#sidebarSkillsBlock", true);
+    const tagsHTML = items.map(item => `<span class="skill-tag">${escapeHTML(item.name)}</span>`).join("");
+    container.innerHTML = tagsHTML;
+    sidebarContainer.innerHTML = tagsHTML;
 }
 
 function updateCertificationPreview() {
@@ -450,32 +451,52 @@ function updateProjectPreview() {
 
 function updateLanguagePreview() {
     const container = $("#previewLanguages");
+    const sidebarContainer = $("#sidebarLanguages");
     const items = resumeData.languages.filter(item => item.name);
 
     toggleSection("#languagesSection", items.length > 0);
-    container.innerHTML = items.map(item => `
+    toggleSection("#sidebarLanguagesBlock", items.length > 0);
+
+    const langHTML = items.map(item => `
         <div class="language-entry">
             <strong>${escapeHTML(item.name)}</strong>
             <span>${escapeHTML(item.level)}</span>
         </div>
     `).join("");
+
+    container.innerHTML = langHTML;
+    sidebarContainer.innerHTML = langHTML;
 }
 
 function showPhoto() {
     const preview = $("#photoPreview");
-    const resumePhoto = $("#resumePhoto");
+    const headerPhoto = $("#headerResumePhoto");
+    const sidebarPhoto = $("#resumePhoto");
+
     if (!resumeData.photo) {
         preview.innerHTML = `<i class="fa-solid fa-user"></i>`;
-        resumePhoto.innerHTML = `<i class="fa-solid fa-user"></i>`;
+        headerPhoto.innerHTML = `<i class="fa-solid fa-user"></i>`;
+        sidebarPhoto.innerHTML = `<i class="fa-solid fa-user"></i>`;
         return;
     }
-    preview.innerHTML = `<img src="${resumeData.photo}" alt="Profile">`;
-    resumePhoto.innerHTML = `<img src="${resumeData.photo}" alt="Profile">`;
+
+    const imgTag = `<img src="${resumeData.photo}" alt="Profile">`;
+    preview.innerHTML = imgTag;
+    headerPhoto.innerHTML = imgTag;
+    sidebarPhoto.innerHTML = imgTag;
 }
 
 function applyTemplate() {
     const resume = $("#resume");
-    resume.classList.remove("modern-template", "professional-template", "minimal-template");
+    resume.classList.remove(
+        "modern-template",
+        "professional-template",
+        "minimal-template",
+        "sidebar-template",
+        "executive-template",
+        "tech-template",
+        "elegant-template"
+    );
     resume.classList.add(`${resumeData.template}-template`);
 }
 
@@ -497,7 +518,7 @@ function updatePreview() {
 }
 
 /* =========================================================
-   COLLECT DATA & EVENT DELEGATION
+   EVENT HANDLERS
    ========================================================= */
 
 function collectBasicData() {
@@ -538,12 +559,10 @@ function handleInputEvent(event) {
 document.addEventListener("input", handleInputEvent);
 document.addEventListener("change", handleInputEvent);
 
-// Summary length counter
 $("#summary").addEventListener("input", (e) => {
     $("#summaryCount").textContent = `${e.target.value.length} / 600`;
 });
 
-// Photo upload
 $("#photoInput").addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -557,7 +576,7 @@ $("#photoInput").addEventListener("change", (event) => {
     reader.readAsDataURL(file);
 });
 
-// Dynamic Add Buttons
+// Dynamic Add
 $("#addExperience").addEventListener("click", () => {
     resumeData.experience.push(createExperience());
     renderExperienceEditor();
@@ -594,7 +613,7 @@ $("#addLanguage").addEventListener("click", () => {
     updatePreview();
 });
 
-// Dynamic Remove Buttons (Safe Delegation)
+// Dynamic Remove
 document.addEventListener("click", (event) => {
     const btn = event.target.closest("button");
     if (!btn) return;
@@ -626,13 +645,14 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Template & Color Handlers
+// Change Template
 $("#templateSelect").addEventListener("change", (e) => {
     resumeData.template = e.target.value;
     applyTemplate();
     saveData();
 });
 
+// Change Color
 $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {         resumeData.color = btn.dataset.color;         $$
 (".color-choice").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -641,7 +661,7 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
     });
 });
 
-// Dark Theme Toggle
+// Dark Theme
 $("#themeToggle").addEventListener("click", () => {
     document.body.classList.toggle("dark");
     const isDark = document.body.classList.contains("dark");
@@ -649,7 +669,7 @@ $("#themeToggle").addEventListener("click", () => {
     $("#themeToggle").innerHTML = isDark ? `<i class="fa-solid fa-sun"></i>` : `<i class="fa-solid fa-moon"></i>`;
 });
 
-// Storage Save & Restore
+// Save & Load
 function saveData() {
     try {
         localStorage.setItem("jobcv-data", JSON.stringify(resumeData));
@@ -657,7 +677,7 @@ function saveData() {
         status.innerHTML = `<i class="fa-solid fa-check"></i> Saved`;
         status.style.opacity = "1";
     } catch (err) {
-        console.warn("Storage quota exceeded or error saving:", err);
+        console.warn("Storage quota exceeded or error:", err);
     }
 }
 
@@ -668,7 +688,7 @@ function loadData() {
             resumeData = { ...resumeData, ...JSON.parse(saved) };
         }
     } catch (err) {
-        console.warn("Error restoring saved state:", err);
+        console.warn("Error restoring state:", err);
     }
 
     setValue("fullName", resumeData.fullName);
@@ -683,14 +703,14 @@ function loadData() {
     setValue("achievements", resumeData.achievements);
     setValue("interests", resumeData.interests);
 
-    $("#templateSelect").value = resumeData.template;     $$(".color-choice").forEach(btn => {
+    $("#templateSelect").value = resumeData.template \vert{}\vert{} "modern";     $$(".color-choice").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.color === resumeData.color);
     });
 
     $("#summaryCount").textContent = `${resumeData.summary.length} / 600`;
 }
 
-// Reset Everything
+// Reset
 $("#clearBtn").addEventListener("click", () => {
     if (confirm("Are you sure you want to reset all data?")) {
         localStorage.removeItem("jobcv-data");
@@ -698,7 +718,7 @@ $("#clearBtn").addEventListener("click", () => {
     }
 });
 
-// Export PDF (Fixed 1-Page Alignment)
+// PDF Export (Single-Page Fit)
 $("#downloadBtn").addEventListener("click", () => {
     const resume = $("#resume");
     const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "JobCV-Resume") + ".pdf";
@@ -718,21 +738,20 @@ $("#downloadBtn").addEventListener("click", () => {
             format: "a4",
             orientation: "portrait"
         },
-        pagebreak: { mode: 'avoid-all' }
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
     };
 
     html2pdf().set(opt).from(resume).save();
 });
 
-// Native Print
+// Print
 $("#printBtn").addEventListener("click", () => {
     window.print();
 });
 
-// Set Footer Year
 $("#year").textContent = new Date().getFullYear();
 
-// Initialize App
+// Init
 function initialize() {
     loadData();
     renderEditors();
