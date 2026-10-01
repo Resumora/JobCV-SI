@@ -3,278 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumora - AI-ready, ATS-friendly professional resume builder. Free instant PDF export.">
-    <title>Resumora | Free ATS Resume Builder</title>
+    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login.">
+    <title>Resumora | Free Professional ATS Resume Builder</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Fonts: Inter & Plus Jakarta Sans style -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- PDF Library -->
+    <!-- PDF Generation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-<!-- JOBBERS STYLE TOP NAVBAR -->
-<header class="jobbers-nav">
-    <div class="nav-container">
-        <a href="#" class="nav-brand">
-            <div class="brand-badge">R</div>
-            <span>Resumora<span class="dot">.</span></span>
-        </a>
-
-        <div class="nav-center-badge">
-            <span class="live-pill"><i class="fa-solid fa-circle"></i> 100% Free & No Sign-up</span>
+<!-- TOP NAVBAR (Jobbers Style) -->
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-logo">R</div>
+        <div class="brand-text">
+            <h1>Resumora<span class="dot">.</span></h1>
+            <span>Free ATS Resume Engine</span>
         </div>
+    </div>
 
-        <div class="nav-actions">
-            <button class="nav-theme-btn" id="themeToggle" title="Toggle Theme">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-            <button class="nav-secondary-btn" id="clearBtn">
-                <i class="fa-solid fa-rotate-left"></i> Reset
-            </button>
-            <button class="nav-primary-btn" id="downloadBtn">
-                <i class="fa-solid fa-cloud-arrow-down"></i> Download PDF
-            </button>
-        </div>
+    <div class="nav-status-pill">
+        <span class="live-dot"></span> 100% Free & No Sign-up
+    </div>
+
+    <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="secondary-btn" id="clearBtn">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+        <button class="primary-btn" id="downloadBtn">
+            <i class="fa-solid fa-cloud-arrow-down"></i> Download PDF
+        </button>
     </div>
 </header>
 
-<!-- HERO INTRO STRIP -->
-<section class="hero-strip">
-    <div class="hero-content">
-        <span class="hero-tag"><i class="fa-solid fa-bolt"></i> ATS-Optimized CV Engine</span>
-        <h2>Build a job-winning resume in minutes.</h2>
-        <p>Smart formatting, live preview, zero watermark, and recruiter-approved single-page layouts.</p>
-    </div>
-</section>
+<!-- HERO STRIP -->
+<div class="hero-strip">
+    <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Recruiter Approved Formats</div>
+    <h2>Build a professional ATS resume in minutes.</h2>
+    <p>Live preview, auto-hiding empty fields, and clean A4 PDF export.</p>
+</div>
 
-<!-- MAIN APP BUILDER -->
-<main class="builder-wrapper">
+<!-- MAIN WORKSPACE -->
+<main class="app-container">
 
-    <!-- LEFT FORM PANEL -->
-    <aside class="builder-sidebar">
-        <div class="sidebar-header">
-            <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
-            <span class="badge-status" id="saveStatus"><i class="fa-solid fa-check"></i> Auto-saved</span>
+    <!-- LEFT EDITOR PANEL -->
+    <aside class="editor-panel">
+        <div class="editor-heading">
+            <div>
+                <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
+            </div>
+            <div class="save-status" id="saveStatus">
+                <i class="fa-solid fa-check"></i> Auto-saved
+            </div>
         </div>
 
-        <!-- Template & Color Picker Card -->
-        <div class="builder-card">
-            <div class="card-head">
+        <!-- Template & Color Selection -->
+        <section class="editor-card">
+            <div class="card-title">
                 <i class="fa-solid fa-layer-group"></i>
                 <h4>Template & Style</h4>
             </div>
 
-            <div class="input-group">
-                <label for="templateSelect">Selected Layout</label>
-                <select id="templateSelect" class="styled-select">
-                    <option value="modern">Modern Professional</option>
-                    <option value="professional">Corporate Classic</option>
-                    <option value="minimal">Minimal ATS Clean</option>
-                    <option value="sidebar">Sidebar Dual-Column</option>
-                    <option value="executive">Executive Serif</option>
-                    <option value="tech">Tech & Developer</option>
-                    <option value="elegant">Elegant Centered</option>
-                </select>
-            </div>
+            <label for="templateSelect">Resume Layout</label>
+            <select id="templateSelect">
+                <option value="modern">Modern Professional</option>
+                <option value="professional">Corporate Classic</option>
+                <option value="minimal">Minimal ATS Clean</option>
+                <option value="sidebar">Sidebar Dual-Column</option>
+                <option value="executive">Executive Serif</option>
+                <option value="tech">Tech & Developer</option>
+                <option value="elegant">Elegant Centered</option>
+            </select>
 
-            <div class="input-group" style="margin-top: 14px;">
-                <label>Accent Color</label>
-                <div class="color-options">
-                    <button class="color-choice active" data-color="#2563eb" style="--color:#2563eb"></button>
-                    <button class="color-choice" data-color="#0f766e" style="--color:#0f766e"></button>
-                    <button class="color-choice" data-color="#09090b" style="--color:#09090b"></button>
-                    <button class="color-choice" data-color="#7c3aed" style="--color:#7c3aed"></button>
-                    <button class="color-choice" data-color="#b45309" style="--color:#b45309"></button>
-                    <button class="color-choice" data-color="#e11d48" style="--color:#e11d48"></button>
-                </div>
+            <label style="margin-top: 14px;">Accent Color</label>
+            <div class="color-options">
+                <button type="button" class="color-choice active" data-color="#2563eb" style="--color:#2563eb"></button>
+                <button type="button" class="color-choice" data-color="#0f766e" style="--color:#0f766e"></button>
+                <button type="button" class="color-choice" data-color="#18181b" style="--color:#18181b"></button>
+                <button type="button" class="color-choice" data-color="#7c3aed" style="--color:#7c3aed"></button>
+                <button type="button" class="color-choice" data-color="#b45309" style="--color:#b45309"></button>
+                <button type="button" class="color-choice" data-color="#e11d48" style="--color:#e11d48"></button>
             </div>
-        </div>
+        </section>
 
         <!-- Personal Info -->
-        <div class="builder-card">
-            <div class="card-head">
+        <section class="editor-card">
+            <div class="card-title">
                 <i class="fa-regular fa-user"></i>
                 <h4>Personal Information</h4>
             </div>
 
-            <div class="photo-upload-box">
+            <div class="photo-upload">
                 <div class="photo-preview" id="photoPreview">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                <div class="photo-controls">
-                    <label class="btn-upload">
+                <div class="photo-actions">
+                    <label class="upload-btn">
                         <i class="fa-solid fa-camera"></i> Upload Photo
                         <input type="file" id="photoInput" accept="image/*" hidden>
                     </label>
-                    <button type="button" class="btn-remove-photo" id="removePhotoBtn" style="display:none;">
+                    <button type="button" class="remove-photo-btn" id="removePhotoBtn" style="display:none;">
                         <i class="fa-solid fa-trash"></i> Remove
                     </button>
                     <small>Optional for ATS resumes</small>
                 </div>
             </div>
 
-            <div class="grid-2">
-                <div class="input-group col-span-2">
-                    <label>Full Name</label>
+            <div class="form-grid">
+                <div class="field full">
+                    <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" placeholder="e.g. Rohit Sharma">
                 </div>
-                <div class="input-group col-span-2">
-                    <label>Job Title</label>
+                <div class="field full">
+                    <label for="jobTitle">Job Title</label>
                     <input type="text" id="jobTitle" placeholder="e.g. Senior Network Engineer">
                 </div>
-                <div class="input-group">
-                    <label>Email</label>
+                <div class="field">
+                    <label for="email">Email</label>
                     <input type="email" id="email" placeholder="name@example.com">
                 </div>
-                <div class="input-group">
-                    <label>Phone Number</label>
+                <div class="field">
+                    <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" placeholder="+91 **** 43210">
                 </div>
-                <div class="input-group col-span-2">
-                    <label>Location</label>
+                <div class="field full">
+                    <label for="location">Location</label>
                     <input type="text" id="location" placeholder="City, Country">
                 </div>
-                <div class="input-group">
-                    <label>Portfolio / Website</label>
-                    <input type="url" id="website" placeholder="https://myportfolio.com">
+                <div class="field">
+                    <label for="website">Portfolio / Website</label>
+                    <input type="url" id="website" placeholder="https://myportfolio.dev">
                 </div>
-                <div class="input-group">
-                    <label>LinkedIn</label>
+                <div class="field">
+                    <label for="linkedin">LinkedIn</label>
                     <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username">
                 </div>
-                <div class="input-group col-span-2">
-                    <label>GitHub</label>
+                <div class="field full">
+                    <label for="github">GitHub</label>
                     <input type="url" id="github" placeholder="https://github.com/username">
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Summary -->
-        <div class="builder-card">
-            <div class="card-head">
+        <section class="editor-card">
+            <div class="card-title">
                 <i class="fa-solid fa-quote-left"></i>
                 <h4>Professional Summary</h4>
             </div>
-            <textarea id="summary" rows="4" placeholder="Brief summary of your professional journey, core strengths and achievements..."></textarea>
-            <div class="char-count"><span id="summaryCount">0 / 600</span></div>
-        </div>
+            <textarea id="summary" rows="4" placeholder="Brief summary of your background, core strengths and achievements..."></textarea>
+            <div class="field-hint">
+                <span>Highlight quantifiable impact.</span>
+                <span id="summaryCount">0 / 600</span>
+            </div>
+        </section>
 
         <!-- Experience -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
                     <i class="fa-solid fa-briefcase"></i>
                     <h4>Work Experience</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addExperience"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addExperience"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="experienceList"></div>
-        </div>
+        </section>
 
         <!-- Education -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
                     <i class="fa-solid fa-graduation-cap"></i>
                     <h4>Education</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addEducation"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addEducation"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="educationList"></div>
-        </div>
+        </section>
 
         <!-- Skills -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <h4>Key Skills</h4>
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h4>Technical Skills</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addSkill"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addSkill"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="skillsList"></div>
-        </div>
+        </section>
 
         <!-- Certifications -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
                     <i class="fa-solid fa-certificate"></i>
                     <h4>Certifications</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addCertification"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addCertification"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="certificationsList"></div>
-        </div>
+        </section>
 
         <!-- Projects -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
-                    <i class="fa-solid fa-code-branch"></i>
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-code"></i>
                     <h4>Projects</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addProject"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addProject"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="projectsList"></div>
-        </div>
+        </section>
 
         <!-- Languages -->
-        <div class="builder-card">
-            <div class="card-head-between">
-                <div class="card-head">
+        <section class="editor-card">
+            <div class="section-header">
+                <div class="card-title">
                     <i class="fa-solid fa-language"></i>
                     <h4>Languages</h4>
                 </div>
-                <button type="button" class="btn-add-item" id="addLanguage"><i class="fa-solid fa-plus"></i> Add</button>
+                <button type="button" class="add-btn" id="addLanguage"><i class="fa-solid fa-plus"></i> Add</button>
             </div>
             <div id="languagesList"></div>
-        </div>
+        </section>
 
         <!-- Achievements -->
-        <div class="builder-card">
-            <div class="card-head">
+        <section class="editor-card">
+            <div class="card-title">
                 <i class="fa-solid fa-trophy"></i>
                 <h4>Key Achievements</h4>
             </div>
-            <textarea id="achievements" rows="3" placeholder="Awards, key metrics, recognitions..."></textarea>
-        </div>
+            <textarea id="achievements" rows="3" placeholder="Awards, promotions, milestones..."></textarea>
+        </section>
 
         <!-- Interests -->
-        <div class="builder-card">
-            <div class="card-head">
+        <section class="editor-card">
+            <div class="card-title">
                 <i class="fa-regular fa-compass"></i>
                 <h4>Interests & Hobbies</h4>
             </div>
-            <input type="text" id="interests" placeholder="Open-source, Cloud automation, Chess, Tech blogs">
-        </div>
+            <input type="text" id="interests" placeholder="e.g. Open-source, Homelab, Chess, Hiking">
+        </section>
     </aside>
 
-    <!-- RIGHT LIVE CANVAS PANEL -->
-    <section class="builder-preview">
-        <div class="preview-header-bar">
-            <div class="preview-title">
-                <span class="status-indicator"></span>
-                <strong>Live Document Canvas</strong>
+    <!-- RIGHT PREVIEW CANVAS -->
+    <section class="preview-area">
+        <div class="preview-toolbar">
+            <div class="preview-info">
+                <span class="live-indicator"></span>
+                <strong>Live Document Preview</strong>
                 <small>Standard A4 Portrait</small>
             </div>
-            <button class="btn-secondary-print" id="printBtn">
+            <button type="button" class="print-btn" id="printBtn">
                 <i class="fa-solid fa-print"></i> Print
             </button>
         </div>
 
         <div class="resume-wrapper">
             <article id="resume" class="resume modern-template">
-                <!-- Sidebar Layout Element -->
+                <!-- Sidebar Layout Panel -->
                 <div class="resume-sidebar-panel">
                     <div class="resume-photo" id="resumePhoto">
                         <i class="fa-solid fa-user"></i>
