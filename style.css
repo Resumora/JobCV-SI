@@ -1086,31 +1086,50 @@ body.dark .resume .resume-entry-description {
     }
 
     /* Compact spacing taaki A4 single page par fit baithe */
+/* Compact spacing taaki single page me fit baithe aur clean rahe */
 .resume {
     width: 794px;
     min-height: 1120px;
     background: #ffffff;
-    padding: 28px 36px; /* Padding thodi kam ki */
+    padding: 24px 34px !important;
     color: #1f2937;
     box-sizing: border-box;
 }
 
+.resume-header {
+    padding-bottom: 10px !important;
+    margin-bottom: 8px !important;
+}
+
 .resume-section {
-    margin-top: 10px; /* Gap thoda kam kiya taaki 2nd page overflow na ho */
-    page-break-inside: avoid;
-    break-inside: avoid;
+    margin-top: 8px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
 }
 
 .resume-section h3 {
-    margin-bottom: 6px;
-    padding-bottom: 2px;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 5px !important;
+    padding-bottom: 2px !important;
 }
 
 .resume-entry {
-    margin-bottom: 8px;
+    margin-bottom: 6px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
 }
 
-/* Page break ke waqt 2nd page par top margin aane ke liye */
+.resume-entry-description {
+    margin-top: 2px !important;
+    line-height: 1.35 !important;
+}
+
+/* Page break hone par top margin fix */
+.resume-section {
+    break-before: auto;
+}
+
 @media print {
     html, body {
         width: 210mm;
@@ -1137,11 +1156,13 @@ body.dark .resume .resume-entry-description {
         width: 100% !important;
         box-shadow: none !important;
         margin: 0 !important;
-        padding: 14mm 16mm !important; /* Har page par top, bottom, left, right margin ensure karega */
+        padding: 12mm 14mm !important;
     }
 
+    /* Agar page split ho toh second page ke element ke top pe margin aaye */
     .resume-section {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        margin-top: 14px !important;
     }
 }
