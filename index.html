@@ -3,42 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JobCV-SI is a free professional resume builder. Create modern, ATS-friendly resumes online and download them as PDF.">
-    <meta name="keywords" content="resume builder, CV builder, free resume maker, ATS resume, professional CV, JobCV-SI">
+    <meta name="description" content="JobCV-SI is a 100% free professional ATS-friendly resume maker. Choose from trending templates, build your CV online, and download instant high-quality PDF without signup.">
+    <meta name="keywords" content="free resume builder, ATS resume template, CV maker online, download resume PDF free, professional CV templates, fresher resume format, JobCV-SI">
     <meta name="author" content="JobCV-SI">
     <meta name="robots" content="index, follow">
 
-    <title>JobCV-SI | Free Professional Resume Builder</title>
+    <title>JobCV-SI | Free Professional ATS Resume Builder & Templates</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- PDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "JobCV-SI",
+      "url": "https://atulsharma812-beep.github.io/JobCV-SI/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "description": "Free online ATS resume builder to generate and download professional CVs in PDF format without signup or watermark."
+    }
+    </script>
 </head>
 <body>
 
-<!-- =========================
-     TOP NAVIGATION
-========================= -->
+<!-- TOP NAVIGATION -->
 <header class="topbar">
     <div class="brand">
         <div class="brand-logo">J</div>
         <div>
             <h1>JobCV-SI</h1>
-            <span>Resume Builder</span>
+            <span>Free ATS Resume Builder</span>
         </div>
     </div>
 
     <div class="top-actions">
-        <button class="icon-btn" id="themeToggle" title="Toggle theme">
+        <button class="icon-btn" id="themeToggle" title="Toggle dark mode">
             <i class="fa-solid fa-moon"></i>
         </button>
 
@@ -54,19 +70,15 @@
     </div>
 </header>
 
-<!-- =========================
-     MAIN APPLICATION
-========================= -->
+<!-- MAIN APPLICATION -->
 <main class="app-container">
 
-    <!-- =====================
-         LEFT EDITOR PANEL
-    ====================== -->
+    <!-- LEFT EDITOR PANEL -->
     <aside class="editor-panel">
         <div class="editor-heading">
             <div>
                 <h2>Build Your Resume</h2>
-                <p>Fill in your information below.</p>
+                <p>Fill in your details to create an ATS-friendly CV.</p>
             </div>
             <div class="save-status" id="saveStatus">
                 <i class="fa-solid fa-cloud"></i>
@@ -74,27 +86,32 @@
             </div>
         </div>
 
-        <!-- Design / Template -->
+        <!-- Design & Templates -->
         <section class="editor-card">
             <div class="card-title">
                 <i class="fa-solid fa-palette"></i>
-                <h3>Design & Theme</h3>
+                <h3>Choose Template & Accent</h3>
             </div>
 
             <label for="templateSelect">Resume Template</label>
             <select id="templateSelect">
-                <option value="modern">Modern</option>
-                <option value="professional">Professional</option>
-                <option value="minimal">Minimal</option>
+                <option value="modern">Modern Classic</option>
+                <option value="professional">Corporate Executive</option>
+                <option value="minimal">Minimal ATS Plain</option>
+                <option value="sidebar">Sidebar Dual-Column (Trending)</option>
+                <option value="executive">Executive Serif</option>
+                <option value="tech">Tech & Developer Clean</option>
+                <option value="elegant">Elegant Center Header</option>
             </select>
 
-            <label style="margin-top: 12px;">Theme Color</label>
+            <label style="margin-top: 14px;">Accent Color</label>
             <div class="color-options">
                 <button class="color-choice active" data-color="#2563eb" style="--color:#2563eb" title="Royal Blue"></button>
-                <button class="color-choice" data-color="#111827" style="--color:#111827" title="Dark Slate"></button>
                 <button class="color-choice" data-color="#0f766e" style="--color:#0f766e" title="Deep Teal"></button>
-                <button class="color-choice" data-color="#7c3aed" style="--color:#7c3aed" title="Violet"></button>
-                <button class="color-choice" data-color="#b45309" style="--color:#b45309" title="Amber"></button>
+                <button class="color-choice" data-color="#1e293b" style="--color:#1e293b" title="Midnight Navy"></button>
+                <button class="color-choice" data-color="#7c3aed" style="--color:#7c3aed" title="Modern Violet"></button>
+                <button class="color-choice" data-color="#b45309" style="--color:#b45309" title="Warm Amber"></button>
+                <button class="color-choice" data-color="#be123c" style="--color:#be123c" title="Crimson"></button>
             </div>
         </section>
 
@@ -115,28 +132,28 @@
                         Upload Photo
                         <input type="file" id="photoInput" accept="image/*" hidden>
                     </label>
-                    <small>JPG or PNG recommended</small>
+                    <small>Optional for ATS resumes</small>
                 </div>
             </div>
 
             <div class="form-grid">
                 <div class="field full">
                     <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="e.g. John Smith">
+                    <input type="text" id="fullName" placeholder="e.g. John Doe">
                 </div>
 
                 <div class="field full">
-                    <label for="jobTitle">Professional Title</label>
-                    <input type="text" id="jobTitle" placeholder="e.g. Full Stack Developer">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" id="jobTitle" placeholder="e.g. Senior Network Engineer">
                 </div>
 
                 <div class="field">
-                    <label for="email">Email</label>
+                    <label for="email">Email Address</label>
                     <input type="email" id="email" placeholder="john@example.com">
                 </div>
 
                 <div class="field">
-                    <label for="phone">Phone</label>
+                    <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" placeholder="+91 98765 43210">
                 </div>
 
@@ -146,18 +163,18 @@
                 </div>
 
                 <div class="field">
-                    <label for="website">Website</label>
-                    <input type="url" id="website" placeholder="https://example.com">
+                    <label for="website">Portfolio / Website</label>
+                    <input type="url" id="website" placeholder="https://johndoe.dev">
                 </div>
 
                 <div class="field">
                     <label for="linkedin">LinkedIn</label>
-                    <input type="url" id="linkedin" placeholder="LinkedIn URL">
+                    <input type="url" id="linkedin" placeholder="linkedin.com/in/username">
                 </div>
 
                 <div class="field">
                     <label for="github">GitHub</label>
-                    <input type="url" id="github" placeholder="GitHub URL">
+                    <input type="url" id="github" placeholder="github.com/username">
                 </div>
             </div>
         </section>
@@ -168,9 +185,9 @@
                 <i class="fa-solid fa-align-left"></i>
                 <h3>Professional Summary</h3>
             </div>
-            <textarea id="summary" rows="4" placeholder="Write a short professional summary about yourself..."></textarea>
+            <textarea id="summary" rows="4" placeholder="Brief summary of your professional background, key achievements, and core skills..."></textarea>
             <div class="field-hint">
-                <span>Keep it concise and focused on your strengths.</span>
+                <span>Highlight quantifiable achievements.</span>
                 <span id="summaryCount">0 / 600</span>
             </div>
         </section>
@@ -263,29 +280,27 @@
         <section class="editor-card">
             <div class="card-title">
                 <i class="fa-solid fa-trophy"></i>
-                <h3>Achievements</h3>
+                <h3>Key Achievements</h3>
             </div>
-            <textarea id="achievements" rows="3" placeholder="Key awards, honors, or professional accomplishments..."></textarea>
+            <textarea id="achievements" rows="3" placeholder="Awards, promotions, competitions won, or recognitions..."></textarea>
         </section>
 
         <!-- Interests -->
         <section class="editor-card">
             <div class="card-title">
                 <i class="fa-solid fa-heart"></i>
-                <h3>Interests</h3>
+                <h3>Interests & Hobbies</h3>
             </div>
-            <input type="text" id="interests" placeholder="e.g. Open Source, Cloud Architecture, Chess">
+            <input type="text" id="interests" placeholder="e.g. Cloud Computing, Open Source, Hiking, Chess">
         </section>
     </aside>
 
-    <!-- =====================
-         RIGHT PREVIEW AREA
-    ====================== -->
+    <!-- RIGHT PREVIEW CANVAS -->
     <section class="preview-area">
         <div class="preview-toolbar">
             <div>
                 <strong>Live Preview</strong>
-                <span>Updates in real-time</span>
+                <span>Formatted to standard A4 page</span>
             </div>
             <button class="print-btn" id="printBtn">
                 <i class="fa-solid fa-print"></i> Print
@@ -294,85 +309,178 @@
 
         <div class="resume-wrapper">
             <article id="resume" class="resume modern-template">
-                <!-- Header -->
-                <div class="resume-header">
-                    <div class="resume-identity">
-                        <h1 id="previewName">Your Name</h1>
-                        <h2 id="previewTitle">Professional Title</h2>
-                        <div class="contact-line" id="previewContact"></div>
-                        <div class="links-line" id="previewLinks"></div>
-                    </div>
+
+                <!-- Sidebar Dual Column Container (Only active for Sidebar Template) -->
+                <div class="resume-sidebar-panel">
                     <div class="resume-photo" id="resumePhoto">
                         <i class="fa-solid fa-user"></i>
                     </div>
+
+                    <div class="sidebar-block contact-block">
+                        <h4>CONTACT</h4>
+                        <div class="contact-line" id="sidebarContact"></div>
+                        <div class="links-line" id="sidebarLinks"></div>
+                    </div>
+
+                    <div class="sidebar-block skills-block" id="sidebarSkillsBlock">
+                        <h4>SKILLS</h4>
+                        <div class="skill-tags" id="sidebarSkills"></div>
+                    </div>
+
+                    <div class="sidebar-block languages-block" id="sidebarLanguagesBlock">
+                        <h4>LANGUAGES</h4>
+                        <div id="sidebarLanguages"></div>
+                    </div>
                 </div>
 
-                <!-- Summary -->
-                <section class="resume-section" id="summarySection">
-                    <h3>PROFILE SUMMARY</h3>
-                    <p id="previewSummary"></p>
-                </section>
+                <!-- Main Content Body -->
+                <div class="resume-main-panel">
+                    <!-- Header -->
+                    <div class="resume-header">
+                        <div class="resume-identity">
+                            <h1 id="previewName">Your Name</h1>
+                            <h2 id="previewTitle">Professional Title</h2>
+                            <div class="contact-line" id="previewContact"></div>
+                            <div class="links-line" id="previewLinks"></div>
+                        </div>
+                        <div class="resume-photo header-photo" id="headerResumePhoto">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
 
-                <!-- Experience -->
-                <section class="resume-section" id="experienceSection">
-                    <h3>EXPERIENCE</h3>
-                    <div id="previewExperience"></div>
-                </section>
+                    <!-- Summary -->
+                    <section class="resume-section" id="summarySection">
+                        <h3>PROFILE SUMMARY</h3>
+                        <p id="previewSummary"></p>
+                    </section>
 
-                <!-- Education -->
-                <section class="resume-section" id="educationSection">
-                    <h3>EDUCATION</h3>
-                    <div id="previewEducation"></div>
-                </section>
+                    <!-- Experience -->
+                    <section class="resume-section" id="experienceSection">
+                        <h3>WORK EXPERIENCE</h3>
+                        <div id="previewExperience"></div>
+                    </section>
 
-                <!-- Skills -->
-                <section class="resume-section" id="skillsSection">
-                    <h3>SKILLS</h3>
-                    <div class="skill-tags" id="previewSkills"></div>
-                </section>
+                    <!-- Education -->
+                    <section class="resume-section" id="educationSection">
+                        <h3>EDUCATION</h3>
+                        <div id="previewEducation"></div>
+                    </section>
 
-                <!-- Certifications -->
-                <section class="resume-section" id="certificationSection">
-                    <h3>CERTIFICATIONS</h3>
-                    <div id="previewCertifications"></div>
-                </section>
+                    <!-- Skills (Standard Layout) -->
+                    <section class="resume-section" id="skillsSection">
+                        <h3>TECHNICAL & CORE SKILLS</h3>
+                        <div class="skill-tags" id="previewSkills"></div>
+                    </section>
 
-                <!-- Projects -->
-                <section class="resume-section" id="projectsSection">
-                    <h3>PROJECTS</h3>
-                    <div id="previewProjects"></div>
-                </section>
+                    <!-- Certifications -->
+                    <section class="resume-section" id="certificationSection">
+                        <h3>CERTIFICATIONS</h3>
+                        <div id="previewCertifications"></div>
+                    </section>
 
-                <!-- Languages -->
-                <section class="resume-section" id="languagesSection">
-                    <h3>LANGUAGES</h3>
-                    <div id="previewLanguages"></div>
-                </section>
+                    <!-- Projects -->
+                    <section class="resume-section" id="projectsSection">
+                        <h3>PROJECTS</h3>
+                        <div id="previewProjects"></div>
+                    </section>
 
-                <!-- Achievements -->
-                <section class="resume-section" id="achievementSection">
-                    <h3>ACHIEVEMENTS</h3>
-                    <p id="previewAchievements"></p>
-                </section>
+                    <!-- Languages (Standard Layout) -->
+                    <section class="resume-section" id="languagesSection">
+                        <h3>LANGUAGES</h3>
+                        <div id="previewLanguages"></div>
+                    </section>
 
-                <!-- Interests -->
-                <section class="resume-section" id="interestsSection">
-                    <h3>INTERESTS</h3>
-                    <p id="previewInterests"></p>
-                </section>
+                    <!-- Achievements -->
+                    <section class="resume-section" id="achievementSection">
+                        <h3>KEY ACHIEVEMENTS</h3>
+                        <p id="previewAchievements"></p>
+                    </section>
+
+                    <!-- Interests -->
+                    <section class="resume-section" id="interestsSection">
+                        <h3>INTERESTS</h3>
+                        <p id="previewInterests"></p>
+                    </section>
+                </div>
+
             </article>
         </div>
     </section>
 
 </main>
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- =========================================================
+     SEO GUIDE, ATS TIPS & FAQ SECTION
+========================================================= -->
+<section class="seo-guide-section">
+    <div class="seo-container">
+        
+        <div class="guide-header">
+            <h2>How to Build an ATS-Friendly Resume That Gets You Hired</h2>
+            <p>Tips, expert guidelines, and best practices to pass Applicant Tracking Systems (ATS) and land your dream interview in 2026.</p>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fa-solid fa-robot"></i></div>
+                <h3>What is an ATS Resume?</h3>
+                <p>An ATS (Applicant Tracking System) is software used by employers to scan, sort, and rank resumes before a human recruiter sees them. JobCV-SI designs clean, single-column and standardized dual-column formats that ATS parsers can read with 100% accuracy.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Target Keywords from the Job Description</h3>
+                <p>Read the job post carefully and include exact keywords like technical skills (e.g. <em>Routing & Switching, Python, BGP, CI/CD</em>) inside your experience bullet points and skills section.</p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Use the XYZ Formula for Bullet Points</h3>
+                <p>Instead of just writing job duties, use Google's XYZ formula: <em>"Accomplished [X] as measured by [Y], by doing [Z]"</em>. For example: <em>"Reduced network latency by 25% by configuring OSPF cost metrics across 12 branch locations."</em></p>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+                <h3>Single Page Rule</h3>
+                <p>For freshers and professionals with under 5 years of experience, keep your resume strictly on 1 page. Recruiters spend only 6 to 7 seconds scanning your CV. JobCV-SI is optimized to fit your details cleanly on an A4 sheet.</p>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="faq-container">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+
+            <div class="faq-item">
+                <h4>Is JobCV-SI completely free to download resumes?</h4>
+                <p>Yes, 100% free! There are no hidden fees, subscriptions, or watermarks. You can build, customize, and download your CV in PDF format instantly without creating an account.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is my personal data safe on this website?</h4>
+                <p>Yes. JobCV-SI operates completely in your browser. All entered data is saved locally on your computer (using local storage). We do not store or sell your personal details to any server.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Which template is best for tech and IT roles?</h4>
+                <p>The <strong>Tech & Developer Clean</strong> and <strong>Minimal ATS Plain</strong> templates work best for software engineers, network specialists, and data analysts as they prioritize clean code skills and quantifiable experience.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Should freshers include photographs on resumes?</h4>
+                <p>For jobs in the US, UK, and Canada, photographs are strictly discouraged to avoid bias. However, in India, Middle East, and parts of Europe, professional headshots are accepted. You can easily toggle or omit photos on JobCV-SI.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="site-footer">
-    <strong>JobCV-SI</strong>
-    <span>Create professional resumes easily.</span>
-    <span>© <span id="year"></span> JobCV-SI. All rights reserved.</span>
+    <div class="footer-content">
+        <strong>JobCV-SI</strong>
+        <span>100% Free Open-Source ATS Resume Builder.</span>
+        <span>© <span id="year"></span> JobCV-SI. Built for job seekers worldwide.</span>
+    </div>
 </footer>
 
 <script src="script.js"></script>
