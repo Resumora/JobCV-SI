@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
+    <meta name="description" content="Resumora - 100% Free ATS Resume Builder with Gemini AI Polish. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
     <title>Resumora | Free Professional ATS Resume Builder & Templates</title>
     <script data-cfasync="false" src="https://abscloud.org/1/13de4c4684f48f83e597296437981e03"></script>
 
@@ -38,6 +38,10 @@
     </div>
 
     <div class="top-actions">
+        <!-- AI Configuration Button -->
+        <button class="ai-config-nav-btn" id="openAiConfigBtn" type="button">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> AI Setup
+        </button>
         <button class="secondary-btn" id="clearBtn">
             <i class="fa-solid fa-rotate-left"></i> Reset
         </button>
@@ -60,7 +64,7 @@
         <!-- Blinking Dot Badge -->
         <div class="hero-pill-badge">
             <span class="blinking-dot"></span>
-            <span class="badge-highlight">100% Free</span>
+            <span class="badge-highlight">100% Free & AI-Powered</span>
             <span class="badge-text">No sign-up & zero watermarks</span>
         </div>
 
@@ -176,11 +180,16 @@
             </div>
         </section>
 
-        <!-- Summary -->
+        <!-- Summary with AI Generator -->
         <section class="editor-card">
-            <div class="card-title">
-                <i class="fa-solid fa-quote-left"></i>
-                <h4>Professional Summary</h4>
+            <div class="section-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <h4>Professional Summary</h4>
+                </div>
+                <button type="button" class="ai-action-btn" id="aiGenerateSummaryBtn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI Polish
+                </button>
             </div>
             <textarea id="summary" rows="4" placeholder="Brief summary of your background, core strengths and achievements..."></textarea>
             <div class="field-hint">
@@ -409,6 +418,35 @@
         <p>&copy; 2026 Resumora. Free ATS Resume Engine. Built for job seekers, graduates, and professionals.</p>
     </div>
 </footer>
+
+<!-- AI SETTINGS MODAL -->
+<div class="ai-modal-overlay" id="aiModalOverlay">
+    <div class="ai-modal-box">
+        <div class="ai-modal-header">
+            <div class="ai-modal-title">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Configure Google Gemini AI</h3>
+            </div>
+            <button type="button" class="ai-modal-close" id="closeAiConfigBtn">&times;</button>
+        </div>
+        <div class="ai-modal-body">
+            <p>Resumora uses the official <strong>Gemini 2.5 Flash</strong> API to generate bullet points and summaries completely free. Your key is stored solely in your local browser storage.</p>
+            
+            <label for="geminiApiKeyInput">Gemini API Key</label>
+            <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy...">
+            
+            <div class="ai-modal-help">
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Get a 100% Free Gemini API Key here
+                </a>
+            </div>
+        </div>
+        <div class="ai-modal-actions">
+            <button type="button" class="secondary-btn" id="cancelAiConfigBtn">Cancel</button>
+            <button type="button" class="primary-btn" id="saveAiKeyBtn">Save API Key</button>
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
