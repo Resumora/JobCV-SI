@@ -422,7 +422,16 @@ function updateBasicPreview() {
     const pInt = $("#previewInterests");
 
     if (pSum) pSum.textContent = resumeData.summary || "";
-    if (pAch) pAch.textContent = resumeData.achievements || "";
+    if (pAch) {
+    const rawAch = resumeData.achievements || "";
+    // Har line ko split karega aur bullet point (•) banayega
+    const lines = rawAch.split("\n")
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => line.startsWith("•") || line.startsWith("-") ? line : `• ${line}`);
+    
+    pAch.textContent = lines.join("\n");
+}
     if (pInt) pInt.textContent = resumeData.interests || "";
 
     toggleSection("#summarySection", Boolean(resumeData.summary && resumeData.summary.trim()));
