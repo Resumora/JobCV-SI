@@ -1,8 +1,9 @@
 /* =========================================================
-   Resumora - Resume Engine with Instant Template Switcher
+   Resumora - Resume Engine
    ========================================================= */
 
-const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const escapeHTML = (value = "") => {
     return String(value)
@@ -108,7 +109,7 @@ const toggleSection = (selector, visible) => {
 };
 
 /* =========================================================
-   FORM EDITORS RENDERING
+   FORM EDITORS
    ========================================================= */
 
 function renderExperienceEditor() {
@@ -373,7 +374,7 @@ function renderEditors() {
 }
 
 /* =========================================================
-   PREVIEW UPDATE (NON-CLICKABLE SOCIAL & AUTO-HIDE)
+   PREVIEW UPDATE
    ========================================================= */
 
 function updateBasicPreview() {
@@ -652,7 +653,7 @@ function updatePreview() {
 }
 
 /* =========================================================
-   INPUT LISTENERS
+   INPUT EVENTS
    ========================================================= */
 
 function collectBasicData() {
@@ -694,7 +695,7 @@ function handleInputEvent(event) {
 document.addEventListener("input", handleInputEvent);
 document.addEventListener("change", handleInputEvent);
 
-// Summary Character Count
+// Summary count
 const summaryField = $("#summary");
 if (summaryField) {
     summaryField.addEventListener("input", (e) => {
@@ -703,7 +704,7 @@ if (summaryField) {
     });
 }
 
-// Photo Upload Listener
+// Photo Upload
 const photoInput = $("#photoInput");
 if (photoInput) {
     photoInput.addEventListener("change", (event) => {
@@ -720,7 +721,7 @@ if (photoInput) {
     });
 }
 
-// Remove Photo Listener
+// Remove photo
 const removePhotoBtn = $("#removePhotoBtn");
 if (removePhotoBtn) {
     removePhotoBtn.addEventListener("click", () => {
@@ -733,7 +734,7 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS & CRISP PDF
+   BUTTON ACTIONS & CRISP PDF FIX
    ========================================================= */
 
 // Reset Button
@@ -758,28 +759,42 @@ if (printBtn) {
     });
 }
 
-// DOWNLOAD PDF BUTTON (Crisp Scale + Multi-Page Margin Fix)
+// DOWNLOAD PDF BUTTON (Fixes Cut/Distortion via Isolated Clone)
 const downloadBtn = $("#downloadBtn");
 if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
-        const resume = $("#resume");
-        if (!resume) return;
+        const originalResume = $("#resume");
+        if (!originalResume) return;
 
-        const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resumora_Resume") + ".pdf";
+        const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resume") + ".pdf";
 
-        const sections = resume.querySelectorAll(".resume-section");
-        sections.forEach(sec => sec.style.paddingTop = "10px");
-        if (sections.length > 0) sections[0].style.paddingTop = "0px";
+        // Create an isolated container so external margins & scrollbars don't clip text
+        const clone = originalResume.cloneNode(true);
+        const container = document.createElement("div");
+        container.style.position = "fixed";
+        container.style.top = "-10000px";
+        container.style.left = "0";
+        container.style.width = "794px";
+        container.style.background = "#ffffff";
+        container.style.zIndex = "-9999";
+        
+        clone.style.boxShadow = "none";
+        clone.style.margin = "0";
+        clone.style.width = "794px";
+        clone.style.minHeight = "auto";
+        container.appendChild(clone);
+        document.body.appendChild(container);
 
         const opt = {
-            margin: [10, 8, 10, 8],
+            margin: [8, 8, 8, 8],
             filename: fileName,
             image: { type: "jpeg", quality: 0.98 },
             html2canvas: {
-                scale: 2.5,
+                scale: 2,
                 useCORS: true,
                 letterRendering: true,
                 scrollY: 0,
+                scrollX: 0,
                 windowWidth: 794
             },
             jsPDF: {
@@ -794,61 +809,57 @@ if (downloadBtn) {
         };
 
         if (typeof html2pdf !== "undefined") {
-            html2pdf().set(opt).from(resume).save().then(() => {
-                sections.forEach(sec => sec.style.paddingTop = "");
+            html2pdf().set(opt).from(clone).save().then(() => {
+                document.body.removeChild(container);
             }).catch(() => {
-                sections.forEach(sec => sec.style.paddingTop = "");
+                document.body.removeChild(container);
+                window.print();
             });
         } else {
+            document.body.removeChild(container);
             window.print();
         }
     });
 }
 
-// Dynamic Add Items
-const addExp = $("#addExperience");
-if (addExp) addExp.addEventListener("click", () => {
+// Add Item Handlers
+$("#addExperience")?.addEventListener("click", () => {
     resumeData.experience.push(createExperience());
     renderExperienceEditor();
     updatePreview();
 });
 
-const addEdu = $("#addEducation");
-if (addEdu) addEdu.addEventListener("click", () => {
+$("#addEducation")?.addEventListener("click", () => {
     resumeData.education.push(createEducation());
     renderEducationEditor();
     updatePreview();
 });
 
-const addSkl = $("#addSkill");
-if (addSkl) addSkl.addEventListener("click", () => {
+$("#addSkill")?.addEventListener("click", () => {
     resumeData.skills.push(createSkill());
     renderSkillsEditor();
     updatePreview();
 });
 
-const addCert = $("#addCertification");
-if (addCert) addCert.addEventListener("click", () => {
+$("#addCertification")?.addEventListener("click", () => {
     resumeData.certifications.push(createCertification());
     renderCertificationEditor();
     updatePreview();
 });
 
-const addPrj = $("#addProject");
-if (addPrj) addPrj.addEventListener("click", () => {
+$("#addProject")?.addEventListener("click", () => {
     resumeData.projects.push(createProject());
     renderProjectEditor();
     updatePreview();
 });
 
-const addLang = $("#addLanguage");
-if (addLang) addLang.addEventListener("click", () => {
+$("#addLanguage")?.addEventListener("click", () => {
     resumeData.languages.push(createLanguage());
     renderLanguageEditor();
     updatePreview();
 });
 
-// Dynamic Remove Listeners
+// Remove Item Handlers
 document.addEventListener("click", (event) => {
     const btn = event.target.closest("button");
     if (!btn) return;
@@ -880,7 +891,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// TEMPLATE SWITCHER LISTENER
+// Template Switcher
 const templateSelect = $("#templateSelect");
 if (templateSelect) {
     templateSelect.addEventListener("change", (e) => {
@@ -891,7 +902,7 @@ if (templateSelect) {
     });
 }
 
-// COLOR PICKER LISTENER
+// Color Picker
 $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {         resumeData.color = btn.dataset.color;         $$
 (".color-choice").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -901,7 +912,7 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
 });
 
 /* =========================================================
-   LOCAL STORAGE & INITIALIZATION
+   INITIALIZATION & STORAGE
    ========================================================= */
 
 function saveData() {
