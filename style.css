@@ -127,7 +127,7 @@ body {
     gap: 10px;
 }
 
-.secondary-btn, .primary-btn, .ai-config-nav-btn {
+.secondary-btn, .primary-btn {
     border: none;
     cursor: pointer;
     font-family: inherit;
@@ -153,15 +153,6 @@ body {
     color: #ffffff;
 }
 .primary-btn:hover { background: var(--primary-dark); }
-
-.ai-config-nav-btn {
-    background: linear-gradient(135deg, #eff6ff 0%, #ede9fe 100%);
-    border: 1px solid #c7d2fe;
-    color: #4f46e5;
-}
-.ai-config-nav-btn:hover {
-    background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
-}
 
 /* =========================================================
    LIVE MOVING WATER WAVES (100% WORKING & ZERO LAG)
@@ -296,9 +287,9 @@ body {
 }
 .section-header .card-title { margin-bottom: 0; }
 
-/* AI ACTION BUTTONS */
+/* SEAMLESS AI ACTION BUTTONS */
 .ai-action-btn {
-    background: linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%);
+    background: linear-gradient(135deg, #eff6ff 0%, #ede9fe 100%);
     border: 1px solid #c7d2fe;
     color: #4f46e5;
     padding: 4px 10px;
@@ -308,18 +299,23 @@ body {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    transition: all 0.2s;
+    gap: 6px;
+    transition: all 0.2s ease;
 }
 
 .ai-action-btn:hover {
     background: #4f46e5;
+    border-color: #4338ca;
     color: #ffffff;
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
 }
 
 .ai-action-btn:disabled {
-    opacity: 0.6;
+    opacity: 0.65;
     cursor: not-allowed;
+    background: #f1f5f9;
+    color: #64748b;
+    border-color: #cbd5e1;
 }
 
 /* FORM CONTROLS */
@@ -828,105 +824,6 @@ input:focus, textarea:focus, select:focus {
     color: var(--text-secondary);
 }
 
-/* =========================================================
-   AI MODAL OVERLAY STYLES
-   ========================================================= */
-.ai-modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-}
-
-.ai-modal-box {
-    background: #ffffff;
-    width: 90%;
-    max-width: 480px;
-    border-radius: 12px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    animation: modal-pop 0.2s ease-out;
-}
-
-@keyframes modal-pop {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.ai-modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border-card);
-}
-
-.ai-modal-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #4f46e5;
-}
-
-.ai-modal-title h3 {
-    font-size: 15px;
-    font-family: var(--font-heading);
-    color: var(--text-primary);
-}
-
-.ai-modal-close {
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-
-.ai-modal-body {
-    padding: 20px;
-}
-
-.ai-modal-body p {
-    font-size: 12.5px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.5;
-}
-
-.ai-modal-help {
-    margin-top: 10px;
-}
-
-.ai-modal-help a {
-    color: var(--primary);
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.ai-modal-help a:hover {
-    text-decoration: underline;
-}
-
-.ai-modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    padding: 14px 20px;
-    background: #f8fafc;
-    border-top: 1px solid var(--border-card);
-}
-
 /* RESPONSIVE DESIGN */
 @media (max-width: 1080px) {
     .app-container {
@@ -941,7 +838,7 @@ input:focus, textarea:focus, select:focus {
 /* MULTI-PAGE PRINT & BREAK FIX */
 @media print {
     body { background: #ffffff !important; }
-    .topbar, .jobbers-hero, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer, .ai-modal-overlay { display: none !important; }
+    .topbar, .jobbers-hero, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer { display: none !important; }
     .app-container, .resume-wrapper { display: block !important; padding: 0 !important; margin: 0 !important; background: transparent !important; }
     .resume { width: 100% !important; box-shadow: none !important; padding: 12mm 14mm !important; }
     
