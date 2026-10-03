@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://atulsharma812-beep.github.io/JobCV-SI/sitemap.xml
+Sitemap: https://resumora.github.io/sitemap.xml
