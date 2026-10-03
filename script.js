@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Resume Engine with Instant Template Switcher & Gemini AI
+   Resumora - Resume Engine with Instant Template Switcher & Cloudflare Gemini AI
    ========================================================= */
 
 const $ = (selector) => document.querySelector(selector);
@@ -907,73 +907,21 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
 });
 
 /* =========================================================
-   GEMINI AI INTEGRATION (CLIENT-SIDE)
+   SEAMLESS GEMINI AI ENGINE (CLOUDFLARE PROXY)
    ========================================================= */
 
-const AI_STORAGE_KEY = "resumora_gemini_key";
+const WORKER_AI_ENDPOINT = "https://resumora-ai-proxy.atulsharma812.workers.dev";
 
-function getApiKey() {
-    return localStorage.getItem(AI_STORAGE_KEY) || "";
-}
-
-function openAiModal() {
-    const overlay = $("#aiModalOverlay");
-    const input = $("#geminiApiKeyInput");
-    if (input) input.value = getApiKey();
-    if (overlay) overlay.style.display = "flex";
-}
-
-function closeAiModal() {
-    const overlay = $("#aiModalOverlay");
-    if (overlay) overlay.style.display = "none";
-}
-
-const openAiConfigBtn = $("#openAiConfigBtn");
-if (openAiConfigBtn) openAiConfigBtn.addEventListener("click", openAiModal);
-
-const closeAiConfigBtn = $("#closeAiConfigBtn");
-if (closeAiConfigBtn) closeAiConfigBtn.addEventListener("click", closeAiModal);
-
-const cancelAiConfigBtn = $("#cancelAiConfigBtn");
-if (cancelAiConfigBtn) cancelAiConfigBtn.addEventListener("click", closeAiModal);
-
-const saveAiKeyBtn = $("#saveAiKeyBtn");
-if (saveAiKeyBtn) {
-    saveAiKeyBtn.addEventListener("click", () => {
-        const key = ($("#geminiApiKeyInput") ? $("#geminiApiKeyInput").value : "").trim();
-        if (key) {
-            localStorage.setItem(AI_STORAGE_KEY, key);
-            alert("API Key saved successfully!");
-            closeAiModal();
-        } else {
-            localStorage.removeItem(AI_STORAGE_KEY);
-            alert("API Key removed.");
-            closeAiModal();
-        }
-    });
-}
-
-// Helper to call Gemini 2.5 Flash
 async function callGemini(prompt) {
-    const key = getApiKey();
-    if (!key) {
-        alert("Please set up your free Google Gemini API Key first by clicking 'AI Setup' in the navbar.");
-        openAiModal();
-        return null;
-    }
-
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
-    const response = await fetch(endpoint, {
+    const response = await fetch(WORKER_AI_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-        })
+        body: JSON.stringify({ prompt: prompt })
     });
 
     if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error?.message || "Gemini API Request failed");
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "AI service temporarily unavailable.");
     }
 
     const data = await response.json();
@@ -1021,7 +969,7 @@ ${originalText}`;
         }
     } catch (err) {
         console.error(err);
-        alert("AI Error: " + err.message);
+        alert("AI Service Error: " + err.message);
     } finally {
         btn.innerHTML = originalHTML;
         btn.disabled = false;
@@ -1058,7 +1006,7 @@ Guidelines:
             }
         } catch (err) {
             console.error(err);
-            alert("AI Error: " + err.message);
+            alert("AI Service Error: " + err.message);
         } finally {
             aiGenerateSummaryBtn.innerHTML = originalHTML;
             aiGenerateSummaryBtn.disabled = false;
