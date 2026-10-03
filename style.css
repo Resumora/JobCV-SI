@@ -948,3 +948,7 @@ input:focus, textarea:focus, select:focus {
         break-inside: avoid !important;
     }
 }
+#previewAchievements {
+    white-space: pre-line !important;
+    line-height: 1.5;
+}
