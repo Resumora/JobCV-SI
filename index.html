@@ -1,57 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Primary SEO Meta Tags -->
-<title>Resumora - Free ATS Resume Builder | 100% Free & No Sign-up (2026)</title>
-<meta name="description" content="Build an ATS-compliant resume in 5 minutes for free. Clean modern templates designed for software engineers, freshers, and professionals. Instant A4 PDF download with zero watermarks.">
-<meta name="keywords" content="free resume builder, ATS resume maker, fresher software engineer resume, free resume download no watermark, professional resume template">
-<link rel="canonical" href="https://resumora.github.io/">
-
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://resumora.github.io/">
-<meta property="og:title" content="Resumora - Free ATS Resume Builder">
-<meta property="og:description" content="Create a job-winning ATS resume in 5 minutes with real-time preview and free PDF download.">
-<meta property="og:image" content="https://resumora.github.io/preview.png">
-
-<!-- Google Rich Results: FAQ Structured Data (Schema.org) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is Resumora really free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Resumora is 100% free with no sign-up, no hidden subscriptions, and zero watermarks on PDF downloads."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes a resume ATS-friendly?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An ATS-friendly resume uses standard single-column or clean dual-column layouts, parseable fonts, clear headings (Work Experience, Education, Skills), and avoids complex non-standard graphics."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I download my resume as a PDF directly?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, you can export and print standard A4 high-resolution PDF copies instantly with single-click download."
-      }
-    }
-  ]
-}
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
-    <title>Resumora | Free Professional ATS Resume Builder & Templates</title>
-    <script data-cfasync="false" src="https://abscloud.org/1/13de4c4684f48f83e597296437981e03"></script>
+    <title>Resumora - Free ATS Resume Builder | 100% Free & No Sign-up (2026)</title>
+    <meta name="description" content="Build an ATS-compliant resume in 5 minutes for free. Clean modern templates designed for software engineers, freshers, and professionals. Instant A4 PDF download with zero watermarks.">
+    <meta name="keywords" content="free resume builder, ATS resume maker, fresher software engineer resume, free resume download no watermark, professional resume template">
+    <link rel="canonical" href="https://resumora.github.io/">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://resumora.github.io/">
+    <meta property="og:title" content="Resumora - Free ATS Resume Builder">
+    <meta property="og:description" content="Create a job-winning ATS resume in 5 minutes with real-time preview and free PDF download.">
+
+    <!-- Schema FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Resumora really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Resumora is 100% free with no sign-up, no hidden subscriptions, and zero watermarks on PDF downloads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a resume ATS-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An ATS-friendly resume uses standard layouts, clean fonts, clear headings, and avoids complex non-standard graphics."
+          }
+        }
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -60,7 +47,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- PDF Generation Library -->
@@ -69,7 +56,7 @@
 <body>
 
 <!-- TOPBAR -->
-<header class="topbar">
+<header class="topbar no-print">
     <div class="brand">
         <div class="brand-logo">R</div>
         <div class="brand-text">
@@ -78,24 +65,22 @@
         </div>
     </div>
 
-    <!-- Blinking Dot Badge in Navbar -->
     <div class="nav-center-pill">
         <span class="blinking-dot"></span> ATS-Compliant Layouts (2026)
     </div>
 
     <div class="top-actions">
-        <button class="secondary-btn" id="clearBtn">
+        <button class="secondary-btn" id="clearBtn" type="button">
             <i class="fa-solid fa-rotate-left"></i> Reset
         </button>
-        <button class="primary-btn" id="downloadBtn">
+        <button class="primary-btn" id="downloadBtn" type="button">
             <i class="fa-solid fa-cloud-arrow-down"></i> Download PDF
         </button>
     </div>
 </header>
 
-<!-- JOBBERS-STYLE HERO STRIP WITH LIVE MOVING WATER WAVES -->
-<section class="jobbers-hero">
-    <!-- Pure Live Animated Waves -->
+<!-- HERO SECTION -->
+<section class="jobbers-hero no-print">
     <div class="water-waves-bg">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -103,7 +88,6 @@
     </div>
 
     <div class="hero-inner">
-        <!-- Blinking Dot Badge -->
         <div class="hero-pill-badge">
             <span class="blinking-dot"></span>
             <span class="badge-highlight">100% Free</span>
@@ -111,8 +95,8 @@
         </div>
 
         <h2 class="hero-title">
-            Build the right <span class="highlight-green">ATS resume</span> for <span class="highlight-purple">every job</span>,
-            <span class="hero-strikethrough">without paying a single rupee</span>
+            Build the right <span class="highlight-green">ATS resume</span> for every job,
+            <span>without paying a single rupee</span>
         </h2>
 
         <p class="hero-subtitle">
@@ -122,11 +106,11 @@
     </div>
 </section>
 
-<!-- MAIN APP CONTAINER (SIDE BY SIDE: LEFT EDITOR, RIGHT PREVIEW) -->
+<!-- MAIN APP CONTAINER -->
 <main class="app-container">
 
     <!-- LEFT EDITOR PANEL -->
-    <aside class="editor-panel">
+    <aside class="editor-panel no-print">
         <div class="editor-heading">
             <h3><i class="fa-solid fa-sliders"></i> Resume Customizer</h3>
             <div class="save-status" id="saveStatus">
@@ -326,9 +310,9 @@
         </section>
     </aside>
 
-    <!-- RIGHT PREVIEW CANVAS (A4 DISPLAY) -->
+    <!-- RIGHT PREVIEW CANVAS -->
     <section class="preview-area">
-        <div class="preview-toolbar">
+        <div class="preview-toolbar no-print">
             <div class="preview-info">
                 <strong>Live Document Canvas</strong>
                 <small>Standard A4 Portrait</small>
@@ -422,11 +406,10 @@
             </article>
         </div>
     </section>
-
 </main>
 
-<!-- SEO GUIDE SECTION -->
-<section class="seo-faq-section" style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
+<!-- SEO FAQ SECTION (Hidden during print) -->
+<section class="seo-faq-section no-print" style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
     <h2 style="font-size: 22px; text-align: center; margin-bottom: 20px;">Frequently Asked Questions</h2>
     <div style="display: flex; flex-direction: column; gap: 14px;">
         <div style="background: #fff; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0;">
@@ -441,7 +424,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="site-footer">
+<footer class="site-footer no-print">
     <div class="footer-container">
         <p>&copy; 2026 Resumora. Free ATS Resume Engine. Built for job seekers, graduates, and professionals.</p>
     </div>
