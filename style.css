@@ -166,6 +166,7 @@ body {
     overflow: hidden;
 }
 
+/* Water Waves Container */
 .water-waves-bg {
     position: absolute;
     top: 0;
@@ -186,18 +187,21 @@ body {
     pointer-events: none;
 }
 
+/* Layer 1 - Deep soft water ripple */
 .wave1 {
     top: -120%;
     background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.03) 70%, transparent 100%);
     animation: water-flow 18s linear infinite;
 }
 
+/* Layer 2 - Fast flowing ripple */
 .wave2 {
     top: -130%;
     background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, rgba(37, 99, 235, 0.02) 60%, transparent 100%);
     animation: water-flow 12s linear infinite reverse;
 }
 
+/* Layer 3 - Gentle crest */
 .wave3 {
     top: -140%;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
@@ -205,8 +209,12 @@ body {
 }
 
 @keyframes water-flow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-inner {
@@ -286,37 +294,6 @@ body {
     margin-bottom: 12px;
 }
 .section-header .card-title { margin-bottom: 0; }
-
-/* SEAMLESS AI ACTION BUTTONS */
-.ai-action-btn {
-    background: linear-gradient(135deg, #eff6ff 0%, #ede9fe 100%);
-    border: 1px solid #c7d2fe;
-    color: #4f46e5;
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-}
-
-.ai-action-btn:hover {
-    background: #4f46e5;
-    border-color: #4338ca;
-    color: #ffffff;
-    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
-}
-
-.ai-action-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    background: #f1f5f9;
-    color: #64748b;
-    border-color: #cbd5e1;
-}
 
 /* FORM CONTROLS */
 label {
@@ -651,8 +628,14 @@ input:focus, textarea:focus, select:focus {
 .cert-entry strong, .project-entry strong, .language-entry strong { font-size: 10.5px; color: #111827; }
 .cert-entry span, .project-entry span, .language-entry span { display: block; color: #6b7280; font-size: 9.5px; }
 
-/* TEMPLATES STYLES */
+/* =========================================================
+   DIFFERENT RESUME TEMPLATES STYLING
+   ========================================================= */
+
+/* 1. MODERN */
 .resume.modern-template .resume-header { border-bottom: 2px solid var(--primary); }
+
+/* 2. CORPORATE CLASSIC (Professional) */
 .resume.professional-template { font-family: Georgia, 'Times New Roman', serif; }
 .resume.professional-template .resume-header {
     border-bottom: 1px solid #111827;
@@ -675,6 +658,7 @@ input:focus, textarea:focus, select:focus {
     color: #1e293b;
 }
 
+/* 3. MINIMAL ATS CLEAN */
 .resume.minimal-template { padding: 24px 30px !important; }
 .resume.minimal-template .resume-header { border-bottom: none; margin-bottom: 0px; padding-bottom: 4px; }
 .resume.minimal-template h1 { font-size: 22px; font-weight: 800; }
@@ -690,6 +674,7 @@ input:focus, textarea:focus, select:focus {
 }
 .resume.minimal-template .skill-tag { background: #f3f4f6; border: none; color: #1f2937; }
 
+/* 4. SIDEBAR DUAL-COLUMN */
 .resume.sidebar-template { display: flex !important; padding: 0 !important; }
 .resume.sidebar-template .header-photo { display: none !important; }
 .resume.sidebar-template .resume-sidebar-panel {
@@ -736,6 +721,7 @@ input:focus, textarea:focus, select:focus {
 .resume.sidebar-template #skillsSection,
 .resume.sidebar-template #languagesSection { display: none !important; }
 
+/* 5. EXECUTIVE SERIF */
 .resume.executive-template { font-family: 'Times New Roman', Times, serif; }
 .resume.executive-template .resume-header { border-bottom: 3px double var(--primary); text-align: left; }
 .resume.executive-template h1 { font-family: 'Times New Roman', serif; font-size: 25px; letter-spacing: 1px; }
@@ -745,6 +731,7 @@ input:focus, textarea:focus, select:focus {
     letter-spacing: 1.5px;
 }
 
+/* 6. TECH & DEVELOPER */
 .resume.tech-template { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.5px; }
 .resume.tech-template h1 { font-family: 'Consolas', monospace; font-size: 22px; }
 .resume.tech-template h2 { font-family: 'Consolas', monospace; font-size: 12px; }
@@ -764,6 +751,7 @@ input:focus, textarea:focus, select:focus {
     border-radius: 2px;
 }
 
+/* 7. ELEGANT CENTERED */
 .resume.elegant-template .resume-header {
     flex-direction: column;
     align-items: center;
