@@ -1,9 +1,8 @@
 /* =========================================================
-   Resumora - Resume Engine
+   Resumora - Resume Engine (Clean Native Print / Save PDF)
    ========================================================= */
 
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const escapeHTML = (value = "") => {
     return String(value)
@@ -734,7 +733,7 @@ if (removePhotoBtn) {
 }
 
 /* =========================================================
-   BUTTON ACTIONS & CRISP PDF FIX
+   BUTTON ACTIONS (CLEAN PRINT & SAVE TO PDF)
    ========================================================= */
 
 // Reset Button
@@ -751,74 +750,19 @@ if (clearBtn) {
     });
 }
 
-// Print Button
-const printBtn = $("#printBtn");
-if (printBtn) {
-    printBtn.addEventListener("click", () => {
+// Topbar Main Print Button
+const mainPrintBtn = $("#mainPrintBtn");
+if (mainPrintBtn) {
+    mainPrintBtn.addEventListener("click", () => {
         window.print();
     });
 }
 
-// DOWNLOAD PDF BUTTON (Fixes Cut/Distortion via Isolated Clone)
-const downloadBtn = $("#downloadBtn");
-if (downloadBtn) {
-    downloadBtn.addEventListener("click", () => {
-        const originalResume = $("#resume");
-        if (!originalResume) return;
-
-        const fileName = (resumeData.fullName.trim().replace(/\s+/g, "_") || "Resume") + ".pdf";
-
-        // Create an isolated container so external margins & scrollbars don't clip text
-        const clone = originalResume.cloneNode(true);
-        const container = document.createElement("div");
-        container.style.position = "fixed";
-        container.style.top = "-10000px";
-        container.style.left = "0";
-        container.style.width = "794px";
-        container.style.background = "#ffffff";
-        container.style.zIndex = "-9999";
-        
-        clone.style.boxShadow = "none";
-        clone.style.margin = "0";
-        clone.style.width = "794px";
-        clone.style.minHeight = "auto";
-        container.appendChild(clone);
-        document.body.appendChild(container);
-
-        const opt = {
-            margin: [8, 8, 8, 8],
-            filename: fileName,
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: {
-                scale: 2,
-                useCORS: true,
-                letterRendering: true,
-                scrollY: 0,
-                scrollX: 0,
-                windowWidth: 794
-            },
-            jsPDF: {
-                unit: "mm",
-                format: "a4",
-                orientation: "portrait"
-            },
-            pagebreak: { 
-                mode: ["css", "legacy"], 
-                avoid: [".resume-section", ".resume-entry", "h3"] 
-            }
-        };
-
-        if (typeof html2pdf !== "undefined") {
-            html2pdf().set(opt).from(clone).save().then(() => {
-                document.body.removeChild(container);
-            }).catch(() => {
-                document.body.removeChild(container);
-                window.print();
-            });
-        } else {
-            document.body.removeChild(container);
-            window.print();
-        }
+// Canvas Toolbar Quick Print Button
+const previewPrintBtn = $("#previewPrintBtn");
+if (previewPrintBtn) {
+    previewPrintBtn.addEventListener("click", () => {
+        window.print();
     });
 }
 
