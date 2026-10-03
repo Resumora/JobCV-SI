@@ -952,3 +952,9 @@ input:focus, textarea:focus, select:focus {
     white-space: pre-line !important;
     line-height: 1.5;
 }
+.project-entry .resume-entry-description {
+    margin-top: 2px;
+    font-size: 10.5px;
+    line-height: 1.35;
+    white-space: pre-line !important;
+}
