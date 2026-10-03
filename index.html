@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resumora - 100% Free ATS Resume Builder with One-Click Gemini AI Polish. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
+    <meta name="description" content="Resumora - 100% Free ATS Resume Builder. Real-time preview, job-ready templates, instant A4 PDF download without login or watermarks.">
     <title>Resumora | Free Professional ATS Resume Builder & Templates</title>
     <script data-cfasync="false" src="https://abscloud.org/1/13de4c4684f48f83e597296437981e03"></script>
 
-    <link rel="stylesheet" href="style.css?v=2026.1">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,10 +38,10 @@
     </div>
 
     <div class="top-actions">
-        <button class="secondary-btn" id="clearBtn" type="button">
+        <button class="secondary-btn" id="clearBtn">
             <i class="fa-solid fa-rotate-left"></i> Reset
         </button>
-        <button class="primary-btn" id="downloadBtn" type="button">
+        <button class="primary-btn" id="downloadBtn">
             <i class="fa-solid fa-cloud-arrow-down"></i> Download PDF
         </button>
     </div>
@@ -60,7 +60,7 @@
         <!-- Blinking Dot Badge -->
         <div class="hero-pill-badge">
             <span class="blinking-dot"></span>
-            <span class="badge-highlight">100% Free & AI-Powered</span>
+            <span class="badge-highlight">100% Free</span>
             <span class="badge-text">No sign-up & zero watermarks</span>
         </div>
 
@@ -176,16 +176,11 @@
             </div>
         </section>
 
-        <!-- Professional Summary with One-Click AI -->
+        <!-- Summary -->
         <section class="editor-card">
-            <div class="section-header">
-                <div class="card-title">
-                    <i class="fa-solid fa-quote-left"></i>
-                    <h4>Professional Summary</h4>
-                </div>
-                <button type="button" class="ai-action-btn" id="aiGenerateSummaryBtn" title="Instant AI Polish without login">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI Polish
-                </button>
+            <div class="card-title">
+                <i class="fa-solid fa-quote-left"></i>
+                <h4>Professional Summary</h4>
             </div>
             <textarea id="summary" rows="4" placeholder="Brief summary of your background, core strengths and achievements..."></textarea>
             <div class="field-hint">
@@ -415,7 +410,6 @@
     </div>
 </footer>
 
-<!-- Cache-busting URL parameter added to force browser to load new script -->
-<script src="script.js?v=2026.1"></script>
+<script src="script.js"></script>
 </body>
 </html>
