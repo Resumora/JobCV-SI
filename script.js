@@ -560,7 +560,7 @@ function updateProjectPreview() {
         <div class="project-entry">
             <strong>${escapeHTML(item.name || "")}</strong>
             ${item.link ? `<span>${escapeHTML(item.link)}</span>` : ""}
-            ${item.description ? `<p>${escapeHTML(item.description)}</p>` : ""}
+            ${item.description ? `<p class="resume-entry-description">${escapeHTML(item.description)}</p>` : ""}
         </div>
     `).join("");
 }
