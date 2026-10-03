@@ -1,5 +1,5 @@
 /* =========================================================
-   Resumora - Jobbers Header, Radar Blink, Live Video & Dual Split
+   Resumora - Stylesheet
    ========================================================= */
 
 * {
@@ -27,9 +27,7 @@ body {
     line-height: 1.5;
 }
 
-/* =========================================================
-   BLINKING / PULSING RADAR DOT (CUSTOM ANIMATION)
-   ========================================================= */
+/* BLINKING / PULSING RADAR DOT */
 .blinking-dot {
     width: 8px;
     height: 8px;
@@ -52,14 +50,8 @@ body {
 }
 
 @keyframes radar-pulse {
-    0% {
-        transform: scale(0.6);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2.4);
-        opacity: 0;
-    }
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(2.4); opacity: 0; }
 }
 
 /* TOPBAR */
@@ -154,19 +146,16 @@ body {
 }
 .primary-btn:hover { background: var(--primary-dark); }
 
-/* =========================================================
-   LIVE MOVING WATER WAVES (100% WORKING & ZERO LAG)
-   ========================================================= */
+/* HERO */
 .jobbers-hero {
     position: relative;
     text-align: center;
-    padding: 60px 24px 50px 24px;
+    padding: 50px 24px 45px 24px;
     background: linear-gradient(180deg, #f0f7ff 0%, #f8fafc 100%);
     border-bottom: 1px solid #e2e8f0;
     overflow: hidden;
 }
 
-/* Water Waves Container */
 .water-waves-bg {
     position: absolute;
     top: 0;
@@ -187,21 +176,18 @@ body {
     pointer-events: none;
 }
 
-/* Layer 1 - Deep soft water ripple */
 .wave1 {
     top: -120%;
     background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.03) 70%, transparent 100%);
     animation: water-flow 18s linear infinite;
 }
 
-/* Layer 2 - Fast flowing ripple */
 .wave2 {
     top: -130%;
     background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, rgba(37, 99, 235, 0.02) 60%, transparent 100%);
     animation: water-flow 12s linear infinite reverse;
 }
 
-/* Layer 3 - Gentle crest */
 .wave3 {
     top: -140%;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
@@ -209,12 +195,8 @@ body {
 }
 
 @keyframes water-flow {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .hero-inner {
@@ -224,9 +206,41 @@ body {
     margin: 0 auto;
 }
 
-/* =========================================================
-   TWO-COLUMN SPLIT CONTAINER
-   ========================================================= */
+.hero-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+.badge-highlight {
+    font-weight: 700;
+    color: #059669;
+}
+
+.hero-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.highlight-green { color: #059669; }
+.highlight-purple { color: #7c3aed; }
+
+.hero-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* APP CONTAINER */
 .app-container {
     display: grid !important;
     grid-template-columns: 460px 1fr !important;
@@ -237,7 +251,7 @@ body {
     align-items: start;
 }
 
-/* LEFT EDITOR PANEL */
+/* EDITOR PANEL */
 .editor-panel {
     display: block;
     width: 100%;
@@ -295,7 +309,6 @@ body {
 }
 .section-header .card-title { margin-bottom: 0; }
 
-/* FORM CONTROLS */
 label {
     display: block;
     font-size: 11px;
@@ -339,7 +352,7 @@ input:focus, textarea:focus, select:focus {
     margin-top: 4px;
 }
 
-/* PHOTO UPLOAD */
+/* PHOTO */
 .photo-upload {
     display: flex;
     align-items: center;
@@ -390,7 +403,7 @@ input:focus, textarea:focus, select:focus {
 
 .photo-actions small { color: var(--text-secondary); font-size: 10.5px; }
 
-/* COLOR CHOICES */
+/* COLOR OPTIONS */
 .color-options { display: flex; gap: 8px; }
 
 .color-choice {
@@ -439,6 +452,7 @@ input:focus, textarea:focus, select:focus {
     height: 26px;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
 }
 
 .dynamic-grid {
@@ -448,7 +462,7 @@ input:focus, textarea:focus, select:focus {
 }
 .dynamic-full { grid-column: span 2; }
 
-/* RIGHT PREVIEW AREA */
+/* PREVIEW AREA */
 .preview-area {
     display: block;
     width: 100%;
@@ -628,14 +642,9 @@ input:focus, textarea:focus, select:focus {
 .cert-entry strong, .project-entry strong, .language-entry strong { font-size: 10.5px; color: #111827; }
 .cert-entry span, .project-entry span, .language-entry span { display: block; color: #6b7280; font-size: 9.5px; }
 
-/* =========================================================
-   DIFFERENT RESUME TEMPLATES STYLING
-   ========================================================= */
-
-/* 1. MODERN */
+/* TEMPLATES */
 .resume.modern-template .resume-header { border-bottom: 2px solid var(--primary); }
 
-/* 2. CORPORATE CLASSIC (Professional) */
 .resume.professional-template { font-family: Georgia, 'Times New Roman', serif; }
 .resume.professional-template .resume-header {
     border-bottom: 1px solid #111827;
@@ -643,22 +652,15 @@ input:focus, textarea:focus, select:focus {
     flex-direction: column;
     gap: 4px;
 }
-.resume.professional-template h1 { font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.5px; }
+.resume.professional-template h1 { font-family: Georgia, serif; font-size: 26px; }
 .resume.professional-template h2 { color: #374151; font-style: italic; }
 .resume.professional-template .contact-line,
 .resume.professional-template .links-line { justify-content: center; }
 .resume.professional-template .resume-section h3 {
     border-bottom: 1.5px solid #111827;
     color: #111827;
-    font-family: Georgia, serif;
-}
-.resume.professional-template .skill-tag {
-    background: transparent;
-    border: 1px solid #94a3b8;
-    color: #1e293b;
 }
 
-/* 3. MINIMAL ATS CLEAN */
 .resume.minimal-template { padding: 24px 30px !important; }
 .resume.minimal-template .resume-header { border-bottom: none; margin-bottom: 0px; padding-bottom: 4px; }
 .resume.minimal-template h1 { font-size: 22px; font-weight: 800; }
@@ -669,12 +671,10 @@ input:focus, textarea:focus, select:focus {
     padding-bottom: 0;
     margin-bottom: 3px;
     font-size: 11px;
-    font-weight: 800;
     color: #111827;
 }
 .resume.minimal-template .skill-tag { background: #f3f4f6; border: none; color: #1f2937; }
 
-/* 4. SIDEBAR DUAL-COLUMN */
 .resume.sidebar-template { display: flex !important; padding: 0 !important; }
 .resume.sidebar-template .header-photo { display: none !important; }
 .resume.sidebar-template .resume-sidebar-panel {
@@ -721,17 +721,14 @@ input:focus, textarea:focus, select:focus {
 .resume.sidebar-template #skillsSection,
 .resume.sidebar-template #languagesSection { display: none !important; }
 
-/* 5. EXECUTIVE SERIF */
 .resume.executive-template { font-family: 'Times New Roman', Times, serif; }
 .resume.executive-template .resume-header { border-bottom: 3px double var(--primary); text-align: left; }
-.resume.executive-template h1 { font-family: 'Times New Roman', serif; font-size: 25px; letter-spacing: 1px; }
+.resume.executive-template h1 { font-size: 25px; letter-spacing: 1px; }
 .resume.executive-template .resume-section h3 {
     border-bottom: 1px solid var(--primary);
-    font-family: 'Times New Roman', serif;
     letter-spacing: 1.5px;
 }
 
-/* 6. TECH & DEVELOPER */
 .resume.tech-template { font-family: 'Consolas', 'Courier New', monospace; font-size: 10.5px; }
 .resume.tech-template h1 { font-family: 'Consolas', monospace; font-size: 22px; }
 .resume.tech-template h2 { font-family: 'Consolas', monospace; font-size: 12px; }
@@ -751,7 +748,6 @@ input:focus, textarea:focus, select:focus {
     border-radius: 2px;
 }
 
-/* 7. ELEGANT CENTERED */
 .resume.elegant-template .resume-header {
     flex-direction: column;
     align-items: center;
@@ -766,43 +762,6 @@ input:focus, textarea:focus, select:focus {
     border-bottom: 1px solid #e2e8f0;
 }
 
-/* =========================================================
-   SEO SECTION & FOOTER
-   ========================================================= */
-.seo-guide-section {
-    background: #ffffff;
-    border-top: 1px solid var(--border-card);
-    padding: 40px 24px;
-}
-
-.seo-guide-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.seo-guide-section h2 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.seo-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.seo-card {
-    background: #f8fafc;
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 20px;
-}
-
-.seo-card i { font-size: 20px; color: var(--primary); margin-bottom: 10px; }
-.seo-card h3 { font-size: 14px; margin-bottom: 6px; }
-.seo-card p { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-
 .site-footer {
     border-top: 1px solid var(--border-card);
     background: #ffffff;
@@ -812,30 +771,69 @@ input:focus, textarea:focus, select:focus {
     color: var(--text-secondary);
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE */
 @media (max-width: 1080px) {
-    .app-container {
-        grid-template-columns: 1fr !important;
-    }
-    .preview-area {
-        position: static;
-        order: -1;
-    }
+    .app-container { grid-template-columns: 1fr !important; }
+    .preview-area { position: static; order: -1; }
 }
 
-/* MULTI-PAGE PRINT & BREAK FIX */
+/* =========================================================
+   PERFECT CLEAN PRINT CSS
+   ========================================================= */
+@page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+}
+
 @media print {
-    body { background: #ffffff !important; }
-    .topbar, .jobbers-hero, .editor-panel, .preview-toolbar, .seo-guide-section, .site-footer { display: none !important; }
-    .app-container, .resume-wrapper { display: block !important; padding: 0 !important; margin: 0 !important; background: transparent !important; }
-    .resume { width: 100% !important; box-shadow: none !important; padding: 12mm 14mm !important; }
-    
+    /* Hide everything marked no-print */
+    .no-print,
+    .topbar,
+    .jobbers-hero,
+    .editor-panel,
+    .preview-toolbar,
+    .seo-faq-section,
+    .site-footer {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    html, body {
+        background: #ffffff !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .app-container, .preview-area, .resume-wrapper {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .resume {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+
     .resume-section {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        padding-top: 14mm !important;
     }
-    .resume-section:first-of-type {
-        padding-top: 0 !important;
+
+    .resume-entry {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
 }
