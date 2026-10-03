@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Primary SEO Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumora - Free ATS Resume Builder | 100% Free & No Sign-up (2026)</title>
@@ -13,8 +14,9 @@
     <meta property="og:url" content="https://resumora.github.io/">
     <meta property="og:title" content="Resumora - Free ATS Resume Builder">
     <meta property="og:description" content="Create a job-winning ATS resume in 5 minutes with real-time preview and free PDF download.">
+    <meta property="og:image" content="https://resumora.github.io/preview.png">
 
-    <!-- Schema FAQ -->
+    <!-- Google Rich Results: FAQ Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,7 +35,15 @@
           "name": "What makes a resume ATS-friendly?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An ATS-friendly resume uses standard layouts, clean fonts, clear headings, and avoids complex non-standard graphics."
+            "text": "An ATS-friendly resume uses standard single-column or clean dual-column layouts, parseable fonts, clear headings (Work Experience, Education, Skills), and avoids complex non-standard graphics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download my resume as a PDF directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can export and print standard A4 high-resolution PDF copies instantly with single-click print to PDF."
           }
         }
       ]
@@ -47,39 +57,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- FontAwesome -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- PDF Generation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-<!-- TOPBAR -->
+<!-- TOPBAR WITH CENTERED BRAND LOGO & PREMIUM PRINT BUTTON -->
 <header class="topbar no-print">
-    <div class="brand">
-        <div class="brand-logo">R</div>
+    <div class="topbar-left">
+        <button class="secondary-btn" id="clearBtn" type="button" title="Reset all fields to sample">
+            <i class="fa-solid fa-rotate-left"></i> <span>Reset</span>
+        </button>
+    </div>
+
+    <!-- Centered Dynamic Brand Logo -->
+    <div class="brand-centered">
+        <div class="brand-logo-badge">
+            <span class="logo-letter">R</span>
+            <div class="logo-glow"></div>
+        </div>
         <div class="brand-text">
             <h1>Resumora</h1>
-            <span>Free ATS Resume Engine</span>
+            <span class="brand-subline">Free ATS Resume Engine</span>
         </div>
     </div>
 
-    <div class="nav-center-pill">
-        <span class="blinking-dot"></span> ATS-Compliant Layouts (2026)
-    </div>
-
-    <div class="top-actions">
-        <button class="secondary-btn" id="clearBtn" type="button">
-            <i class="fa-solid fa-rotate-left"></i> Reset
-        </button>
-        <button class="primary-btn" id="downloadBtn" type="button">
-            <i class="fa-solid fa-cloud-arrow-down"></i> Download PDF
+    <div class="topbar-right">
+        <!-- Upgraded Beautiful Print Button -->
+        <button class="premium-print-btn" id="mainPrintBtn" type="button" title="Print or Save as PDF">
+            <span class="btn-shine"></span>
+            <i class="fa-solid fa-print"></i>
+            <span class="btn-text">Print / Save PDF</span>
         </button>
     </div>
 </header>
 
-<!-- HERO SECTION -->
+<!-- JOBBERS-STYLE HERO STRIP -->
 <section class="jobbers-hero no-print">
     <div class="water-waves-bg">
         <div class="wave wave1"></div>
@@ -96,7 +109,7 @@
 
         <h2 class="hero-title">
             Build the right <span class="highlight-green">ATS resume</span> for every job,
-            <span>without paying a single rupee</span>
+            <span class="hero-strikethrough">without paying a single rupee</span>
         </h2>
 
         <p class="hero-subtitle">
@@ -138,12 +151,12 @@
 
             <label style="margin-top: 14px;">Accent Color</label>
             <div class="color-options">
-                <button type="button" class="color-choice active" data-color="#2563eb" style="--color:#2563eb"></button>
-                <button type="button" class="color-choice" data-color="#0f766e" style="--color:#0f766e"></button>
-                <button type="button" class="color-choice" data-color="#18181b" style="--color:#18181b"></button>
-                <button type="button" class="color-choice" data-color="#7c3aed" style="--color:#7c3aed"></button>
-                <button type="button" class="color-choice" data-color="#b45309" style="--color:#b45309"></button>
-                <button type="button" class="color-choice" data-color="#e11d48" style="--color:#e11d48"></button>
+                <button type="button" class="color-choice active" data-color="#2563eb" style="--color:#2563eb" aria-label="Blue"></button>
+                <button type="button" class="color-choice" data-color="#0f766e" style="--color:#0f766e" aria-label="Teal"></button>
+                <button type="button" class="color-choice" data-color="#18181b" style="--color:#18181b" aria-label="Black"></button>
+                <button type="button" class="color-choice" data-color="#7c3aed" style="--color:#7c3aed" aria-label="Purple"></button>
+                <button type="button" class="color-choice" data-color="#b45309" style="--color:#b45309" aria-label="Amber"></button>
+                <button type="button" class="color-choice" data-color="#e11d48" style="--color:#e11d48" aria-label="Rose"></button>
             </div>
         </section>
 
@@ -317,8 +330,8 @@
                 <strong>Live Document Canvas</strong>
                 <small>Standard A4 Portrait</small>
             </div>
-            <button type="button" class="print-btn" id="printBtn">
-                <i class="fa-solid fa-print"></i> Print
+            <button type="button" class="preview-quick-print" id="previewPrintBtn">
+                <i class="fa-solid fa-print"></i> Quick Print
             </button>
         </div>
 
@@ -406,6 +419,7 @@
             </article>
         </div>
     </section>
+
 </main>
 
 <!-- SEO FAQ SECTION (Hidden during print) -->
