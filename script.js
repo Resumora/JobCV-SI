@@ -1,8 +1,9 @@
 /* =========================================================
-   Resumora - Resume Engine with Instant Template Switcher
+   Resumora - Resume Engine with Instant Template Switcher & Gemini AI
    ========================================================= */
 
-const $ = (selector) => document.querySelector(selector); const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 const escapeHTML = (value = "") => {
     return String(value)
@@ -126,9 +127,14 @@ function renderExperienceEditor() {
         div.innerHTML = `
             <div class="dynamic-item-header">
                 <strong>Experience ${index + 1}</strong>
-                <button type="button" class="remove-btn" data-remove-experience="${index}" title="Delete">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+                <div style="display:flex; gap:6px;">
+                    <button type="button" class="ai-action-btn" data-ai-polish-exp="${index}" title="Improve with AI">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Polish
+                    </button>
+                    <button type="button" class="remove-btn" data-remove-experience="${index}" title="Delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
             </div>
             <div class="dynamic-grid">
                 <div>
@@ -899,6 +905,166 @@ $$(".color-choice").forEach(btn => {     btn.addEventListener("click", () => {  
         saveData();
     });
 });
+
+/* =========================================================
+   GEMINI AI INTEGRATION (CLIENT-SIDE)
+   ========================================================= */
+
+const AI_STORAGE_KEY = "resumora_gemini_key";
+
+function getApiKey() {
+    return localStorage.getItem(AI_STORAGE_KEY) || "";
+}
+
+function openAiModal() {
+    const overlay = $("#aiModalOverlay");
+    const input = $("#geminiApiKeyInput");
+    if (input) input.value = getApiKey();
+    if (overlay) overlay.style.display = "flex";
+}
+
+function closeAiModal() {
+    const overlay = $("#aiModalOverlay");
+    if (overlay) overlay.style.display = "none";
+}
+
+const openAiConfigBtn = $("#openAiConfigBtn");
+if (openAiConfigBtn) openAiConfigBtn.addEventListener("click", openAiModal);
+
+const closeAiConfigBtn = $("#closeAiConfigBtn");
+if (closeAiConfigBtn) closeAiConfigBtn.addEventListener("click", closeAiModal);
+
+const cancelAiConfigBtn = $("#cancelAiConfigBtn");
+if (cancelAiConfigBtn) cancelAiConfigBtn.addEventListener("click", closeAiModal);
+
+const saveAiKeyBtn = $("#saveAiKeyBtn");
+if (saveAiKeyBtn) {
+    saveAiKeyBtn.addEventListener("click", () => {
+        const key = ($("#geminiApiKeyInput") ? $("#geminiApiKeyInput").value : "").trim();
+        if (key) {
+            localStorage.setItem(AI_STORAGE_KEY, key);
+            alert("API Key saved successfully!");
+            closeAiModal();
+        } else {
+            localStorage.removeItem(AI_STORAGE_KEY);
+            alert("API Key removed.");
+            closeAiModal();
+        }
+    });
+}
+
+// Helper to call Gemini 2.5 Flash
+async function callGemini(prompt) {
+    const key = getApiKey();
+    if (!key) {
+        alert("Please set up your free Google Gemini API Key first by clicking 'AI Setup' in the navbar.");
+        openAiModal();
+        return null;
+    }
+
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+        })
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error?.message || "Gemini API Request failed");
+    }
+
+    const data = await response.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
+}
+
+// AI Polish Work Experience
+document.addEventListener("click", async (event) => {
+    const btn = event.target.closest("[data-ai-polish-exp]");
+    if (!btn) return;
+
+    const index = Number(btn.dataset.aiPolishExp);
+    const exp = resumeData.experience[index];
+    if (!exp) return;
+
+    const originalText = exp.description || "";
+    if (!originalText.trim()) {
+        alert("Please write some rough bullet points or duties first before polishing.");
+        return;
+    }
+
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Polishing...`;
+    btn.disabled = true;
+
+    const prompt = `You are an expert resume writer and ATS optimization specialist. 
+Rewrite the following raw job experience bullets into 2 to 4 crisp, high-impact, ATS-friendly bullet points.
+Guidelines:
+- Start each bullet point with a strong action verb (e.g., Architected, Engineered, Implemented, Spearheaded).
+- Include quantifiable metrics, percentages, or estimation wherever applicable.
+- Keep output plain text with bullet symbol (•) at the start of each line.
+- Do NOT include any introductory or concluding comments, backticks, or quotes.
+
+Job Title: ${exp.position || "Professional"}
+Company: ${exp.company || ""}
+Raw Input:
+${originalText}`;
+
+    try {
+        const enhanced = await callGemini(prompt);
+        if (enhanced) {
+            resumeData.experience[index].description = enhanced;
+            renderExperienceEditor();
+            updatePreview();
+        }
+    } catch (err) {
+        console.error(err);
+        alert("AI Error: " + err.message);
+    } finally {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+    }
+});
+
+// AI Generate / Polish Professional Summary
+const aiGenerateSummaryBtn = $("#aiGenerateSummaryBtn");
+if (aiGenerateSummaryBtn) {
+    aiGenerateSummaryBtn.addEventListener("click", async () => {
+        const rawSummary = getValue("summary");
+        const jobTitle = getValue("jobTitle") || "Professional";
+
+        const originalHTML = aiGenerateSummaryBtn.innerHTML;
+        aiGenerateSummaryBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Generating...`;
+        aiGenerateSummaryBtn.disabled = true;
+
+        const prompt = `You are a career coach. Write a concise, 3-4 sentence professional summary for a resume.
+Target Role: ${jobTitle}
+User Rough Notes: ${rawSummary || "Experienced professional focused on delivering measurable results, scalability, and technical leadership."}
+Guidelines:
+- Must be punchy, ATS-optimized, and written in 3rd-person neutral tone (without 'I' or 'my').
+- Keep length strictly between 350 and 500 characters.
+- Return ONLY the summary text itself without quotes or introductory markdown.`;
+
+        try {
+            const enhanced = await callGemini(prompt);
+            if (enhanced) {
+                setValue("summary", enhanced);
+                resumeData.summary = enhanced;
+                const count = $("#summaryCount");
+                if (count) count.textContent = `${enhanced.length} / 600`;
+                updatePreview();
+            }
+        } catch (err) {
+            console.error(err);
+            alert("AI Error: " + err.message);
+        } finally {
+            aiGenerateSummaryBtn.innerHTML = originalHTML;
+            aiGenerateSummaryBtn.disabled = false;
+        }
+    });
+}
 
 /* =========================================================
    LOCAL STORAGE & INITIALIZATION
